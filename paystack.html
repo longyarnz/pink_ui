@@ -4,7 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale:1.0" />
     <link rel="stylesheet" href="css\bootstrap.min.css" />
+    <link rel="stylesheet" href="paystack.css" />
     <link rel="stylesheet" href="csss\style.css" />
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family='Segoe UI'|Tahoma|Inconsolata|Wellfleet|Unkempt"
@@ -13,6 +15,7 @@
       defer
       src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"
     ></script>
+
     <title>Login|Pinketu</title>
   </head>
   <body id="login-body">
@@ -22,29 +25,17 @@
       </div>
     </nav>
 
-    <br />
-    <div id="contact-head"><h1>LOGIN</h1></div>
-    <br />
-    <div id="contact-form" class="container-fluid">
-      <form action="">
-        <input
-          name="username"
-          type="text"
-          class="login-input"
-          placeholder="type username"
-        />
-        <input
-          name="email"
-          type="password"
-          class="login-input"
-          placeholder="type password"
-        />
-
-        <input type="submit" value="SEND" />
-      </form>
-    </div>
+    <button id="paybutt" onclick="payWithPaystack()">Pay</button> <br />
     <div id="footer" class="container-fluid">
       <p>&copy; 2018 Pink et Tu, All rights reserved.</p>
     </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="paystack.js"></script>
   </body>
 </html>
