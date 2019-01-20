@@ -1,11 +1,12 @@
 {
   "version": 2,
   "name": "pink_ui",
-  "alias": "test.pinkettu.com.ng",
+  "alias": [ "test.pinkettu.com.ng" ],
   "builds": [
-    { "src": "*.html", "use": "@now/static" },
-    { "src": "css/*.css", "use": "@now/html-minifier" },
-    { "src": "csss/*.css", "use": "@now/html-minifier" },
-    { "src": "images/*.png", "use": "@now/optipng" }
+    { "src": "*.html", "use": "@now/html-minifier" },
+    { "src": "*/*.js", "use": "@now/node" },
+    { "src": "*/*.css", "use": "@now/html-minifier" },
+    { "src": "*/*.png", "use": "@now/optipng" },
+    { "src": "images/*.jpg", "use": "@now/static" }
   ]
 }
