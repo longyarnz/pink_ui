@@ -3,8 +3,9 @@
   "name": "pink_ui",
   "alias": "test.pinkettu.com.ng",
   "builds": [
-    {
-      "src": "*.html", "use": "@now/static"
-    }
+    { "src": "*.html", "use": "@now/static" },
+    { "src": "css/*", "use": "@now/html-minifier" },
+    { "src": "csss/*", "use": "@now/html-minifier" },
+    { "src": "images/*", "use": "@now/optipng" }
   ]
 }
