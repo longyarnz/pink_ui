@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "pink_ui",
-  "alias": "test.pinkettu.com.ng",
+  "alias": [ "test.pinkettu.com.ng" ],
   "builds": [
     { "src": "*.html", "use": "@now/static" },
     { "src": "css/*.css", "use": "@now/html-minifier" },
