@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "name": "pink_ui",
+  "alias": "test.pinkettu.com.ng",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@now/static"
+    }
+  ]
+}
