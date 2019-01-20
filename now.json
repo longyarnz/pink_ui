@@ -6,6 +6,6 @@
     { "src": "*.html", "use": "@now/static" },
     { "src": "css/*.css", "use": "@now/html-minifier" },
     { "src": "csss/*.css", "use": "@now/html-minifier" },
-    { "src": "images/*", "use": "@now/optipng" }
+    { "src": "images/*.png", "use": "@now/optipng" }
   ]
 }
