@@ -4,8 +4,7 @@
   "alias": "test.pinkettu.com.ng",
   "builds": [
     {
-      "src": "index.html",
-      "use": "@now/static"
+      "src": "*.html", "use": "@now/static"
     }
   ]
 }
