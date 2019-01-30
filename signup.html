@@ -1,72 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale:1.0" />
-    <link rel="stylesheet" href="css\bootstrap.min.css" />
-    <link rel="stylesheet" href="csss\style.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Montserrat:300|Tahoma|Inconsolata|Wellfleet|Unkempt"
-    />
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"
-    ></script>
-    <title>Sign Up|Pinketu</title>
-  </head>
-  <body id="signup-body">
 
-      <script type="text/javascript">
-var password = document.getElementById("password")
-  , confirm_password = document.getElementById("confirm_password");
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css\bootstrap.min.css" />
+  <link rel="stylesheet" href="csss\style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300|Tahoma|Inconsolata|Wellfleet|Unkempt" />
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <title>Sign Up|Pinketu</title>
+</head>
 
-function validatePassword(){
-  if(password.value != confirm_password.value) {
-    confirm_password.setCustomValidity("Passwords Don't Match");
-  } else {
-    confirm_password.setCustomValidity('');
-  }
-}
+<body id="signup-body">
+  <script type="text/javascript">
+    var password = document.getElementById("password")
+      , confirm_password = document.getElementById("confirm_password");
 
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
-      </script>
-
-      <nav>
-          <div id="logo-cont" class="container-fluid">
-            <a href="index.html"> <img src="images\pinkettu.png" /> </a>
-          </div>
-        </nav>
-    <div id="signup-main" class="container-fluid">
-      <div class="row">
-        <div class="col-sm-6"><img src="images\model2.jpg" /></div>
-        <div class="col-sm-6">
+    function validatePassword() {
+      if (password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+      } else {
+        confirm_password.setCustomValidity('');
+      }
+    }
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+  </script>
+  <nav>
+    <div id="logo-cont" class="container-fluid">
+      <a href="index.html"> <img src="images\pinkettu.png" /> </a>
+    </div>
+  </nav>
+  <div id="signup-main" class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6"><img src="images\model2.jpg" /></div>
+      <div class="col-sm-6">
+        <br>
+        <h2>PINK ET TU</h2>
+        <p><b>Please complete to create your account</b></p>
+        <br>
+        <form method="POST" name="form" class="form" action="#" onsubmit="return checkForm(this);">
+          <p><input name="firstName" type="text" placeholder="Firstname" required></input></p>
+          <p><input name="lastName" type="text" placeholder="Lastname" required></input></p>
+          <p><input name="userName" type="text" placeholder="Username" required></input></p>
+          <p><input name="email" type="email" placeholder="Email" required></input></p>
+          <p><input type="password" placeholder="Password" id="password" required></input></p>
+          <p><input type="password" placeholder="Confirm Password" id="confirm_password" required></input></p>
+          <p><input name="imageFile" type="file" name="pic" accept="image/*"></p>
+          <button type="submit" id="finalSubmit">Sign Up</button>
+          <p><input name="checkBox" type="checkbox" required>I agree with the terms and conditions</p>
+          <p>Already have an account,<a>Sign in</a></p>
           <br>
-            <h2>PINK ET TU</h2>
-            <p><b>Please complete to create your account</b></p>
-            <br>
-            <form method="POST" name="form" class="form" action="#" onsubmit="return checkForm(this);">
-                <p ><input name="firstName" type="text" placeholder="Firstname" required></input></p>
-              <p ><input name="lastName" type="text" placeholder="Lastname" required></input></p>
-              <p ><input name="userName" type="text" placeholder="Username" required></input></p>
-                <p><input name="email"  type="email" placeholder="Email" required></input></p>
-              <p ><input type="password" placeholder="Password" id="password" required></input></p>
-              <p><input type="password" placeholder="Confirm Password" id="confirm_password" required></input></p>
-                <p><input name="imageFile" type="file" name="pic" accept="image/*"></p>
-                <button type="submit" id="finalSubmit">Sign Up</button>
-                <p><input name="checkBox" type="checkbox" required>I agree with the terms and conditions</p>
-                <p>Already have an account,<a>Sign in</a></p>
-                <br>
-                <p>Term of use. Privacy policy</p>
-               
-              </form>
-        </div>
+          <p>Term of use. Privacy policy</p>
+        </form>
       </div>
     </div>
-    <div id="footer" class="container-fluid">
-        <p>&copy; 2018 Pink et Tu, All rights reserved.</p>
-      </div>
+  </div>
+  <div id="footer" class="container-fluid">
+    <p>&copy; 2018 Pink et Tu, All rights reserved.</p>
+  </div>
+</body>
 
-  </body>
 </html>
