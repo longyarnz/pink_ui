@@ -16,6 +16,23 @@
     <title>Sign Up|Pinketu</title>
   </head>
   <body id="signup-body">
+
+      <script type="text/javascript">
+var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+      </script>
+
       <nav>
           <div id="logo-cont" class="container-fluid">
             <a href="index.html"> <img src="images\pinkettu.png" /> </a>
@@ -29,15 +46,16 @@
             <h2>PINK ET TU</h2>
             <p><b>Please complete to create your account</b></p>
             <br>
-            <form class="form">
-                <p ><input type="text" placeholder="Firstname"></input></p>
-              <p ><input type="text" placeholder="Lastname"></input></p>
-                <p><input  type="email" placeholder="Email"></input></p>
-              <p ><input type="password" placeholder="Password"></input></p>
-              <p><input type="password" placeholder="Retype assword"></input></p>
-                <p><input type="file" name="pic" accept="image/*"></p>
-                <button>Sign Up</button>
-                <p><input type="checkbox">I agree with the terms and conditions</p>
+            <form method="POST" name="form" class="form" action="#" onsubmit="return checkForm(this);">
+                <p ><input name="firstName" type="text" placeholder="Firstname" required></input></p>
+              <p ><input name="lastName" type="text" placeholder="Lastname" required></input></p>
+              <p ><input name="userName" type="text" placeholder="Username" required></input></p>
+                <p><input name="email"  type="email" placeholder="Email" required></input></p>
+              <p ><input type="password" placeholder="Password" id="password" required></input></p>
+              <p><input type="password" placeholder="Confirm Password" id="confirm_password" required></input></p>
+                <p><input name="imageFile" type="file" name="pic" accept="image/*"></p>
+                <button type="submit" id="finalSubmit">Sign Up</button>
+                <p><input name="checkBox" type="checkbox" required>I agree with the terms and conditions</p>
                 <p>Already have an account,<a>Sign in</a></p>
                 <br>
                 <p>Term of use. Privacy policy</p>

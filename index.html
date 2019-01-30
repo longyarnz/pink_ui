@@ -16,11 +16,11 @@
     <title>Pink et Tu</title>
   </head>
   <body id="home-body">
-      <nav>
-          <div id="home-logo" class="container-fluid">
-            <a href="index.html"> <img src="images\pinkettu.png" /> </a>
-          </div>
-        </nav>
+    <nav>
+      <div id="home-logo" class="container-fluid">
+        <a href="index.html"> <img src="images\pinkettu.png" /> </a>
+      </div>
+    </nav>
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -95,7 +95,18 @@
       </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+      document.getElementById("login-button").onclick = function() {
+        location.href = "login.html";
+      };
+    </script>
+    <script type="text/javascript">
+      document.getElementById("signin-button").onclick = function() {
+        location.href = "signup.html";
+      };
+    </script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </body>
 </html>
