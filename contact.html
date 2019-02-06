@@ -36,18 +36,20 @@
 
   <script>
     const form = document.getElementsByTagName('form')[0];
-    
+
     function handleResponse(request) {
-      if (request.readyState == 4 && request.status == 200) {
-        console.log(request.responseText);
-      }
+      console.log(request.responseText);
     }
 
     form.addEventListener('submit', e => {
       e.preventDefault();
       const [name, email, text] = form;
       const xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = handleResponse(this);
+      xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+          handleResponse(this);
+        }
+      }
       xhttp.open('POST', 'https://api.pinkettu.com.ng/mail', true);
       xhttp.setRequestHeader('Content-type', 'application/json');
       xhttp.send(JSON.stringify(
