@@ -12,20 +12,6 @@
 </head>
 
 <body id="signup-body">
-  <script type="text/javascript">
-    var password = document.getElementById("password")
-      , confirm_password = document.getElementById("confirm_password");
-
-    function validatePassword() {
-      if (password.value != confirm_password.value) {
-        confirm_password.setCustomValidity("Passwords Don't Match");
-      } else {
-        confirm_password.setCustomValidity('');
-      }
-    }
-    password.onchange = validatePassword;
-    confirm_password.onkeyup = validatePassword;
-  </script>
   <nav>
     <div id="logo-cont" class="container-fluid">
       <a href="index.html"> <img src="images\pinkettu.png" /> </a>
@@ -59,6 +45,21 @@
   <div id="footer" class="container-fluid">
     <p>&copy; 2018 Pink et Tu, All rights reserved.</p>
   </div>
+
+  <script type="text/javascript">
+    const password = document.getElementById("password");
+    const confirm_password = document.getElementById("confirm_password");
+
+    function validatePassword() {
+      if (password.value !== confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+      } else {
+        confirm_password.setCustomValidity('');
+      }
+    }
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+  </script>
 </body>
 
 </html>
