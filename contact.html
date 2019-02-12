@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css\bootstrap.min.css" />
+    <link rel="stylesheet" href="csss\style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:300|Tahoma|Inconsolata|Wellfleet|Unkempt"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"
+    ></script>
+    <title>About|Pinketu</title>
+  </head>
+
+  <body id="contact-body">
+    <nav>
+      <div id="logo-cont" class="container-fluid">
+        <a href="index.html"> <img src="images\pinkettu.png" /> </a>
+      </div>
+    </nav>
+    <br />
+    <div id="contact-head">
+      <h1>CONTACT US</h1>
+    </div>
+    <br />
+    <div id="contact-form" class="container-fluid">
+      <form method="POST">
+        <input
+          name="name"
+          type="text"
+          class="feedback-input"
+          placeholder="What's your name"
+          required
+        />
+        <input
+          name="email"
+          type="text"
+          class="feedback-input"
+          placeholder="What's your email"
+          required
+        />
+        <textarea
+          name="text"
+          class="feedback-input"
+          placeholder="What's up pal?"
+          required
+        ></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+    <div id="footer" class="container-fluid">
+      <p>&copy; 2018 Pink et Tu, All rights reserved.</p>
+    </div>
+
+    <script>
+      const form = document.getElementsByTagName("form")[0];
+      function handleResponse(request) {
+        console.log(request.responseText);
+      }
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        const [name, email, text] = form;
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState === 4 && this.status === 200) {
+            handleResponse(this);
+          }
+        };
+        xhttp.open("POST", "", true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send(
+          JSON.stringify({
+            name: name.value,
+            email: email.value,
+            text: text.value
+          })
+        );
+      });
+    </script>
+  </body>
+</html>

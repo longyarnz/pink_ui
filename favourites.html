@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css\bootstrap.min.css" />
+    <link rel="stylesheet" href="csss\style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:300|Tahoma|Inconsolata|Wellfleet|Unkempt"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"
+    ></script>
+    <title>Favourites|Pinketu</title>
+  </head>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+    body {
+      font-family: "Open Sans", sans-serif;
+    }
+
+    .search {
+      width: 80%;
+      text-align: center;
+      margin: auto;
+    }
+
+    .searchTerm {
+      float: left;
+      width: 90%;
+      border: 1px solid #000;
+      padding: 5px;
+      height: 36px;
+      border-radius: 5px;
+      outline: none;
+      color: #000;
+    }
+
+    .searchTerm:focus {
+      color: #000;
+    }
+
+    .searchButton {
+      position: absolute;
+      margin: auto;
+      width: 40px;
+      height: 36px;
+      border: 1px solid #00b4cc;
+      background: blue;
+      text-align: center;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    /*Resize the wrap to see the search bar change!*/
+    .wrap {
+      width: 100%;
+    }
+  </style>
+
+  <body id="favourites-body">
+    <nav>
+      <div id="logo-cont" class="container-fluid">
+        <a href="index.html"> <img src="images\pinkettu.png" /> </a>
+      </div>
+    </nav>
+
+    <div id="members-wrap" class="container" style="width: 90%; text-align: center;">
+      <div>
+        <div class="wrap">
+          <div class="search">
+            <input
+              type="text"
+              class="searchTerm"
+              placeholder="Search by username"
+            />
+            <button type="submit" class="searchButton" onclick="">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="member-rows" class="row">
+        <div class="col-sm-6">
+          <div class="member-details">
+            <img
+              style="width: 100px; height: 100px; border-radius: 50%;"
+              src="images\model2.jpg"
+            />
+            <p><b>Benjamin</b></p>
+            <p>Added on $[date]</p>
+          </div>
+        </div>
+
+      <div class="col-sm-6">
+        <div class="member-details">
+          <img
+            style="width: 100px; height: 100px; border-radius: 50%;"
+            src="images\model2.jpg"
+          />
+          <p><b>Benjamin</b></p>
+          <p>Added on $[date]</p>
+        </div>
+      </div>
+    </div>
+    <div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </body>
+</html>
