@@ -57,10 +57,13 @@
     </div>
 
     <script>
+      const URL = 'https://api.pinkettu.com.ng/mail';
       const form = document.getElementsByTagName("form")[0];
       function handleResponse(request) {
+        // Joe, you need to handle the server request here after the contact message has been seent
         console.log(request.responseText);
       }
+
       form.addEventListener("submit", e => {
         e.preventDefault();
         const [name, email, text] = form;
@@ -70,7 +73,7 @@
             handleResponse(this);
           }
         };
-        xhttp.open("POST", "", true);
+        xhttp.open("POST", URL, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(
           JSON.stringify({
