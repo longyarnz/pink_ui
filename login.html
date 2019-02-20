@@ -28,48 +28,25 @@
     <div id="contact-form" class="container-fluid">
       <form action="">
         <input
-          name="username"
-          type="text"
+          name="email"
+          type="email"
           class="login-input"
-          placeholder="type username"
+          placeholder="Username"
         />
         <input
-          name="email"
+          name="password"
           type="password"
           class="login-input"
-          placeholder="type password"
+          placeholder="Password"
         />
 
-        <input type="submit" value="SEND" />
+        <button type="submit" id="finalSubmit">SEND</button>
       </form>
     </div>
     <div id="footer" class="container-fluid">
       <p>&copy; 2018 Pink et Tu, All rights reserved.</p>
     </div>
 
-    <script>
-      const form = document.getElementsByTagName("form")[0];
-      function handleResponse(request) {
-        console.log(request.responseText);
-      }
-      form.addEventListener("submit", e => {
-        e.preventDefault();
-        const [name, email, text] = form;
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState === 4 && this.status === 200) {
-            handleResponse(this);
-          }
-        };
-        xhttp.open("POST", "", true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send(
-          JSON.stringify({
-            name: name.value,
-            password: password.value
-          })
-        );
-      });
-    </script>
+    <script src="js/login.js"></script>
   </body>
 </html>
