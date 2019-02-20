@@ -2,9 +2,4 @@
 deployment:
  tasks:
  - export DEPLOYPATH=/home/pinkettu/public_html/
- - /bin/cp -R css $DEPLOYPATH/css
- - /bin/cp -R csss $DEPLOYPATH/csss
- - /bin/cp -R js $DEPLOYPATH/js
- - /bin/cp -R images $DEPLOYPATH/images
- - /bin/cp -R fonts $DEPLOYPATH/fonts
- - /bin/cp * $DEPLOYPATH
+ - /bin/cp -R * $DEPLOYPATH/
