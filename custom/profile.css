@@ -1,0 +1,231 @@
+* {
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Open Sans", sans-serif;
+}
+
+body {
+  margin: 0px;
+}
+
+a p {
+  text-decoration: none;
+  margin-bottom: 20px !important;
+  color: #000;
+}
+
+div.profile-wrapper {
+  width: 100%;
+  height: calc(100vh - 186px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+div.pic-wrapper,
+div.info-wrapper {
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+}
+
+div.pic-wrapper {
+  padding: 10px;
+}
+
+div.pic-wrapper img {
+  width: 100%;
+  max-height: 100%;
+  box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.4);
+}
+
+div.info-wrapper {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+div.info-wrapper form {
+  width: 100%;
+  font-family: Montserrat;
+}
+
+div.info-wrapper h3 {
+  font-weight: 900;
+}
+
+div.info-wrapper form input,
+div.info-wrapper form select {
+  font-weight: 300;
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #a9a9a9;
+  margin: 10px 0px 30px;
+  color: #000;
+}
+
+div.info-wrapper form label {
+  display: block;
+  width: 90%;
+  text-align: left;
+  margin: auto;
+  font-family: Montserrat;
+  font-weight: 700;
+  font-size: 80%;
+  text-transform: uppercase;
+  color: #999;
+}
+
+div.info-wrapper form button {
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #ff6699;
+  padding: 10px 20px;
+  border-radius: 5px 10px;
+  color: #fff;
+  font-family: Montserrat;
+  font-weight: 700;
+  font-size: 90%;
+  min-width: 150px;
+  transition: all 0.15s ease;
+  box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.4);
+}
+
+div.info-wrapper form button:focus,
+div.info-wrapper form button:hover {
+  text-decoration: none;
+  transform: scale(1.03, 1.03);
+  box-shadow: 0px 10px 6px -2px rgba(0, 0, 0, 0.3),
+    0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+div.info-wrapper form input:focus,
+div.info-wrapper form input:hover,
+div.info-wrapper form select:focus,
+div.info-wrapper form select:active,
+div.info-wrapper form button:active {
+  outline: none;
+}
+
+div.show-worker-images {
+  width: 100%;
+  overflow: hidden;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+div.show-worker-images h3 {
+  font-family: Montserrat;
+  font-weight: 900;
+  color: #ff6699;
+  text-align: left;
+  -webkit-text-emphasis-style: dot;
+  text-emphasis-style: dot;
+  -webkit-text-emphasis-position: under;
+  text-emphasis-position: under left;
+  -webkit-text-emphasis-color: #ff6699;
+  text-emphasis-color: #ff6699;
+}
+
+div.show-worker-images div.gallery {
+  padding: 10px 0px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+div.show-worker-images div.gallery img {
+  position: relative;
+  height: 240px;
+  margin: 0px 10px 20px 10px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.4);
+}
+
+div.show-worker-images div.gallery div {
+  position: relative;
+}
+
+div.show-worker-images div.gallery div button {
+  border-top-right-radius: 3px;
+  position: absolute;
+  background: rgb(255, 79, 79);
+  top: 0px;
+  right: 10px;
+  z-index: 10;
+  padding: 5px 10px;
+  color: #fff;
+  font-size: 60%;
+  border: none;
+  height: auto;
+  width: auto;
+  font-family: Montserrat;
+  box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.4);
+  font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  section.container {
+    padding: 0px;
+    height: auto;
+  }
+
+  div.profile-wrapper {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  div.pic-wrapper {
+    padding: 0px 0px 10px;
+  }
+
+  div.pic-wrapper img {
+    height: 100%;
+  }
+
+  div.info-wrapper h3 {
+    margin-bottom: 30px;
+  }
+
+  div.info-wrapper form input,
+  div.info-wrapper form select {
+    width: 100%;
+    padding: 5px;
+  }
+
+  div.info-wrapper form label {
+    width: 100%;
+  }
+
+  div.info-wrapper form button {
+    display: block;
+    width: auto;
+  }
+
+  div.show-worker-images h3 {
+    font-size: 150%;
+    text-align: center;
+  }
+
+  div.show-worker-images div.gallery {
+    flex-direction: column;
+  }
+
+  div.show-worker-images div.gallery div img {
+    width: 100%;
+    height: auto;
+    margin: 0px 0px 20px;
+  }
+
+  div.show-worker-images div.gallery div button {
+    right: 0px;
+  }
+}

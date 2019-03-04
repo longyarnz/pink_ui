@@ -10,22 +10,24 @@ function validatePassword() {
 }
 
 function sendImageToDatabase(file, filename) {
-  const form = new FormData();
-  form.append('File', file.files[0]);
-  form.append('Filename', filename);
-  fetch('https://images.pinkettu.com.ng/upload.php', {
-    method: 'POST',
-    body: form
-  }).then(res => console.log(res));
+  // const form = new FormData();
+  // form.append('File', file.files[0]);
+  // form.append('Filename', filename);
+  // fetch('https://images.pinkettu.com.ng/upload.php', {
+  //   method: 'POST',
+  //   body: form
+  // }).then(res => console.log(res));
 }
 
 function handleSubmitResponse(request) {
-  console.log(request.responseText);
+  const { token } = JSON.parse(request.responseText);
+  console.log(token);
 }
 
 function submitForm(e) {
   e.preventDefault();
-  const URL = 'https://api.pinkettu.com.ng/auth/signup';
+  const API = false ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
+  const URL = `${API}/auth/signup`;
   const [username, email, password, , worker, image] = e.target;
   const caption = Date.now().toString().slice(0, 10) + '.' + image.files[0].name;
   sendImageToDatabase(image, caption);
