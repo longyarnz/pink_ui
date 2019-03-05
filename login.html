@@ -1,52 +1,114 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css\bootstrap.min.css" />
-    <link rel="stylesheet" href="csss\style.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Montserrat:300|Tahoma|Inconsolata|Wellfleet|Unkempt"
-    />
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"
-    ></script>
-    <title>Login|Pinketu</title>
-  </head>
-  <body id="login-body">
-    <nav>
-      <div id="logo-cont" class="container-fluid">
-        <a href="index.html"> <img src="images\pinkettu.png" /> </a>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="custom/style.css" />
+  <link rel="stylesheet" href="custom/layout.css" />
+  <link rel="stylesheet" href="custom/signup.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900" />
+  <title>Log In|Pinketu</title>
+</head>
+
+<body id="signup-body">
+  <nav>
+    <div class="container">
+      <div id="logo-cont">
+        <a href="index.html">
+          <img src="images\pinkettu.png" />
+        </a>
       </div>
-    </nav>
-
-    <br />
-    <div id="contact-head"><h1>LOGIN</h1></div>
-    <br />
-    <div id="contact-form" class="container-fluid">
-      <form action="">
-        <input
-          name="email"
-          type="email"
-          class="login-input"
-          placeholder="Email"
-        />
-        <input
-          name="password"
-          type="password"
-          class="login-input"
-          placeholder="Password"
-        />
-
-        <button type="submit" id="finalSubmit">SEND</button>
-      </form>
+      <ul>
+        <li>
+          <a href="index.html">
+            <i class="material-icons">home</i>
+            <span>HOME</span>
+          </a>
+        </li>
+        <li>
+          <a href="pinks.html">
+            <i class="material-icons">local_florist</i>
+            <span>PINKS</span>
+          </a>
+        </li>
+        <li>
+          <a href="signup.html">
+            <i class="material-icons">person_add</i>
+            <span>SIGN UP</span>
+          </a>
+        </li>
+        <li>
+          <a class="active" href="login.html">
+            <i class="material-icons">exit_to_app</i>
+            <span>LOG IN</span>
+          </a>
+        </li>
+      </ul>
+      <i class="material-icons">menu</i>
     </div>
-    <div id="footer" class="container-fluid">
-      <p>&copy; 2018 Pink et Tu, All rights reserved.</p>
-    </div>
+  </nav>
 
-    <script src="js/login.js"></script>
-  </body>
+  <div id="signup-main" class="container login">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>PINK ET TU</h2>
+        <p>create your account</p>
+        <br>
+        <form method="POST" name="form" class="form" enctype="multipart/form-data">
+          <label for="user">Username | Email</label>
+          <input id="user" name="username" type="text" placeholder="Username" required />
+
+          <label for="pass">Password</label>
+          <input id="pass" name="password" type="password" placeholder="Password" id="password" required />
+
+          <button type="submit" id="finalSubmit">LOG IN</button>
+
+          <div>
+            Don't have an account! <a href="signup.html">SIGN UP</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="container-fluid">
+    &copy; 2019 Pink et Tu, All rights reserved.
+  </footer>
+
+  <section class="nav-menu">
+    <ul>
+      <li>
+        <a href="index.html">
+          <i class="material-icons">home</i>
+          <span>HOME</span>
+        </a>
+      </li>
+      <li>
+        <a href="pinks.html">
+          <i class="material-icons">local_florist</i>
+          <span>PINKS</span>
+        </a>
+      </li>
+      <li>
+        <a href="signup.html">
+          <i class="material-icons">person_add</i>
+          <span>SIGN UP</span>
+        </a>
+      </li>
+      <li>
+        <a class="active" href="login.html">
+          <i class="material-icons">exit_to_app</i>
+          <span>LOG IN</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <script src="js/nav.js"></script>
+  <script src="js/login.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</body>
+
 </html>

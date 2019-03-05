@@ -1,65 +1,170 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css\bootstrap.min.css" />
-    <link rel="stylesheet" href="csss\style.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Montserrat:300|Tahoma|Inconsolata|Wellfleet|Unkempt"
-    />
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"
-    ></script>
-    <title>Profile|Pinketu</title>
-  </head>
 
-  <style>
-    a p {
-      text-decoration: none;
-      margin-bottom: 20px !important;
-      color: #000;
-    }
-  </style>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="custom/style.css" />
+  <link rel="stylesheet" href="custom/layout.css" />
+  <link rel="stylesheet" href="custom/profile.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300" />
+  <title>Profile|Pinketu</title>
+</head>
 
-  <body id="Profile-body">
-    <nav>
-      <div id="logo-cont" class="container-fluid">
-        <a href="index.html"> <img src="images\pinkettu.png" /> </a>
+<body id=" Profile-body">
+  <nav>
+    <div class="container">
+      <div id="logo-cont">
+        <a href="index.html">
+          <img src="images\pinkettu.png" />
+        </a>
       </div>
-    </nav>
-
-    <div class="container" style="text-align: center;">
-      <div
-        id="profile-wrapper"
-        style="width: 200px; height: auto; text-align: center; margin-left: auto; margin-right: auto;"
-      >
-        <div id="pic-wrapper">
-          <img
-            src="images\model2.jpg"
-            style="width: 120px; height: 120px; border-radius: 50%; border: 2px solid black;"
-          />
-        </div>
-        <div id="info-wrapper">
-          <h3>Username</h3>
-          <p>EDIT PROFILE</p>
-          <br />
-          <br />
-        </div>
-      </div>
-      <a href=""
-        ><p style="font-size: 20px"><i class="fas fa-users"></i> Members</p></a
-      >
-      <a href="favourites.html"
-        ><p style="font-size: 20px">
-          <i class="fas fa-star"></i> Favourites
-        </p></a
-      >
-      <a href=""
-        ><p style="font-size: 20px"><i class="fas fa-cog"></i></i>Settings</p></a
-      >
+      <ul>
+        <li>
+          <a href="index.html">
+            <i class="material-icons">home</i>
+            <span>HOME</span>
+          </a>
+        </li>
+        <li>
+          <a href="pinks.html">
+            <i class="material-icons">local_florist</i>
+            <span>PINKS</span>
+          </a>
+        </li>
+        <li>
+          <a class="active" href="profile.html">
+            <i class="material-icons">face</i>
+            <span>PROFILE</span>
+          </a>
+        </li>
+        <li>
+          <a href="login.html">
+            <i class="material-icons">exit_to_app</i>
+            <span>LOG OUT</span>
+          </a>
+        </li>
+      </ul>
+      <i class="material-icons">menu</i>
     </div>
-  </body>
+  </nav>
+
+  <section class="container" style="text-align: center;">
+    <div class="profile-wrapper">
+      <div class="pic-wrapper">
+        <img src="images\model2.jpg" />
+      </div>
+      <div class="info-wrapper">
+        <h3>PROFILE</h3>
+        <form method="POST" name="form" class="form" enctype="multipart/form-data">
+          <label for="user">Username</label>
+          <input id="user" name="username" type="text" placeholder="Username" value="Lekan" required />
+
+          <label for="worker">Worker | Client</label>
+          <select name="worker" id="worker" value="false">
+            <option value="true">Worker</option>
+            <option value="false">Client</option>
+          </select>
+
+          <label for="profile">Profile Picture</label>
+          <input id="profile" name="image" type="file" placeholder="Change profile picture" accept="image/*">
+
+          <label for="add-more">Add More Images</label>
+          <input id="add-more" name="image" type="file" placeholder="Change profile picture" accept="image/*" multiple>
+
+          <button type="submit" id="finalSubmit">EDIT PROFILE</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="show-worker-images">
+      <h3>MORE IMAGES OF SWEET BEE</h3>
+      <div class="gallery">
+        <div>
+          <img src="images\model2.jpg">
+          <button>DELETE PICTURE</button>
+        </div>
+        <div>
+          <img src="images\model2.jpg">
+          <button>DELETE PICTURE</button>
+        </div>
+        <div>
+          <img src="images\model2.jpg">
+          <button>DELETE PICTURE</button>
+        </div>
+        <div>
+          <img src="images\model2.jpg">
+          <button>DELETE PICTURE</button>
+        </div>
+        <div>
+          <img src="images\model2.jpg">
+          <button>DELETE PICTURE</button>
+        </div>
+        <div>
+          <img src="images\model2.jpg">
+          <button>DELETE PICTURE</button>
+        </div>
+        <div>
+          <img src="images\model2.jpg">
+          <button>DELETE PICTURE</button>
+        </div>
+        <div>
+          <img src="images\model2.jpg">
+          <button>DELETE PICTURE</button>
+        </div>
+        <div>
+          <img src="images\model2.jpg">
+          <button>DELETE PICTURE</button>
+        </div>
+        <div>
+          <img src="images\model2.jpg">
+          <button>DELETE PICTURE</button>
+        </div>
+        <div>
+          <img src="images\model2.jpg">
+          <button>DELETE PICTURE</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="container-fluid">
+    &copy; 2019 Pink et Tu, All rights reserved.
+  </footer>
+
+  <section class="nav-menu">
+    <ul>
+      <li>
+        <a href="index.html">
+          <i class="material-icons">home</i>
+          <span>HOME</span>
+        </a>
+      </li>
+      <li>
+        <a href="pinks.html">
+          <i class="material-icons">local_florist</i>
+          <span>PINKS</span>
+        </a>
+      </li>
+      <li>
+        <a href="signup.html">
+          <i class="material-icons">person_add</i>
+          <span>SIGN UP</span>
+        </a>
+      </li>
+      <li>
+        <aS href="login.html">
+          <i class="material-icons">exit_to_app</i>
+          <span>LOG IN</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</body>
+
 </html>

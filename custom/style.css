@@ -189,7 +189,7 @@ textarea {
 [type="submit"] {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   width: 30%;
-  background-color: #ffb3d9;
+  background-color: #ff99cc;
   border-radius: 5px;
   border: 0;
   cursor: pointer;
@@ -199,8 +199,9 @@ textarea {
   padding-bottom: 10px;
   transition: all 0.3s;
 }
+
 [type="submit"]:hover {
-  background: #cc4949;
+  background: #ff6699;
 }
 
 /* ABOUT US PAGE CSS */
