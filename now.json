@@ -4,8 +4,7 @@
   "alias": [ "test.pinkettu.com.ng" ],
   "builds": [
     { "src": "*.html", "use": "@now/html-minifier" },
-    { "src": "js/signup.js", "use": "@now/node" },
-    { "src": "js/*.js", "use": "@now/node" },
+    { "src": "**/*.js", "use": "@now/node" },
     { "src": "*/*.css", "use": "@now/html-minifier" },
     { "src": "*/*.png", "use": "@now/optipng" },
     { "src": "images/*.jpg", "use": "@now/static" },
