@@ -1,32 +1,42 @@
 function validatePassword() {
-  const password = document.getElementById("password");
-  const confirm_password = document.getElementById("confirm_password");
+  const password = document.getElementById('pass');
+  const confirm = document.getElementById('confirm');
 
-  if (password.value !== confirm_password.value) {
-    confirm_password.setCustomValidity("Passwords Don't Match");
+  if (password.value !== confirm.value) {
+    confirm.setCustomValidity("Passwords Don't Match");
   } else {
-    confirm_password.setCustomValidity('');
+    confirm.setCustomValidity('');
   }
 }
 
 function sendImageToDatabase(file, filename) {
-  // const form = new FormData();
-  // form.append('File', file.files[0]);
-  // form.append('Filename', filename);
-  // fetch('https://images.pinkettu.com.ng/upload.php', {
-  //   method: 'POST',
-  //   body: form
-  // }).then(res => console.log(res));
+  const form = new FormData();
+  form.append('File', file.files[0]);
+  form.append('Filename', filename);
+  fetch('https://images.pinkettu.com.ng/upload.php', {
+    method: 'POST',
+    body: form
+  }).then(res => console.log(res));
 }
 
 function handleSubmitResponse(request) {
   const { token } = JSON.parse(request.responseText);
-  console.log(token);
+  if(!token) return;
+  
+  localStorage.pinkettu = token;
+  location.href = '/profile.html';
+}
+
+function toggleButtonSpinner(form) {
+  const button = form.children.finalSubmit;
+  [...button.children].forEach(child => child.classList.toggle('hide'));
 }
 
 function submitForm(e) {
   e.preventDefault();
-  const API = false ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
+  toggleButtonSpinner(e.target);
+  const appIsLive = location.hostname !== '127.0.0.1';
+  const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
   const URL = `${API}/auth/signup`;
   const [username, email, password, , worker, image] = e.target;
   const caption = Date.now().toString().slice(0, 10) + '.' + image.files[0].name;
@@ -36,6 +46,7 @@ function submitForm(e) {
   xhttp.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
       handleSubmitResponse(this);
+      toggleButtonSpinner(e.target);
     }
   };
   xhttp.open("POST", URL, true);
@@ -51,10 +62,12 @@ function submitForm(e) {
   );
 }
 
-const password = document.getElementById('password');
-const confirmPassword = document.getElementById('confirm_password');
-const form = document.getElementsByTagName('form')[0];
+document.addEventListener('DOMContentLoaded', a => {
+  const password = document.getElementById('pass');
+  const confirmPassword = document.getElementById('confirm');
+  const form = document.getElementsByTagName('form')[0];
 
-password.addEventListener('change', validatePassword);
-confirmPassword.addEventListener('keyup', validatePassword);
-form.addEventListener('submit', submitForm);
+  password.addEventListener('change', validatePassword);
+  confirmPassword.addEventListener('keyup', validatePassword);
+  form.addEventListener('submit', submitForm);
+});

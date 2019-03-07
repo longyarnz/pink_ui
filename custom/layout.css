@@ -10,6 +10,14 @@
   }
 }
 
+.overflow-hidden{
+  overflow: hidden;
+}
+
+.log-out{
+  transform: rotate(180deg);
+}
+
 body > header{
   position: relative;
   width: 100%;
@@ -42,24 +50,31 @@ nav > div{
 
 nav div#logo-cont{
   margin: 0px;
-  flex: 1;
   height: 100%;
   background: #000;
 }
 
+nav div#logo-cont a:focus{
+  outline: none;
+}
+
 nav ul{
-  flex: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  margin: 0px;
+  margin: 0px 0px 0px auto;
   background: #000;
   list-style: none;
 }
 
 nav > div > i.material-icons{
   display: none;
+  margin: 0px 0px 0px auto;
+}
+
+nav ul li{
+  margin-left: 20px;
 }
 
 nav ul li a{
@@ -110,8 +125,9 @@ footer{
   justify-content: center;
   align-items: center;
   padding: 0px;
-  background-color: transparent;
-  color: #555
+  background-color: #000;
+  color: #fff;
+  box-shadow: 0px -4px 4px -2px rgba(0, 0, 0, .4);
 }
 
 @font-face {
@@ -158,7 +174,7 @@ section.nav-menu{
   nav{
     width: 100%;
     overflow-y: hidden;
-    height: 50px;
+    height: 70px;
     margin-top: -1px;
     margin-bottom: 0px;
   }
@@ -171,12 +187,24 @@ section.nav-menu{
     padding: 0px;
   }
 
+  nav > div.container > div#logo-cont > a{
+    display: inline-block;
+    max-width: 110px;
+    height: auto
+  }
+
+  nav > div.container > div#logo-cont > a > img{
+    width: 100px;
+    height: auto;
+  }
+
   nav > div > i.material-icons{
     background-color: transparent;
     color: #ff6699;
     border: none;
-    padding: 10px;
+    padding: 20px;
     display: inline;
+    font-size: 200%;
   }
 
   section.nav-menu.show{
@@ -185,8 +213,9 @@ section.nav-menu{
   
   section.nav-menu{
     position: fixed;
-    top: 49px;
-    height: calc(100vh - 50px);
+    z-index: 999;
+    top: 0;
+    height: 100vh;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -195,12 +224,13 @@ section.nav-menu{
   
   section.nav-menu ul{
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 69px);
     list-style: none;
     padding: 0px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
   }
   
@@ -216,6 +246,10 @@ section.nav-menu{
     color: #ff6699;
     background-color: #222;
     border: 1px solid #555;
+  }
+
+  section.nav-menu ul li a:active{
+    text-decoration: none;
   }
   
   section.nav-menu ul li a.active{
