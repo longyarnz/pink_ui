@@ -186,10 +186,12 @@ div.show-worker-images div.gallery div button {
 
   div.pic-wrapper {
     padding: 0px 0px 10px;
+    width: 100%;
+    height: auto;
   }
 
   div.pic-wrapper img {
-    height: 100%;
+    width: 100%;
   }
 
   div.info-wrapper{
