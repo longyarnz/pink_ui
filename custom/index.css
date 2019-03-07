@@ -53,15 +53,21 @@ div.cover {
 div.cover div.bigtext {
   margin: 0px;
   font-family: Montserrat;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-div.cover div.bigtext h2 {
+div.cover > div.bigtext > h2 {
+  text-align: center !important;
+  width: 100%;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 400%;
   line-height: 1.5;
   color: #ff6699;
-  font-family: "Qwigley";
+  font-family: 'Qwigley';
 }
 
 div.cover div.smalltext p {

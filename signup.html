@@ -9,43 +9,18 @@
   <link rel="stylesheet" href="custom/layout.css" />
   <link rel="stylesheet" href="custom/signup.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900" />
-  <title>Sign Up|Pinketu</title>
+  <title>Sign Up | Pink et tu</title>
 </head>
 
 <body id="signup-body">
   <nav>
     <div class="container">
       <div id="logo-cont">
-        <a href="index.html">
+        <a href="/">
           <img src="images\pinkettu.png" />
         </a>
       </div>
-      <ul>
-        <li>
-          <a href="index.html">
-            <i class="material-icons">home</i>
-            <span>HOME</span>
-          </a>
-        </li>
-        <li>
-          <a href="pinks.html">
-            <i class="material-icons">local_florist</i>
-            <span>PINKS</span>
-          </a>
-        </li>
-        <li>
-          <a class="active" href="signup.html">
-            <i class="material-icons">person_add</i>
-            <span>SIGN UP</span>
-          </a>
-        </li>
-        <li>
-          <a href="login.html">
-            <i class="material-icons">exit_to_app</i>
-            <span>LOG IN</span>
-          </a>
-        </li>
-      </ul>
+      <ul></ul>
       <i class="material-icons">menu</i>
     </div>
   </nav>
@@ -71,14 +46,17 @@
 
           <label for="worker">Worker | Client</label>
           <select name="worker" id="worker">
-            <option value="true">Worker</option>
             <option value="false">Client</option>
+            <option value="true">Worker</option>
           </select>
 
           <label for="profile">Profile Image</label>
           <input id="profile" name="image" type="file" accept="image/*" />
 
-          <button type="submit" id="finalSubmit">SIGN UP</button>
+          <button type="submit" id="finalSubmit">
+            <span>SIGN UP</span>
+            <i class="material-icons fa-spin hide">donut_large</i>
+          </button>
 
           <div>
             Already have an account! <a href="login.html">LOG IN</a>
@@ -92,35 +70,7 @@
     &copy; 2019 Pink et Tu, All rights reserved.
   </footer>
 
-  <section class="nav-menu">
-    <ul>
-      <li>
-        <a href="index.html">
-          <i class="material-icons">home</i>
-          <span>HOME</span>
-        </a>
-      </li>
-      <li>
-        <a href="pinks.html">
-          <i class="material-icons">local_florist</i>
-          <span>PINKS</span>
-        </a>
-      </li>
-      <li>
-        <a class="active" href="signup.html">
-          <i class="material-icons">person_add</i>
-          <span>SIGN UP</span>
-        </a>
-      </li>
-      <li>
-        <a href="login.html">
-          <i class="material-icons">exit_to_app</i>
-          <span>LOG IN</span>
-        </a>
-      </li>
-    </ul>
-  </section>
-
+  <script src="js/nav.js"></script>
   <script src="js/signup.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </body>

@@ -1,18 +1,25 @@
 const form = document.getElementsByTagName("form")[0];
 
-const API = false ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
+const appIsLive = location.hostname !== '127.0.0.1';
+const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
+
+function toggleButtonSpinner(form) {
+  const button = form.children.finalSubmit;
+  [...button.children].forEach(child => child.classList.toggle('hide'));
+}
 
 function handleResponse(request) {
   const { token } = JSON.parse(request.responseText);
-  console.log(token);
+  if (!token) return;
+
   localStorage.setItem('pinkettu', token);
-  location.href = 'profile.html';
+  location.href = '/profile.html';
 }
 
 form.addEventListener('submit', e => {
   e.preventDefault();
   const URL = `${API}/auth/login`;
-  const [ email, password ] = form;
+  const [email, password] = form;
   const xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function () {

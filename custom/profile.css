@@ -176,6 +176,7 @@ div.show-worker-images div.gallery div button {
   section.container {
     padding: 0px;
     height: auto;
+    min-height: calc(100vh - 70px);
   }
 
   div.profile-wrapper {
@@ -189,6 +190,10 @@ div.show-worker-images div.gallery div button {
 
   div.pic-wrapper img {
     height: 100%;
+  }
+
+  div.info-wrapper{
+    width: 100%;
   }
 
   div.info-wrapper h3 {
