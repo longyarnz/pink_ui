@@ -14,8 +14,7 @@ const logOut = (e) => {
   xhttp.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
       localStorage.removeItem('pinkettu');
-      location.href= '/';
-      // CreateNavigation();
+      location.assign('/');
     }
   };
   

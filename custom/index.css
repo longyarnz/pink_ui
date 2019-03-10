@@ -1,7 +1,10 @@
 div.show-worker-images {
-  /* background-color: #f9f9f9; */
   margin-top: 0px;
   padding: 50px 0px;
+}
+
+div.show-worker-images > div > div.gallery {
+  min-height: auto;
 }
 
 div.show-worker-images h3 {
@@ -15,7 +18,9 @@ div.show-worker-images h3 {
 }
 
 div.see-more {
-  align-self: flex-end;
+  display: block;
+  margin: auto;
+  width: 170px;
 }
 
 div.see-more a {
@@ -92,10 +97,7 @@ div.onboarding{
 @media screen and (max-width: 767px) {
   div.gallery {
     margin-top: 20px;
-  }
-
-  div.see-more {
-    align-self: center;
+    height: auto;
   }
 
   div.show-worker-images h3 {
