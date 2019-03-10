@@ -121,7 +121,7 @@ nav div#logo-cont a img{
   width: auto;
 }
 
-footer{
+body > footer{
   font-family: Montserrat;
   font-weight: 700;
   font-size: 80%;

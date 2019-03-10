@@ -1,8 +1,11 @@
-const handleClick = (e) => {
-  console.log([ e.target.parentNode ]);
-}
-
 document.addEventListener('DOMContentLoaded', a => {
-  const figure = document.querySelector('figure');
-  figure.addEventListener('click', handleClick);
+  fetchPinks(profiles => {
+    if (Array.isArray(profiles) && profiles.length > 0) {
+      localStorage.pinkettu_pinks = JSON.stringify(profiles);
+      document.querySelectorAll('figure.placeholder').forEach(e => e.remove());
+      profiles.forEach(
+        i => createPinkTiles(i._id, i.username, i.location, i.images.shift(), i.rank)
+      );
+    }
+  });
 });

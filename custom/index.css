@@ -1,20 +1,25 @@
 div.show-worker-images {
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   margin-top: 0px;
   padding: 50px 0px;
 }
 
 div.show-worker-images h3 {
   font-weight: 900;
-  font-family: Montserrat;
+  font-family: Qwigley;
   text-transform: uppercase;
-  font-size: 200%;
+  font-size: 300%;
   color: #ff6699;
+  text-align: center;
   text-emphasis: none;
 }
 
+div.see-more {
+  align-self: flex-end;
+}
+
 div.see-more a {
-  display: inline-flex;
+  display: flex;
   justify-content: space-around;
   align-items: center;
   background: #ff6699;
@@ -78,13 +83,22 @@ div.cover div.smalltext p {
   color: #000;
 }
 
+div.onboarding{
+  width: 100%;
+  height: 200px;
+  background-color: #f9f9f9;
+}
+
 @media screen and (max-width: 767px) {
   div.gallery {
     margin-top: 20px;
   }
 
+  div.see-more {
+    align-self: center;
+  }
+
   div.show-worker-images h3 {
-    font-size: 180%;
     font-weight: 900;
   }
 

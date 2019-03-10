@@ -7,6 +7,10 @@ body {
   margin: 0px;
 }
 
+section{
+  min-height: calc(100vh - 160px);
+}
+
 a p {
   text-decoration: none;
   margin-bottom: 20px !important;
@@ -77,7 +81,7 @@ div.info-wrapper form label {
   color: #999;
 }
 
-div.info-wrapper form button {
+div.info-wrapper form button, div.see-more {
   display: inline-flex;
   justify-content: space-around;
   align-items: center;
@@ -112,13 +116,13 @@ div.info-wrapper form button:active {
 div.show-worker-images {
   width: 100%;
   overflow: hidden;
-  padding: 10px;
   margin-top: 30px;
 }
 
 div.show-worker-images h3 {
-  font-family: Montserrat;
+  font-family: Qwigley;
   font-weight: 900;
+  font-size: 200%;
   color: #ff6699;
   text-align: left;
   -webkit-text-emphasis-style: dot;
@@ -179,6 +183,10 @@ div.show-worker-images div.gallery div button {
     min-height: calc(100vh - 70px);
   }
 
+  div.show-worker-images {
+    padding: 10px;
+  }
+
   div.profile-wrapper {
     flex-direction: column;
     height: 100%;
@@ -218,7 +226,6 @@ div.show-worker-images div.gallery div button {
   }
 
   div.show-worker-images h3 {
-    font-size: 150%;
     text-align: center;
   }
 
@@ -226,13 +233,13 @@ div.show-worker-images div.gallery div button {
     flex-direction: column;
   }
 
-  div.show-worker-images div.gallery div img {
-    width: 100%;
-    height: auto;
+  div.gallery div img {
+    width: 100% !important;
+    height: auto !important;
     margin: 0px 0px 20px;
   }
 
-  div.show-worker-images div.gallery div button {
+  div.gallery div button {
     right: 0px;
   }
 }

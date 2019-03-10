@@ -15,12 +15,18 @@ const logOut = (e) => {
     if (this.readyState === 4 && this.status === 200) {
       localStorage.removeItem('pinkettu');
       location.href= '/';
+      // CreateNavigation();
     }
   };
   
   xhttp.open('GET', URL, true);
   xhttp.setRequestHeader("Authorization", localStorage.pinkettu);
   xhttp.send();
+}
+
+function attachLogoutEventHandler() {
+  const logout = document.querySelectorAll('.log-out');
+  logout.forEach(element => element.parentElement.addEventListener('click', logOut));
 }
 
 const lists = [
@@ -116,14 +122,16 @@ container.append(logo, close);
 nav.append(container);
 section.append(nav, ul);
 
-document.addEventListener('DOMContentLoaded', a => {
+function CreateNavigation() {
   const script = document.querySelector('script');
   const ul = document.querySelector('ul');
   ul.append(...navItems);
   document.body.insertBefore(section, script);
   const navs = document.querySelectorAll('nav');
   navs.forEach(nav => nav.addEventListener('click', toggleNavMenu));
+  attachLogoutEventHandler();
+}
 
-  const logout = document.querySelectorAll('.log-out');
-  logout.forEach(element => element.parentElement.addEventListener('click', logOut));
+document.addEventListener('DOMContentLoaded', () => {
+  CreateNavigation();
 });

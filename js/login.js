@@ -13,7 +13,7 @@ function handleResponse(request) {
   if (!token) return;
 
   localStorage.setItem('pinkettu', token);
-  location.href = '/profile.html';
+  location.assign('/profile.html');
 }
 
 form.addEventListener('submit', e => {

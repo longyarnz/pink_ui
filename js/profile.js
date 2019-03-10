@@ -59,14 +59,14 @@ async function fetchUserProfile() {
 
   if (profile.message) {
     localStorage.removeItem('pinkettu');
-    location.href = '/signup.html';
+    location.assign('/signup.html');
   }
   else {
     const form = document.querySelector('form');
     const img = document.querySelector('.pic-wrapper img');
     img.src = `https://images.pinkettu.com.ng/${profile.images[0]}`;
     form[0].value = profile.username;
-    form[1].value = profile.worker;
+    form[1].value = profile.location;
 
     if (profile.worker) createAddMoreInput();
 
@@ -77,6 +77,7 @@ async function fetchUserProfile() {
 if (localStorage.pinkettu) {
   fetchUserProfile();
 }
+
 else {
-  location.href = '/';
+  location.assign('/');
 }
