@@ -4,7 +4,6 @@ function createPinkTiles(id, name, location, src, rank) {
 
   const anchor = document.createElement('a');
   anchor.href = `/explore.html?pink=${id}`;
-  anchor.target = '_blank';
 
   const h4 = document.createElement('h4');
   h4.textContent = name;
