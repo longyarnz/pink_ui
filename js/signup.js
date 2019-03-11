@@ -10,39 +10,30 @@ function validatePassword() {
 }
 
 async function sendImageToDatabase(file, filename) {
-  try{
-    const form = new FormData();
-    form.append('File', file.files[0]);
-    form.append('Filename', filename);
-    return fetch('https://images.pinkettu.com.ng/upload.php', {
-      method: 'POST',
-      body: form
-    });
-  }
-  finally{
-    return;
-  }
+  const form = new FormData();
+  form.append('File', file.files[0]);
+  form.append('Filename', filename);
+  return fetch('https://images.pinkettu.com.ng/upload.php', {
+    method: 'POST',
+    body: form
+  });
 }
 
 function handleSubmitResponse(request) {
   const { token } = JSON.parse(request.responseText);
   if (!token) return;
 
+  localStorage.removeItem('isSubmitting');
   localStorage.pinkettu = token;
   location.assign('/profile.html');
 }
 
-function toggleButtonSpinner(form, isSubmitting) {
-  const button = form.children.finalSubmit;
-  [...button.children].forEach(child => child.classList.toggle('hide'));
-  localStorage.setItem('isSubmitting', isSubmitting);
-}
-
 function submitForm(e) {
   e.preventDefault();
-  if(localStorage.isSubmitting) return;
+  if (localStorage.isSubmitting === true) return;
 
-  toggleButtonSpinner(e.target, true);
+  const button = e.target.children.finalSubmit;
+  toggleButtonSpinner(button, true);
   const appIsLive = location.hostname !== '127.0.0.1';
   const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
   const URL = `${API}/auth/signup`;
@@ -55,7 +46,7 @@ function submitForm(e) {
     xhttp.onreadystatechange = function () {
       if (this.readyState === 4 && this.status === 200) {
         handleSubmitResponse(this);
-        toggleButtonSpinner(e.target, false);
+        toggleButtonSpinner(button, false);
       }
     };
     xhttp.open("POST", URL, true);
