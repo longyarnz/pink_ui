@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/pinkettu/testgit/
+    - export DEPLOYPATH=/home/pinkettu/public_html/test_git
     - /bin/cp -r css $DEPLOYPATH/css
     - /bin/cp -r images $DEPLOYPATH/images
     - /bin/cp -r fonts $DEPLOYPATH/fonts
