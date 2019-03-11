@@ -1,3 +1,3 @@
-# pinketu
+# PINK ET TU
 
-Frontrend code for pinketu website
+Frontend Development for Pink et Tu App.
