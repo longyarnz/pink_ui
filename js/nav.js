@@ -50,6 +50,11 @@ const lists = [
     text: 'LOG IN'
   },
   {
+    href: '/transactions.html',
+    icon: 'attach_money',
+    text: 'TRANSACTIONS'
+  },
+  {
     href: '/profile.html',
     icon: 'face',
     text: 'PROFILE'
@@ -66,7 +71,7 @@ const title = document.title;
 
 const createListItem = (href, icon, text, style) => {
   if(localStorage.pinkettu && ['SIGN UP', 'LOG IN'].includes(text) || 
-    !localStorage.pinkettu && ['PROFILE', 'LOG OUT'].includes(text)) return null;
+    !localStorage.pinkettu && ['PROFILE', 'LOG OUT', 'TRANSACTIONS'].includes(text)) return null;
 
   const li = document.createElement('li');
   const anchor = document.createElement('a');
@@ -106,13 +111,8 @@ close.textContent = 'close';
 
 const ul = document.createElement('ul');
 
-const listItems = lists.map(li => createListItem(...Object.values(li)));
-const navItems = lists.map(li => createListItem(...Object.values(li)));
-
-[ listItems, navItems ].forEach(items => {
-  const start = items.indexOf(null);
-  items.splice(start, 2);
-});
+const listItems = lists.map(li => createListItem(...Object.values(li))).filter(i => i !== null);
+const navItems = lists.map(li => createListItem(...Object.values(li))).filter(i => i !== null);
 
 ul.append(...listItems);
 brand.appendChild(brandImage);

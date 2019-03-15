@@ -1,0 +1,98 @@
+section{
+  min-height: calc(100vh - 160px);
+  padding-top: 20px;
+}
+
+section > h2 {
+  color: #ff6699;
+  font-family: Montserrat;
+  font-weight: 900;
+  text-align: center;
+  font-size: 180%;
+}
+
+section main {
+  padding: 20px 0px;
+  position: relative;
+}
+
+section main > span{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+section main div.tab {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+  padding: 10px 10px;
+}
+
+div.tab:nth-of-type(odd){
+  background-color: #f9f9f9;
+}
+
+div.tab:nth-of-type(even){
+  background-color: #fdfdfd;
+}
+
+div.tab span{
+  display: block;
+  width: 100%;
+  padding: 10px 0px;
+  font-family: Montserrat;
+  font-weight: 300;
+  color: #555
+}
+
+div.tab span:first-of-type{
+  color: #ff6699;
+  font-size: 120%;
+  font-weight: 400;
+}
+
+div.tab span:nth-of-type(2){
+  font-weight: 900;
+  font-size: 150%;
+  color: #000
+}
+
+div.tab span button {
+  font-size: 85%;
+  padding: 0px 0px 10px 0px;
+  background: transparent;
+  border: 0px;
+  height: auto;
+  margin: 0px;
+  border-radius: 0;
+  color: #ff6699;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-bottom: 3px solid #ff6699;
+}
+
+div.tab span:last-of-type{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+div.tab span select{
+  margin: 0px;
+  padding: 0px 0px 10px 0px;
+  width: 100%;
+  border-bottom: 3px solid #ff6699;
+}
+
+div.tab span select option{
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 767px) {
+  section main div.tab {
+    flex-direction: column;
+    padding: 0px 10px;
+  }
+}
