@@ -103,6 +103,7 @@ div.info-wrapper form button, div.see-more {
 
 div.info-wrapper form button:focus,
 div.info-wrapper form button:hover {
+  outline: none;
   text-decoration: none;
   transform: scale(1.03, 1.03);
   box-shadow: 0px 10px 6px -2px rgba(0, 0, 0, 0.3),

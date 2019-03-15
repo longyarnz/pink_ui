@@ -92,6 +92,7 @@ form > button:active {
   text-emphasis-position: under left;
   -webkit-text-emphasis-color: #ff6699;
   text-emphasis-color: #ff6699;
+  margin-left: 3px;
 }
 
 div.login{
