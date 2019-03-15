@@ -3,6 +3,10 @@
     Ubuntu, "Open Sans", sans-serif;
 }
 
+.hide{
+  display: none;
+}
+
 body {
   margin: 0px;
 }
@@ -111,6 +115,10 @@ div.info-wrapper form select:focus,
 div.info-wrapper form select:active,
 div.info-wrapper form button:active {
   outline: none;
+}
+
+#finalSubmit > i{
+  animation-duration: .55s;
 }
 
 div.show-worker-images {
@@ -233,13 +241,13 @@ div.show-worker-images div.gallery div button {
     flex-direction: column;
   }
 
-  div.gallery div img {
+  div.show-worker-images div.gallery img {
     width: 100% !important;
     height: auto !important;
-    margin: 0px 0px 20px;
+    margin: 0px 0px 20px 0px;
   }
 
-  div.gallery div button {
+  div.show-worker-images div.gallery div button {
     right: 0px;
   }
 }

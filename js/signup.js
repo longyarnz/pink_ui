@@ -9,16 +9,6 @@ function validatePassword() {
   }
 }
 
-async function sendImageToDatabase(file, filename) {
-  const form = new FormData();
-  form.append('File', file.files[0]);
-  form.append('Filename', filename);
-  return fetch('https://images.pinkettu.com.ng/upload.php', {
-    method: 'POST',
-    body: form
-  });
-}
-
 function handleSubmitResponse(request) {
   const { token } = JSON.parse(request.responseText);
   if (!token) return;
@@ -37,7 +27,7 @@ function submitForm(e) {
   const appIsLive = location.hostname !== '127.0.0.1';
   const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
   const URL = `${API}/auth/signup`;
-  const [email, username, password, , locate, worker, image] = e.target;
+  const [email, username, password, , location, worker, image] = e.target;
   const caption = Date.now().toString().slice(0, 10) + '.' + image.files[0].name;
   const feedback = sendImageToDatabase(image, caption);
 
@@ -56,7 +46,7 @@ function submitForm(e) {
         username: username.value,
         email: email.value,
         password: password.value,
-        locate: locate.value,
+        location: location.value,
         worker: worker.value === 'true',
         image: caption
       })

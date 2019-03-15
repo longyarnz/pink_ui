@@ -16,7 +16,7 @@ function createAddMoreInput() {
 
 }
 
-function createGalleryForWorker() {
+function createGalleryForWorker(profile) {
   const footer = document.querySelector('footer');
   const section = document.createElement('section');
   section.classList.add('container');
@@ -25,7 +25,7 @@ function createGalleryForWorker() {
   div.classList.add('show-worker-images');
 
   const h3 = document.createElement('h3');
-  h3.textContent = `MORE IMAGES OF ${profile.username.toUpperCase()}`;
+  h3.textContent = `PICTURES OF ${profile.username.toUpperCase()}`;
 
   const gallery = document.createElement('div');
   gallery.classList.add('gallery');
@@ -44,7 +44,7 @@ function createGalleryForWorker() {
   gallery.append(...tiles);
   div.append(h3, gallery);
   section.appendChild(div);
-  document.insertBefore(section, footer);
+  document.body.insertBefore(section, footer);
 }
 
 async function fetchUserProfile() {
@@ -59,7 +59,7 @@ async function fetchUserProfile() {
 
   if (profile.message) {
     localStorage.removeItem('pinkettu');
-    location.assign('/signup.html');
+    location.assign('/login.html');
   }
   else {
     const form = document.querySelector('form');
@@ -70,7 +70,9 @@ async function fetchUserProfile() {
 
     if (profile.worker) createAddMoreInput();
 
-    if (profile.images.length > 1) createGalleryForWorker();
+    if (profile.images.length > 1) createGalleryForWorker(profile);
+
+    form.addEventListener('submit', e => submitForm(e, profile.worker));
   }
 }
 
@@ -79,5 +81,5 @@ if (localStorage.pinkettu) {
 }
 
 else {
-  location.assign('/');
+  location.assign('/login.html');
 }
