@@ -27,7 +27,6 @@ function createPinkTiles(id, name, location, src, rank) {
   figure.append(figcaption, img);
 
   figure.addEventListener('click', () => {
-    console.log(`/explore.html?pink=${id}`);
     window.location.assign(`/explore.html?pink=${id}`);
   });
 

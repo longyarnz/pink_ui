@@ -31,6 +31,9 @@ async function deleteUserImage(src) {
   if (deletedImage === true) {
     location.assign('/profile.html');
   }
+  else if(deletedImage.id){
+    location.assign(`/activate.html?user=${deletedImage.id}`);
+  }
 }
 
 function createGalleryForWorker(profile) {
@@ -86,7 +89,10 @@ async function fetchUserProfile() {
   });
   profile = await profile.json();
 
-  if (profile.message) {
+  if(profile.id && profile.message){
+    location.assign(`/activate.html?user=${profile.id}`);
+  }
+  else if (profile.message) {
     localStorage.removeItem('pinkettu');
     localStorage.removeItem('pinkettu_user_status');
     location.assign('/login.html');

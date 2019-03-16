@@ -4,7 +4,12 @@ const appIsLive = location.hostname !== '127.0.0.1';
 const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
 
 function handleResponse(request) {
-  const { token, text } = JSON.parse(request.responseText);
+  const { id, message, token, text } = JSON.parse(request.responseText);
+
+  if(id && message){
+    location.assign(`/activate.html?user=${id}`);
+    return;
+  }
   
   if (!token) {
     const p = document.querySelector('p');
@@ -29,7 +34,7 @@ form.addEventListener('submit', e => {
   const xhttp = new XMLHttpRequest();
   
   xhttp.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200) {
+    if (this.readyState === 4) {
       toggleButtonSpinner(button, false);
       handleResponse(this);
     }
