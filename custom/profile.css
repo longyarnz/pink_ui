@@ -3,7 +3,7 @@
     Ubuntu, "Open Sans", sans-serif;
 }
 
-.hide{
+.hide {
   display: none;
 }
 
@@ -11,7 +11,7 @@ body {
   margin: 0px;
 }
 
-section{
+section {
   min-height: calc(100vh - 160px);
 }
 
@@ -82,7 +82,8 @@ div.info-wrapper form label {
   color: #999;
 }
 
-div.info-wrapper form button, div.see-more {
+div.info-wrapper form button,
+div.see-more {
   display: inline-flex;
   justify-content: space-around;
   align-items: center;
@@ -115,8 +116,8 @@ div.info-wrapper form button:active {
   outline: none;
 }
 
-#finalSubmit > i{
-  animation-duration: .55s;
+#finalSubmit > i {
+  animation-duration: 0.55s;
 }
 
 div.show-worker-images {
@@ -150,7 +151,7 @@ div.show-worker-images div.gallery {
 div.show-worker-images div.gallery img {
   position: relative;
   height: 240px;
-  margin: 0px 10px 20px 10px;
+  margin: 0px 0px 20px;
   border-radius: 3px;
   box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.4);
 }
@@ -160,21 +161,31 @@ div.show-worker-images div.gallery div {
 }
 
 div.show-worker-images div.gallery div button {
-  border-top-right-radius: 3px;
+  border-radius: 3px;
   position: absolute;
-  background: rgb(255, 79, 79);
+  background: #d9534f;
   top: 0px;
-  right: 10px;
+  right: 0px;
   z-index: 10;
   padding: 5px 10px;
   color: #fff;
-  font-size: 60%;
+  font-size: 40%;
   border: none;
   height: auto;
   width: auto;
   font-family: Montserrat;
   box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.4);
   font-weight: 700;
+}
+
+div.show-worker-images div.gallery div button:focus,
+div.show-worker-images div.gallery div button:hover, 
+div.show-worker-images div.gallery div button:active {
+  background: #c9302c;
+}
+
+div.show-worker-images div.gallery div button i{
+  font-size: 300%;
 }
 
 @media screen and (max-width: 768px) {
@@ -208,7 +219,7 @@ div.show-worker-images div.gallery div button {
     width: 100%;
   }
 
-  div.info-wrapper{
+  div.info-wrapper {
     width: 100%;
   }
 

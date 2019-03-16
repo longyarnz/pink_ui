@@ -22,7 +22,6 @@ function submitForm(e, worker) {
 
   let caption, feedback, body, files = []; 
   const [name, location, image, more] = e.target;
-  console.log([e.target]);
 
   body = {
     username: name.value,
@@ -33,7 +32,9 @@ function submitForm(e, worker) {
 
   function storeImage(image, cache) {
     const rand = Math.floor(Math.random() * 100000);
-    caption = `${rand}.${image.name}`;
+    const sanitizedName = name.value.replace(/\s/i, '.');
+    const ext = image.name.split('.').reverse()[0];
+    caption = `${rand}.${sanitizedName}.${ext}`;
     cache.push(caption);
     feedback = sendImagesToDatabase(image, caption);
     files.push(feedback);
@@ -50,7 +51,6 @@ function submitForm(e, worker) {
     }
   }
   
-  console.log(JSON.stringify(body));
   Promise.all(files).then(() => {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -64,17 +64,4 @@ function submitForm(e, worker) {
     xhttp.setRequestHeader('Authorization', localStorage.pinkettu);
     xhttp.send(JSON.stringify(body));
   });
-  
-  // feedback.then(res => {
-  //   const xhttp = new XMLHttpRequest();
-  //   xhttp.onreadystatechange = function () {
-  //     if (this.readyState === 4 && this.status === 200) {
-  //       handleSubmitResponse(this);
-  //       toggleButtonSpinner(button, false);
-  //     }
-  //   };
-  //   xhttp.open("POST", URL, true);
-  //   xhttp.setRequestHeader("Content-Type", "application/json");
-  //   xhttp.send(JSON.stringify({ body }));
-  // });
 }

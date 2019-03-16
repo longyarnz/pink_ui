@@ -1,3 +1,6 @@
+const appIsLive = location.hostname !== '127.0.0.1';
+const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
+
 function createAddMoreInput() {
   const form = document.querySelector('form');
   const label = document.querySelector('label[for="profile"]').cloneNode();
@@ -14,6 +17,20 @@ function createAddMoreInput() {
   form.insertBefore(label, form.children.finalSubmit);
   form.insertBefore(fileInput, form.children.finalSubmit);
 
+}
+
+async function deleteUserImage(src) {
+  let deletedImage = await fetch(`${API}/profile/deletedImage/${src}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': localStorage.pinkettu
+    }
+  });
+  deletedImage = await deletedImage.json();
+
+  if (deletedImage === true) {
+    location.assign('/profile.html');
+  }
 }
 
 function createGalleryForWorker(profile) {
@@ -34,8 +51,22 @@ function createGalleryForWorker(profile) {
     const div = document.createElement('div');
     const img = document.createElement('img');
     img.src = `https://images.pinkettu.com.ng/${src}`;
+
     const button = document.createElement('button');
-    button.textContent = 'DELETE';
+    button.addEventListener('click', () => {
+      const i = button.querySelector('i');
+      i.textContent = 'donut_large';
+      i.classList.toggle('fa-spin');
+      i.style.animationDuration = '.45s';
+      deleteUserImage(src);
+    });
+
+    const i = document.createElement('i');
+    i.classList.add('material-icons');
+    i.textContent = 'close';
+
+    button.appendChild(i);
+
     div.append(img, button);
     return div;
   }
@@ -48,8 +79,6 @@ function createGalleryForWorker(profile) {
 }
 
 async function fetchUserProfile() {
-  const appIsLive = location.hostname !== '127.0.0.1';
-  const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
   let profile = await fetch(`${API}/profile`, {
     headers: {
       'Authorization': localStorage.pinkettu
