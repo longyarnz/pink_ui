@@ -59,6 +59,7 @@ async function fetchUserProfile() {
 
   if (profile.message) {
     localStorage.removeItem('pinkettu');
+    localStorage.removeItem('pinkettu_user_status');
     location.assign('/login.html');
   }
   else {
@@ -67,6 +68,7 @@ async function fetchUserProfile() {
     img.src = `https://images.pinkettu.com.ng/${profile.images[0]}`;
     form[0].value = profile.username;
     form[1].value = profile.location;
+    localStorage.setItem('pinkettu_user_status', profile.worker);
 
     if (profile.worker) createAddMoreInput();
 

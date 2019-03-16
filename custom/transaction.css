@@ -1,4 +1,4 @@
-section{
+section.transaction{
   min-height: calc(100vh - 160px);
   padding-top: 20px;
 }
@@ -16,18 +16,26 @@ section main {
   position: relative;
 }
 
-section main > span{
-  position: absolute;
-  top: 0px;
-  right: 0px;
+section main .placeholder {
+  width: 100%;
+  height: 100px;
+  background: #eee;
+  margin-bottom: 20px;
+  animation: pop .3s ease infinite alternate;
+}
+
+section main span.placeholder {
+  display: block;
+  height: 20px;
 }
 
 section main div.tab {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: row;
   padding: 10px 10px;
+  border-radius: 3px;
 }
 
 div.tab:nth-of-type(odd){
@@ -38,30 +46,60 @@ div.tab:nth-of-type(even){
   background-color: #fdfdfd;
 }
 
-div.tab span{
+div.tab > span{
   display: block;
   width: 100%;
   padding: 10px 0px;
   font-family: Montserrat;
-  font-weight: 300;
+  font-weight: 700;
   color: #555
 }
 
-div.tab span:first-of-type{
-  color: #ff6699;
-  font-size: 120%;
-  font-weight: 400;
+div.tab > small{
+  flex: 0.2;
+  padding: 5px 10px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 60%;
+  text-align: center;
+  color: #aaa;
 }
 
-div.tab span:nth-of-type(2){
+div.tab > small.completed{
+  color: #5cb85c;
+  border-color: #5cb85c;
+}
+
+div.tab > span:first-of-type{
+  color: #ff6699;
+  font-size: 85%;
+  flex: 1;
+  text-transform: uppercase;
+}
+
+div.tab > span:nth-of-type(2){
   font-weight: 900;
   font-size: 150%;
-  color: #000
+  color: #000;
+  flex: 1;
 }
 
-div.tab span button {
+div.tab > span.rank{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex: 1.7;
+}
+
+div.tab > span > span {
+  display: flex;
+  width: auto;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
   font-size: 85%;
-  padding: 0px 0px 10px 0px;
+  padding: 0px 0px 5px 0px;
   background: transparent;
   border: 0px;
   height: auto;
@@ -70,29 +108,41 @@ div.tab span button {
   color: #ff6699;
   text-transform: uppercase;
   font-weight: 700;
-  border-bottom: 3px solid #ff6699;
 }
 
-div.tab span:last-of-type{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+div.tab > span > span i{
+  margin: 0px 3.5px;
+  color: gold;
 }
 
-div.tab span select{
+div.tab > span select{
   margin: 0px;
   padding: 0px 0px 10px 0px;
-  width: 100%;
+  width: auto;
   border-bottom: 3px solid #ff6699;
 }
 
-div.tab span select option{
+div.tab > span select option{
   text-transform: capitalize;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   section main div.tab {
     flex-direction: column;
-    padding: 0px 10px;
+    padding: 0px 10px 10px;
+    align-items: flex-start;
+  }
+
+  div.tab > span > span i{
+    margin: 10px 10px 0px 0px;
+  }
+
+  div.tab > span > span {
+    padding: 0px;
+  }
+
+  div.tab > span:last-of-type{
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

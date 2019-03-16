@@ -111,7 +111,7 @@ div.login div.row > div{
   padding: 0px
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 768px){
   #signup-main > div > div:nth-child(1) > form{
     width: 100%;
     padding: 0px 5px;

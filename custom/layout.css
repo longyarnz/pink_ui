@@ -10,20 +10,28 @@
   }
 }
 
-a:focus, a:hover, a:active, input:focus, input:hover, input:active{
+a:focus,
+a:hover,
+a:active,
+input:focus,
+input:hover,
+input:active,
+button:focus,
+button:hover,
+button:active {
   text-decoration: none !important;
   outline: none !important;
 }
 
-.overflow-hidden{
+.overflow-hidden {
   overflow: hidden;
 }
 
-.log-out{
+.log-out {
   transform: rotate(180deg);
 }
 
-body > header{
+body > header {
   position: relative;
   width: 100%;
   background-color: #000;
@@ -33,7 +41,7 @@ body > header{
 body > header img {
   height: calc(100vh - 80px);
   margin: auto;
-  animation: pop .75s ease-out 0s infinite alternate forwards running;
+  animation: pop 0.75s ease-out 0s infinite alternate forwards running;
 }
 
 nav {
@@ -41,11 +49,11 @@ nav {
   position: sticky;
   top: 0px;
   z-index: 99;
-  box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, .4);
+  box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.4);
   height: 80px;
 }
 
-nav > div{
+nav > div {
   height: 100%;
   display: flex;
   align-items: center;
@@ -53,17 +61,17 @@ nav > div{
   background-color: transparent;
 }
 
-nav div#logo-cont{
+nav div#logo-cont {
   margin: 0px;
   height: 100%;
   background: #000;
 }
 
-nav div#logo-cont a:focus{
+nav div#logo-cont a:focus {
   outline: none;
 }
 
-nav ul{
+nav ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -73,16 +81,16 @@ nav ul{
   list-style: none;
 }
 
-nav > div > i.material-icons{
+nav > div > i.material-icons {
   display: none;
   margin: 0px 0px 0px auto;
 }
 
-nav ul li{
+nav ul li {
   margin-left: 20px;
 }
 
-nav ul li a{
+nav ul li a {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -96,32 +104,33 @@ nav ul li a{
   background-color: #222;
 }
 
-nav ul li a i.material-icons{
+nav ul li a i.material-icons {
   font-size: 130%;
   margin-right: 5px;
 }
 
-nav ul li a:focus, nav ul li a:hover{
+nav ul li a:focus,
+nav ul li a:hover {
   background: #ff99cc;
   text-decoration: none;
-  color: #000
+  color: #000;
 }
 
-nav ul li a:active{
+nav ul li a:active {
   text-decoration: none;
-  color: #000
+  color: #000;
 }
 
-nav ul li a.active{
+nav ul li a.active {
   background: #ff6699;
 }
 
-nav div#logo-cont a img{
+nav div#logo-cont a img {
   height: 100%;
   width: auto;
 }
 
-body > footer{
+body > footer {
   font-family: Montserrat;
   font-weight: 700;
   font-size: 80%;
@@ -132,14 +141,15 @@ body > footer{
   padding: 0px;
   background-color: #000;
   color: #fff;
-  box-shadow: 0px -4px 4px -2px rgba(0, 0, 0, .4);
+  box-shadow: 0px -4px 4px -2px rgba(0, 0, 0, 0.4);
 }
 
 @font-face {
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/icons.woff2") format("woff2"), url("../fonts/icons.woff") format("woff");
+  src: url("../fonts/icons.woff2") format("woff2"),
+    url("../fonts/icons.woff") format("woff");
 }
 
 .material-icons {
@@ -156,15 +166,15 @@ body > footer{
   direction: ltr;
   -webkit-font-smoothing: antialiased;
   cursor: pointer;
-  overflow: hidden
+  overflow: hidden;
 }
 
-section.nav-menu{
+section.nav-menu {
   display: none;
 }
 
-@media screen and (max-width: 767px){
-  body > header{
+@media screen and (max-width: 768px) {
+  body > header {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -176,7 +186,7 @@ section.nav-menu{
     height: auto;
   }
 
-  nav{
+  nav {
     width: 100%;
     overflow-y: hidden;
     height: 70px;
@@ -184,7 +194,7 @@ section.nav-menu{
     margin-bottom: 0px;
   }
 
-  nav ul{
+  nav ul {
     display: none;
   }
 
@@ -192,31 +202,31 @@ section.nav-menu{
     padding: 0px;
   }
 
-  nav > div.container > div#logo-cont > a{
+  nav > div.container > div#logo-cont > a {
     display: inline-block;
     max-width: 110px;
-    height: auto
+    height: auto;
   }
 
-  nav > div.container > div#logo-cont > a > img{
+  nav > div.container > div#logo-cont > a > img {
     width: 100px;
     height: auto;
   }
 
-  nav > div > i.material-icons{
+  nav > div > i.material-icons {
     background-color: transparent;
     color: #ff6699;
     border: none;
-    padding: 20px;
+    padding: 12px;
     display: inline;
     font-size: 200%;
   }
 
-  section.nav-menu.show{
+  section.nav-menu.show {
     display: flex;
   }
-  
-  section.nav-menu{
+
+  section.nav-menu {
     position: fixed;
     z-index: 999;
     top: 0;
@@ -226,8 +236,8 @@ section.nav-menu{
     align-items: center;
     background: #000;
   }
-  
-  section.nav-menu ul{
+
+  section.nav-menu ul {
     width: 100%;
     height: calc(100vh - 69px);
     list-style: none;
@@ -238,12 +248,12 @@ section.nav-menu{
     align-items: center;
   }
 
-  section.nav-menu nav{
+  section.nav-menu nav {
     position: relative;
     z-index: 0px;
   }
-  
-  section.nav-menu ul li a{
+
+  section.nav-menu ul li a {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -257,16 +267,16 @@ section.nav-menu{
     border: 1px solid #555;
   }
 
-  section.nav-menu ul li a:active{
+  section.nav-menu ul li a:active {
     text-decoration: none;
   }
-  
-  section.nav-menu ul li a.active{
+
+  section.nav-menu ul li a.active {
     border: 1px solid #ff6699;
     font-weight: 900;
   }
 
-  section.nav-menu ul li a i{
+  section.nav-menu ul li a i {
     font-size: 140%;
   }
 }

@@ -94,7 +94,7 @@ div.onboarding{
   background-color: #f9f9f9;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   div.gallery {
     margin-top: 20px;
     height: auto;

@@ -46,6 +46,7 @@ header > div.see-more {
   min-width: 200px;
   padding: 20px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 div.show-worker-images > div.gallery {
@@ -87,7 +88,7 @@ figure.placeholder > div:first-of-type {
   margin-top: 0px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   div.show-worker-images > div.gallery {
     margin-top: 5px;
   }
