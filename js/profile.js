@@ -60,7 +60,7 @@ function createGalleryForWorker(profile) {
       const i = button.querySelector('i');
       i.textContent = 'donut_large';
       i.classList.toggle('fa-spin');
-      i.style.animationDuration = '.45s';
+      i.style.animationDuration = '.35s';
       deleteUserImage(src);
     });
 

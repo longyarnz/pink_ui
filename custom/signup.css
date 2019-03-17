@@ -66,6 +66,7 @@ select:hover {
   justify-content: space-around;
   align-items: center;
   background: #ff6699;
+  min-height: 50px;
   padding: 10px 20px;
   border-radius: 5px 10px;
   color: #fff;
@@ -79,7 +80,7 @@ select:hover {
 }
 
 #signup-main > div > form > button > i {
-  animation-duration: 0.55s;
+  animation-duration: 0.35s;
 }
 
 form > button:focus,

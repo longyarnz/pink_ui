@@ -11,7 +11,7 @@ function handleSubmitResponse(request) {
 
 function submitForm(e, worker) {
   e.preventDefault();
-  if (localStorage.isSubmitting === true) return;
+  if (localStorage.isSubmitting === 'true') return;
 
   const button = e.target.children.finalSubmit;
   toggleButtonSpinner(button, true);
