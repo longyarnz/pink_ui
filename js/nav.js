@@ -78,7 +78,6 @@ const createListItem = (href, icon, text, style) => {
   anchor.setAttribute('href', href);
   title.toLowerCase().slice(0, 2) === text.toLowerCase().slice(0, 2) && anchor.classList.add('active');
   const i = document.createElement('i');
-  i.classList.add('material-icons');
   i.textContent = icon;
   style && i.classList.add(style);
   const span = document.createElement('span');
@@ -106,8 +105,8 @@ const brandImage = document.createElement('img');
 brandImage.setAttribute('src', 'images/pinkettu.png');
 
 const close = document.createElement('i');
-close.classList.add('material-icons');
 close.textContent = 'close';
+close.addEventListener('click', toggleNavMenu);
 
 const ul = document.createElement('ul');
 
@@ -126,8 +125,8 @@ function CreateNavigation() {
   const ul = document.querySelector('ul');
   ul.append(...navItems);
   document.body.insertBefore(section, script);
-  const navs = document.querySelectorAll('nav');
-  navs.forEach(nav => nav.addEventListener('click', toggleNavMenu));
+  const menu = document.querySelector('nav > div > i');
+  menu.addEventListener('click', toggleNavMenu);
   attachLogoutEventHandler();
 }
 

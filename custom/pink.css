@@ -11,12 +11,12 @@ div.show-worker-images h3 {
   font-weight: 900;
   color: #ff6699;
   text-align: left;
-  -webkit-text-emphasis-style: dot;
-  text-emphasis-style: dot;
-  -webkit-text-emphasis-position: under;
-  text-emphasis-position: under left;
-  -webkit-text-emphasis-color: #ff6699;
-  text-emphasis-color: #ff6699;
+  /* -webkit-text-emphasis-style: dot; */
+  /* text-emphasis-style: dot; */
+  /* -webkit-text-emphasis-position: under; */
+  /* text-emphasis-position: under left; */
+  /* -webkit-text-emphasis-color: #ff6699; */
+  /* text-emphasis-color: #ff6699; */
   margin: 0px;
   padding: 15px 0px 5px;
 }
@@ -33,7 +33,7 @@ div.show-worker-images div.gallery {
 
 div.gallery figure {
   position: relative;
-  max-width: calc(100% / 4 - 10px);
+  max-width: calc(100% / 4 - 20px);
   min-width: 160px;
   margin: 0px 20px 40px 0px;
   border-radius: 5px;

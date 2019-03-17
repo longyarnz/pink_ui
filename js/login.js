@@ -7,7 +7,7 @@ function handleResponse(request) {
   const { id, message, token, text } = JSON.parse(request.responseText);
 
   if(id && message){
-    location.assign(`/activate.html?user=${id}`);
+    // location.assign(`/activate.html?user=${id}`);
     return;
   }
   
@@ -35,7 +35,7 @@ form.addEventListener('submit', e => {
   
   xhttp.onreadystatechange = function () {
     if (this.readyState === 4) {
-      toggleButtonSpinner(button, false);
+      // toggleButtonSpinner(button, false);
       handleResponse(this);
     }
   };

@@ -10,6 +10,7 @@
   }
 }
 
+a,
 a:focus,
 a:hover,
 a:active,
@@ -31,20 +32,29 @@ button:active {
   transform: rotate(180deg);
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 body > header {
   position: relative;
   width: 100%;
   background-color: #000;
   text-align: center;
+  overflow: hidden;
 }
 
 body > header img {
-  height: calc(100vh - 80px);
+  max-height: calc(100vh - 80px);
+  max-width: 70%;
   margin: auto;
   animation: pop 0.75s ease-out 0s infinite alternate forwards running;
 }
 
 nav {
+  background: #000;
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
@@ -61,13 +71,13 @@ nav > div {
   background-color: transparent;
 }
 
-nav div#logo-cont {
+nav #logo-cont {
   margin: 0px;
   height: 100%;
   background: #000;
 }
 
-nav div#logo-cont a:focus {
+nav #logo-cont a:focus {
   outline: none;
 }
 
@@ -81,7 +91,7 @@ nav ul {
   list-style: none;
 }
 
-nav > div > i.material-icons {
+nav > div > i {
   display: none;
   margin: 0px 0px 0px auto;
 }
@@ -104,7 +114,7 @@ nav ul li a {
   background-color: #222;
 }
 
-nav ul li a i.material-icons {
+nav ul li a i {
   font-size: 130%;
   margin-right: 5px;
 }
@@ -125,7 +135,7 @@ nav ul li a.active {
   background: #ff6699;
 }
 
-nav div#logo-cont a img {
+nav #logo-cont a img {
   height: 100%;
   width: auto;
 }
@@ -152,7 +162,7 @@ body > footer {
     url("../fonts/icons.woff") format("woff");
 }
 
-.material-icons {
+i {
   font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
@@ -171,6 +181,38 @@ body > footer {
 
 section.nav-menu {
   display: none;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 @media screen and (max-width: 768px) {
@@ -202,18 +244,18 @@ section.nav-menu {
     padding: 0px;
   }
 
-  nav > div.container > div#logo-cont > a {
+  nav > div.container > #logo-cont > a {
     display: inline-block;
     max-width: 110px;
     height: auto;
   }
 
-  nav > div.container > div#logo-cont > a > img {
+  nav > div.container > #logo-cont > a > img {
     width: 100px;
     height: auto;
   }
 
-  nav > div > i.material-icons {
+  nav > div > i {
     background-color: transparent;
     color: #ff6699;
     border: none;

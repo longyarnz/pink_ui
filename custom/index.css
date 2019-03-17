@@ -7,14 +7,12 @@ div.show-worker-images > div > div.gallery {
   min-height: auto;
 }
 
-div.show-worker-images h3 {
+div.show-worker-images h3, div.onboarding > h3 {
   font-weight: 900;
   font-family: Qwigley;
-  text-transform: uppercase;
-  font-size: 300%;
+  font-size: 350%;
   color: #ff6699;
   text-align: center;
-  text-emphasis: none;
 }
 
 div.see-more {
@@ -53,16 +51,16 @@ figcaption {
 }
 
 div.cover {
-  background: transparent url("../images/body.png") no-repeat center center
-    cover;
   background-color: #fff;
-  height: 100%;
+  min-height: 500px;
   margin: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
 }
 
 div.cover div.bigtext {
   margin: 0px;
-  font-family: Montserrat;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -72,26 +70,70 @@ div.cover div.bigtext {
 div.cover > div.bigtext > h2 {
   text-align: center !important;
   width: 100%;
-  text-transform: uppercase;
   font-weight: bold;
   font-size: 400%;
   line-height: 1.5;
   color: #ff6699;
-  font-family: 'Qwigley';
+  font-family: Qwigley;
+  margin-bottom: 0px;
+}
+
+div.cover > div.bigtext > h2 i, h3 > i {
+  font-size: 45%;
 }
 
 div.cover div.smalltext p {
   font-weight: 200;
-  font-family: Montserrat;
-  text-transform: uppercase;
-  font-size: 100%;
-  color: #000;
+  font-family: Qwigley;
+  text-transform: capitalize;
+  font-size: 300%;
+  color: #555;
+  margin-top: 0px;
+  text-align: center;
 }
 
 div.onboarding{
   width: 100%;
-  height: 200px;
+  min-height: 400px;
   background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div.onboarding > h3 {
+  text-align: center;
+  color: #000;
+}
+
+div.onboarding > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+div.onboarding div.step{
+  flex: 1;
+  min-height: 100px;
+  text-align: center;
+  font-family: Montserrat;
+}
+
+div.step h4{
+  font-family: Montserrat;
+  font-size: 100%;
+  font-weight: 900;
+  /* margin-top: 0px; */
+}
+
+div.step span{
+  /* background: red; */
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+div.onboarding div.step span{
+  font-weight: 300;
 }
 
 @media screen and (max-width: 768px) {
@@ -100,8 +142,9 @@ div.onboarding{
     height: auto;
   }
 
-  div.show-worker-images h3 {
-    font-weight: 900;
+  div.show-worker-images h3, div.onboarding > h3 {
+    font-weight: 200;
+    font-size: 220%;
   }
 
   div.show-worker-images div.gallery figure,
@@ -109,11 +152,24 @@ div.onboarding{
     margin-bottom: 30px;
   }
 
+  div.cover {
+    min-height: 300px;
+  }
+
   div.cover div.bigtext h2 {
-    font-size: 200%;
+    font-size: 220%;
   }
 
   div.cover div.smalltext p {
-    font-size: 70%;
+    font-size: 140%;
+  }
+
+  div.onboarding{
+    min-height: 550px;
+  }
+
+  div.onboarding > div{
+    flex-direction: column;
+    align-items: center;
   }
 }
