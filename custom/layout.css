@@ -10,6 +10,10 @@
   }
 }
 
+*{
+  box-sizing: border-box;
+}
+
 a,
 a:focus,
 a:hover,
@@ -263,11 +267,11 @@ section.nav-menu {
     display: inline;
     font-size: 200%;
   }
-
+  
   section.nav-menu.show {
     display: flex;
   }
-
+  
   section.nav-menu {
     position: fixed;
     z-index: 999;
@@ -277,6 +281,8 @@ section.nav-menu {
     justify-content: center;
     align-items: center;
     background: #000;
+    display: none;
+    flex-direction: column;
   }
 
   section.nav-menu ul {

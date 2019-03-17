@@ -10,15 +10,11 @@ div.show-worker-images h3 {
   font-family: Qwigley;
   font-weight: 900;
   color: #ff6699;
-  text-align: left;
-  /* -webkit-text-emphasis-style: dot; */
-  /* text-emphasis-style: dot; */
-  /* -webkit-text-emphasis-position: under; */
-  /* text-emphasis-position: under left; */
-  /* -webkit-text-emphasis-color: #ff6699; */
-  /* text-emphasis-color: #ff6699; */
   margin: 0px;
   padding: 15px 0px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 div.show-worker-images div.gallery {
@@ -81,7 +77,7 @@ figcaption > footer {
   font-family: Qwigley;
 }
 
-figcaption > footer > span:last-of-type{
+figcaption > footer > span:last-of-type {
   margin-left: auto;
   color: gold;
 }
@@ -91,7 +87,7 @@ figcaption > footer i.material-icons {
   font-size: 105%;
 }
 
-figcaption > footer > span:last-of-type > i{
+figcaption > footer > span:last-of-type > i {
   margin: 0;
 }
 
@@ -141,6 +137,10 @@ footer {
     font-size: 200%;
     text-align: center;
     font-weight: 900;
+  }
+
+  div.show-worker-images h3 i {
+    font-size: 45%;
   }
 
   div.show-worker-images div.gallery {
