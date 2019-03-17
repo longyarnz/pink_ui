@@ -4,8 +4,6 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="custom/style.css" />
   <link rel="stylesheet" href="custom/layout.css" />
   <link rel="stylesheet" href="custom/signup.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,300,700,900|Qwigley" />
@@ -21,54 +19,56 @@
         </a>
       </div>
       <ul></ul>
-      <i class="material-icons">menu</i>
+      <i>menu</i>
     </div>
   </nav>
 
   <div id="signup-main" class="container">
     <div class="row">
-      <div class="col-sm-12">
-        <h2>PINK ET TU</h2>
-        <p>create your account</p>
-        <br>
-        <form method="POST" name="form" class="form" enctype="multipart/form-data">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Email" required />
+      <h2>
+        Pink <i>local_florist</i>
+        et <i>local_florist</i>
+        Tu
+      </h2>
+      <p>create your account</p>
+      <br>
+      <form method="POST" name="form" class="form" enctype="multipart/form-data">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="Email" required />
 
-          <label for="user">Username</label>
-          <input id="user" name="username" type="text" placeholder="Username" required />
+        <label for="user">Username</label>
+        <input id="user" name="username" type="text" placeholder="Username" required />
 
-          <label for="pass">Password</label>
-          <input id="pass" name="password" type="password" placeholder="Password" id="password" required />
+        <label for="pass">Password</label>
+        <input id="pass" name="password" type="password" placeholder="Password" id="password" required />
 
-          <label for="confirm">Confirm Password</label>
-          <input id="confirm" type="password" placeholder="Confirm Password" name="confirm_password" required />
+        <label for="confirm">Confirm Password</label>
+        <input id="confirm" type="password" placeholder="Confirm Password" name="confirm_password" required />
 
-          <label for="location">Location</label>
-          <select name="location" id="location">
-            <option value="Lagos Mainland">Lagos Mainland</option>
-            <option value="Lagos Island">Lagos Island</option>
-          </select>
+        <label for="location">Location</label>
+        <select name="location" id="location">
+          <option value="Lagos Mainland">Lagos Mainland</option>
+          <option value="Lagos Island">Lagos Island</option>
+        </select>
 
-          <label for="worker">Worker | Client</label>
-          <select name="worker" id="worker">
-            <option value="false">Client</option>
-            <option value="true">Worker</option>
-          </select>
+        <label for="worker">Worker | Client</label>
+        <select name="worker" id="worker">
+          <option value="false">Client</option>
+          <option value="true">Worker</option>
+        </select>
 
-          <label for="profile">Profile Image</label>
-          <input id="profile" name="image" type="file" accept="image/*" />
+        <label for="profile">Profile Image</label>
+        <input id="profile" name="image" type="file" accept="image/*" />
 
-          <button type="submit" id="finalSubmit">
-            <span>SIGN UP</span>
-            <i class="material-icons fa-spin hide">donut_large</i>
-          </button>
+        <button type="submit" id="finalSubmit">
+          <span>SIGN UP</span>
+          <i class="fa-spin hide">donut_large</i>
+        </button>
 
-          <div>
-            Already have an account! <a href="login.html">LOG IN</a>
-          </div>
-        </form>
-      </div>
+        <div>
+          Already have an account! <a href="login.html">LOG IN</a>
+        </div>
+      </form>
     </div>
   </div>
 
