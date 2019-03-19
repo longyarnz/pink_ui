@@ -11,8 +11,8 @@ function handlePaymentResponse(response) {
   const xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function () {
+    toggleButtonSpinner(button, false);
     if (this.readyState === 4 && this.status === 200) {
-      toggleButtonSpinner(button, false);
       const text = JSON.parse(this.responseText);
       if (text === 'Activation is Verified') {
         location.assign('/login.html');
