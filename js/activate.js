@@ -14,18 +14,21 @@ function handlePaymentResponse(response) {
     toggleButtonSpinner(button, false);
     if (this.readyState === 4 && this.status === 200) {
       const text = JSON.parse(this.responseText);
+      const p = document.querySelector('#signup-main > div > p');
+      p.style.fontWeight = '900';
+
       if (text === 'Activation is Verified') {
+        p.textContent = 'Account Activation Completed';
+        p.style.color = '#5cb85c';
         location.assign('/login.html');
       }
     }
-    else if (this.readyState === 4 && this.status === 400){
-      const p = document.querySelector('#signup-main > div > p');
+    else if (this.readyState === 4 && this.status === 400) {
       p.textContent = 'Account Activation Failed';
       p.style.color = '#d9534f';
-      p.style.fontWeight = '900';
     }
   };
-  
+
   xhttp.open("POST", URL, true);
   xhttp.setRequestHeader('Content-type', 'application/json');
   xhttp.send(JSON.stringify(response));
@@ -34,7 +37,7 @@ function handlePaymentResponse(response) {
 function handleActivationResponse(request) {
   const { id, user, message, status } = JSON.parse(request.responseText);
   localStorage.removeItem('isSubmitting');
-  
+
   if (message) location.assign('/login.html');
 
   else if (status) {
@@ -44,7 +47,7 @@ function handleActivationResponse(request) {
     p.style.fontWeight = '900';
     toggleButtonSpinner(button, false);
   }
-  
+
   else if (id && user) {
     const paystack = window.PaystackPop.setup({
       key: publicKey,
