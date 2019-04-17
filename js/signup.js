@@ -10,10 +10,14 @@ function validatePassword() {
 }
 
 function handleSubmitResponse(request) {
-  const { token } = JSON.parse(request.responseText);
+  const { id, message, token } = JSON.parse(request.responseText);
+
+  if (id || message) {
+    window.location.assign(`/activate.html?user=${id}`);
+    return;
+  }
   if (!token) return;
 
-  localStorage.removeItem('isSubmitting');
   localStorage.pinkettu = token;
   window.location.assign('/profile.html');
 }
@@ -24,34 +28,37 @@ function submitForm(e) {
 
   const button = e.target.children.finalSubmit;
   toggleButtonSpinner(button, true);
-  const appIsLive = window.location.hostname !== '127.0.0.1';
-  const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
   const URL = `${API}/auth/signup`;
   const [email, username, password, , location, worker, image] = e.target;
   const caption = Date.now().toString().slice(0, 10) + '.' + image.files[0].name;
-  const feedback = sendImageToDatabase(image, caption);
+  try {
+    const feedback = sendImageToDatabase(image, caption);
 
-  feedback.then(res => {
-    const xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      if (this.readyState === 4) {
-        handleSubmitResponse(this);
-        toggleButtonSpinner(button, false);
-      }
-    };
-    xhttp.open("POST", URL, true);
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send(
-      JSON.stringify({
-        username: username.value,
-        email: email.value,
-        password: password.value,
-        location: window.location.value,
-        worker: worker.value === 'true',
-        image: caption
-      })
-    );
-  });
+    feedback.then(res => {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState === 4) {
+          toggleButtonSpinner(button, false);
+          handleSubmitResponse(this);
+        }
+      };
+      xhttp.open("POST", URL, true);
+      xhttp.setRequestHeader("Content-type", "application/json");
+      xhttp.send(
+        JSON.stringify({
+          username: username.value,
+          email: email.value,
+          password: password.value,
+          location: window.location.value,
+          worker: worker.value === 'true',
+          image: caption
+        })
+      );
+    });
+  }
+  catch(err) {
+    toggleButtonSpinner(button, false);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', a => {

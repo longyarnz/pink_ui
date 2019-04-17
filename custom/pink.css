@@ -67,21 +67,13 @@ figcaption h4 {
 }
 
 figcaption > footer {
-  font-size: 100%;
+  font-size: 150%;
   font-weight: 300;
   display: inline-flex;
   align-items: center;
   color: #000;
-  justify-content: space-between;
   width: 100%;
   font-family: Qwigley;
-}
-
-figcaption > footer > span:last-of-type {
-  margin-left: auto;
-  color: gold;
-  display: flex;
-  align-items: center;
 }
 
 figcaption > footer i.material-icons {

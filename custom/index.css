@@ -82,6 +82,7 @@ div.cover > div.bigtext > h2 {
 div.cover > div.bigtext > h2 i,
 h3 > i {
   font-size: 45%;
+  margin: 0px 10px;
 }
 
 div.cover div.smalltext p {

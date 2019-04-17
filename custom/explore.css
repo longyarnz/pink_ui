@@ -22,7 +22,7 @@ header > div {
 
 @media screen and (max-width: 768px) {
   header > div:first-of-type {
-    justify-content: space-between;
+    /* justify-content: space-between; */
   }
 }
 
@@ -40,14 +40,6 @@ header > div > span {
 header > div > span:first-of-type {
   margin-right: 10px;
   color: #000;
-}
-
-header > div > span:last-of-type {
-  margin-right: 0;
-  color: gold;
-  display: inline-flex;
-  align-items: center;
-  height: 30px;
 }
 
 header > div.see-more {

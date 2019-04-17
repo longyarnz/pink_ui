@@ -19,20 +19,26 @@ function createAddMoreInput() {
 }
 
 async function deleteUserImage(src) {
-  let deletedImage = await fetch(`${API}/profile/image/${src}`, {
-    method: 'DELETE',
-    headers: {
-      'Authorization': localStorage.pinkettu
-    }
-  });
-  deletedImage = await deletedImage.json();
+  try {
+    let deletedImage = await fetch(`${API}/profile/image/${src}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': localStorage.pinkettu
+      }
+    });
+    deletedImage = await deletedImage.json();
 
-  if (deletedImage === true) {
-    window.location.assign('/profile.html');
+    if (deletedImage === true) {
+      window.location.assign('/profile.html');
+    }
+
+    else if (deletedImage.id) {
+      window.location.assign(`/activate.html?user=${deletedImage.id}`);
+    }
   }
-  
-  else if(deletedImage.id){
-    window.location.assign(`/activate.html?user=${deletedImage.id}`);
+  catch (err) {
+    console.log(err);
+    localStorage.removeItem('isSubmitting');
   }
 }
 
@@ -82,38 +88,44 @@ function createGalleryForWorker(profile) {
 }
 
 async function fetchUserProfile() {
-  let profile = await fetch(`${API}/profile`, {
-    headers: {
-      'Authorization': localStorage.pinkettu
+  try {
+    let profile = await fetch(`${API}/profile`, {
+      headers: {
+        'Authorization': localStorage.pinkettu
+      }
+    });
+    profile = await profile.json();
+
+    if (profile.message === 'User has not activated the account') {
+      window.location.assign(`/activate.html?user=${profile.id}`);
     }
-  });
-  profile = await profile.json();
 
-  if(profile.message === 'User has not activated the account'){
-    window.location.assign(`/activate.html?user=${profile.id}`);
+    else if (profile.message) {
+      localStorage.removeItem('pinkettu');
+      localStorage.removeItem('pinkettu_user_status');
+      localStorage.removeItem('pinkettu_user_id');
+      window.location.assign('/login.html');
+    }
+
+    else {
+      const form = document.querySelector('form');
+      const img = document.querySelector('.pic-wrapper img');
+      img.src = `https://images.pinkettu.com.ng/${profile.images[0]}`;
+      form[0].value = profile.username;
+      form[1].value = profile.location;
+      localStorage.setItem('pinkettu_user_status', profile.worker);
+      localStorage.setItem('pinkettu_user_id', profile.id);
+
+      if (profile.worker) createAddMoreInput();
+
+      if (profile.images.length > 1) createGalleryForWorker(profile);
+
+      form.addEventListener('submit', e => submitForm(e, profile.worker));
+    }
   }
-
-  else if (profile.message) {
-    localStorage.removeItem('pinkettu');
-    localStorage.removeItem('pinkettu_user_status');
-    localStorage.removeItem('pinkettu_user_id');
-    window.location.assign('/login.html');
-  }
-
-  else {
-    const form = document.querySelector('form');
-    const img = document.querySelector('.pic-wrapper img');
-    img.src = `https://images.pinkettu.com.ng/${profile.images[0]}`;
-    form[0].value = profile.username;
-    form[1].value = profile.location;
-    localStorage.setItem('pinkettu_user_status', profile.worker);
-    localStorage.setItem('pinkettu_user_id', profile.id);
-
-    if (profile.worker) createAddMoreInput();
-
-    if (profile.images.length > 1) createGalleryForWorker(profile);
-
-    form.addEventListener('submit', e => submitForm(e, profile.worker));
+  catch (err) {
+    console.log(err);
+    localStorage.removeItem('isSubmitting');
   }
 }
 

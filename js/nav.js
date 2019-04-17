@@ -54,9 +54,9 @@ const lists = [
     text: 'LOG IN'
   },
   {
-    href: '/transactions.html',
+    href: '/hookups.html',
     icon: 'attach_money',
-    text: 'TRANSACTIONS'
+    text: 'HOOK UPS'
   },
   {
     href: '/profile.html',
@@ -75,12 +75,15 @@ const title = document.title;
 
 const createListItem = (href, icon, text, style) => {
   if (localStorage.pinkettu && ['SIGN UP', 'LOG IN'].includes(text) ||
-    !localStorage.pinkettu && ['PROFILE', 'LOG OUT', 'TRANSACTIONS'].includes(text)) return null;
+    !localStorage.pinkettu && ['PROFILE', 'LOG OUT', 'HOOK UPS'].includes(text)) return null;
 
   const li = document.createElement('li');
   const anchor = document.createElement('a');
   anchor.setAttribute('href', href);
-  title.toLowerCase().slice(0, 2) === text.toLowerCase().slice(0, 2) && anchor.classList.add('active');
+
+  title.toLowerCase().slice(0, 3) 
+    === text.toLowerCase().slice(0, 3) && anchor.classList.add('active');
+
   const i = document.createElement('i');
   i.textContent = icon;
   style && i.classList.add(style);

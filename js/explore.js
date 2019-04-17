@@ -71,7 +71,7 @@ async function hookupViaPaystack(button, worker) {
       if (verify.message) throw '';
 
       else {
-        window.location.assign('/transactions.html');
+        window.location.assign('/hookups.html');
       }
     }
     catch (err) {
@@ -138,8 +138,6 @@ function createPinkProfile(profile, workerId) {
   const fourthSpan = document.createElement('span');
   fourthSpan.textContent = profile.location || 'Lagos Mainland';
 
-  const fifthSpan = rankProfile(profile.rank);
-
   let seeMore = '';
 
   if (localStorage.getItem('pinkettu_user_status') !== 'true') {
@@ -172,7 +170,7 @@ function createPinkProfile(profile, workerId) {
 
   thirdSpan.appendChild(i);
   h3.append(firstSpan);
-  div.append(thirdSpan, fourthSpan, fifthSpan);
+  div.append(thirdSpan, fourthSpan);
   header.append(div, seeMore);
 
   const parent = document.createElement('div');

@@ -46,19 +46,19 @@
         <input id="confirm" type="password" placeholder="Confirm Password" name="confirm_password" required />
 
         <label for="location">Location</label>
-        <select name="location" id="location">
+        <select name="location" id="location" required>
           <option value="Lagos Mainland">Lagos Mainland</option>
           <option value="Lagos Island">Lagos Island</option>
         </select>
 
         <label for="worker">Worker | Client</label>
-        <select name="worker" id="worker">
+        <select name="worker" id="worker" required>
           <option value="false">Client</option>
           <option value="true">Worker</option>
         </select>
 
         <label for="profile">Profile Image</label>
-        <input id="profile" name="image" type="file" accept="image/*" />
+        <input id="profile" name="image" type="file" accept="image/*" required />
 
         <button type="submit" id="finalSubmit">
           <span>SIGN UP</span>

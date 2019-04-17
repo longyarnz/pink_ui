@@ -1,6 +1,3 @@
-const appIsLive = window.location.hostname !== '127.0.0.1';
-const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
-const publicKey = 'pk_test_99aefb07d699525e9eed76be0cbe03fda6ad0ff6';
 const query = decodeURIComponent(window.location.search);
 const id = query.slice(6);
 let button;
@@ -53,6 +50,7 @@ function handleActivationResponse(request) {
   }
 
   else if (id && user) {
+    console.log(user);
     const paystack = window.PaystackPop.setup({
       key: publicKey,
       email: user.email,

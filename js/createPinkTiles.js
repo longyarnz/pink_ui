@@ -1,4 +1,4 @@
-function createPinkTiles(id, name, location, src, rank) {
+function createPinkTiles(id, name, location, src) {
   const figure = document.createElement('figure');
   const figcaption = document.createElement('figcaption');
 
@@ -19,10 +19,8 @@ function createPinkTiles(id, name, location, src, rank) {
   i.classList.add('material-icons');
   i.textContent = 'near_me';
 
-  const ratings = rankProfile(rank);
-
   anchor.appendChild(h4);
-  footer.append(i, span, ratings);
+  footer.append(i, span);
   figcaption.append(anchor, footer);
   figure.append(figcaption, img);
 

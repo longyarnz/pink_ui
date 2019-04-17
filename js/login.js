@@ -3,7 +3,7 @@ const form = document.getElementsByTagName("form")[0];
 function handleResponse(request) {
   const { id, message, token, text } = JSON.parse(request.responseText);
 
-  if(id && message){
+  if(id || message){
     window.location.assign(`/activate.html?user=${id}`);
     return;
   }
