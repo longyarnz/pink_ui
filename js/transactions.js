@@ -52,7 +52,7 @@ async function fetchUserHookups() {
   else {
     if(hookups.length === 0) return;
     
-    const tabs = hookups.map(hookup => createHookupTable(hookup));
+    const tabs = hookups.reverse().map(hookup => createHookupTable(hookup));
     const main = document.createElement('main');
     main.append(...tabs);
     document.querySelector('main').replaceWith(main);

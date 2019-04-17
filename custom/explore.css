@@ -20,6 +20,12 @@ header > div {
   padding: 10px 0px;
 }
 
+@media screen and (max-width: 768px) {
+  header > div:first-of-type {
+    justify-content: space-between;
+  }
+}
+
 header > div > span {
   font-family: Qwigley;
   justify-content: flex-start;
@@ -47,12 +53,12 @@ header > div > span:last-of-type {
 header > div.see-more {
   font-family: Montserrat, Arial;
   margin: auto;
-  display: block;
-  text-align: center;
+  display: flex;
+  justify-items: center;
   min-width: 200px;
-  padding: 20px;
   text-transform: uppercase;
   cursor: pointer;
+  height: 60px;
 }
 
 div.show-worker-images > div.gallery {

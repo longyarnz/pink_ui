@@ -55,25 +55,30 @@ async function hookupViaPaystack(button, worker) {
   }
 
   async function verifyPayment(response) {
-    response.worker = worker;
+    response.id = worker;
     const URL = `${API}/transaction/verify/hookup`;
-    let verify = await fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Authorization': localStorage.pinkettu,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(response)
-    });
-    verify = await verify.json();
+    try {
+      let verify = await fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Authorization': localStorage.pinkettu,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(response)
+      });
+      verify = await verify.json();
 
-    if (verify.message) throw '';
+      if (verify.message) throw '';
 
-    else {
-      window.location.assign('/transactions.html');
-      verify && toggleButtonSpinner(button, false);
+      else {
+        window.location.assign('/transactions.html');
+      }
     }
-  };
+    catch (err) {
+      console.log(err);
+      toggleButtonSpinner(button, false);
+    }
+  }
 
   async function initiateTransaction(hookup) {
     const { id } = hookup;
@@ -101,7 +106,11 @@ async function hookupViaPaystack(button, worker) {
           amount: 1000000,
           ref: id,
           callback: response => verifyPayment(response),
-          onClose: () => console.log('Payment Closed'),
+          onClose: () => {
+            console.log('Payment Closed');
+            const button = document.querySelector('section.container > div > header > div.see-more');
+            toggleButtonSpinner(button, false);
+          },
           currency: 'NGN'
         });
         paystack.openIframe();
@@ -135,11 +144,16 @@ function createPinkProfile(profile, workerId) {
 
   if (localStorage.getItem('pinkettu_user_status') !== 'true') {
     seeMore = document.createElement('div');
+    seeMore.innerHTML = `
+      <b>HOOK UP FOR ₦10, 000</b>
+      <i class="fa-spin hide">donut_large</i>
+    `;
     seeMore.classList.add('see-more');
-    seeMore.textContent = 'HOOK UP FOR ₦10, 000';
+
     seeMore.onclick = () => {
-      if (localStorage.getItem('pinkettu'))
+      if (localStorage.getItem('pinkettu')) {
         hookupViaPaystack(seeMore, workerId);
+      }
 
       else {
         window.location.assign(`/login.html${query}`);
