@@ -20,7 +20,7 @@ function createHookupTable(hookup) {
     thirdSpan.classList.add('rank');
     const fourthSpan = document.createElement('span');
     fourthSpan.textContent = 'Rank Your Pink Xperience';
-    const fifthSpan = rankProfile(hookup.rank);
+    const fifthSpan = rankProfile(hookup.rank, rank => console.log(rank));
     thirdSpan.append(fourthSpan, fifthSpan);
   }
 
@@ -34,7 +34,7 @@ function createHookupTable(hookup) {
 }
 
 async function fetchUserHookups() {
-  const appIsLive = location.hostname !== '127.0.0.1';
+  const appIsLive = window.location.hostname !== '127.0.0.1';
   const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
   let hookups = await fetch(`${API}/hookup`, {
     headers: {
@@ -46,9 +46,12 @@ async function fetchUserHookups() {
   if (hookups.message) {
     localStorage.removeItem('pinkettu');
     localStorage.removeItem('pinkettu_user_status');
-    location.assign('/login.html');
+    window.location.assign('/login.html');
   }
+
   else {
+    if(hookups.length === 0) return;
+    
     const tabs = hookups.map(hookup => createHookupTable(hookup));
     const main = document.createElement('main');
     main.append(...tabs);
@@ -61,5 +64,6 @@ if (localStorage.pinkettu) {
 }
 
 else {
-  location.assign('/login.html');
+  localStorage.removeItem('pinkettu');
+  window.location.assign('/login.html');
 }

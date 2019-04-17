@@ -27,10 +27,9 @@ function createPinkTiles(id, name, location, src, rank) {
   figure.append(figcaption, img);
 
   figure.addEventListener('click', () => {
-    window.location.assign(`/explore.html?pink=${id}`);
+    window.window.location.assign(`/explore.html?pink=${id}`);
   });
 
   const div = document.querySelector('div.gallery');
-  const button = document.querySelector('div.see-more');
-  div.insertBefore(figure, button);
+  div.appendChild(figure);
 }

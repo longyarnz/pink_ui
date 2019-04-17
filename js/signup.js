@@ -15,7 +15,7 @@ function handleSubmitResponse(request) {
 
   localStorage.removeItem('isSubmitting');
   localStorage.pinkettu = token;
-  location.assign('/profile.html');
+  window.location.assign('/profile.html');
 }
 
 function submitForm(e) {
@@ -24,7 +24,7 @@ function submitForm(e) {
 
   const button = e.target.children.finalSubmit;
   toggleButtonSpinner(button, true);
-  const appIsLive = location.hostname !== '127.0.0.1';
+  const appIsLive = window.location.hostname !== '127.0.0.1';
   const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
   const URL = `${API}/auth/signup`;
   const [email, username, password, , location, worker, image] = e.target;
@@ -46,7 +46,7 @@ function submitForm(e) {
         username: username.value,
         email: email.value,
         password: password.value,
-        location: location.value,
+        location: window.location.value,
         worker: worker.value === 'true',
         image: caption
       })

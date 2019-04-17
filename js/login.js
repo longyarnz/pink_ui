@@ -1,13 +1,10 @@
 const form = document.getElementsByTagName("form")[0];
 
-const appIsLive = location.hostname !== '127.0.0.1';
-const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
-
 function handleResponse(request) {
   const { id, message, token, text } = JSON.parse(request.responseText);
 
   if(id && message){
-    location.assign(`/activate.html?user=${id}`);
+    window.location.assign(`/activate.html?user=${id}`);
     return;
   }
   
@@ -20,7 +17,14 @@ function handleResponse(request) {
   
   localStorage.removeItem('isSubmitting');
   localStorage.setItem('pinkettu', token);
-  location.assign('/profile.html');
+
+  if(window.location.search) {
+    const query = decodeURIComponent(window.location.search);
+    const type = query.slice(1, 5);
+    type === 'pink' ? window.location.assign(`/explore.html${query}`)
+      : window.location.assign('/profile.html'); 
+  }
+  else window.location.assign('/profile.html');
 }
 
 form.addEventListener('submit', e => {

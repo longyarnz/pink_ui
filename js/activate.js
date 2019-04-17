@@ -1,13 +1,13 @@
-const appIsLive = location.hostname !== '127.0.0.1';
+const appIsLive = window.location.hostname !== '127.0.0.1';
 const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
 const publicKey = 'pk_test_99aefb07d699525e9eed76be0cbe03fda6ad0ff6';
-const query = decodeURIComponent(location.search);
+const query = decodeURIComponent(window.location.search);
 const id = query.slice(6);
 let button;
 
 function handlePaymentResponse(response) {
   response.id = id;
-  const URL = `${API}/transaction/verify`;
+  const URL = `${API}/transaction/verify/account`;
   const xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function () {
@@ -17,10 +17,11 @@ function handlePaymentResponse(response) {
       const p = document.querySelector('#signup-main > div > p');
       p.style.fontWeight = '900';
 
-      if (text === 'Activation is Verified') {
+      if (text === 'Transaction is Verified') {
         p.textContent = 'Account Activation Completed';
         p.style.color = '#5cb85c';
-        location.assign('/login.html');
+        localStorage.removeItem('pinkettu');
+        window.location.assign('/login.html');
       }
     }
     else if (this.readyState === 4 && this.status === 400) {
@@ -38,7 +39,10 @@ function handleActivationResponse(request) {
   const { id, user, message, status } = JSON.parse(request.responseText);
   localStorage.removeItem('isSubmitting');
 
-  if (message) location.assign('/login.html');
+  if (message) {
+    localStorage.removeItem('pinkettu');
+    window.location.assign('/login.html');
+  }
 
   else if (status) {
     const p = document.querySelector('#signup-main > div > p');

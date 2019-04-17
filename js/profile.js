@@ -1,5 +1,4 @@
-const appIsLive = location.hostname !== '127.0.0.1';
-const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
+const query = decodeURIComponent(window.location.search);
 
 function createAddMoreInput() {
   const form = document.querySelector('form');
@@ -20,7 +19,7 @@ function createAddMoreInput() {
 }
 
 async function deleteUserImage(src) {
-  let deletedImage = await fetch(`${API}/profile/deletedImage/${src}`, {
+  let deletedImage = await fetch(`${API}/profile/image/${src}`, {
     method: 'DELETE',
     headers: {
       'Authorization': localStorage.pinkettu
@@ -29,10 +28,11 @@ async function deleteUserImage(src) {
   deletedImage = await deletedImage.json();
 
   if (deletedImage === true) {
-    location.assign('/profile.html');
+    window.location.assign('/profile.html');
   }
+  
   else if(deletedImage.id){
-    location.assign(`/activate.html?user=${deletedImage.id}`);
+    window.location.assign(`/activate.html?user=${deletedImage.id}`);
   }
 }
 
@@ -89,14 +89,17 @@ async function fetchUserProfile() {
   });
   profile = await profile.json();
 
-  if(profile.id && profile.message){
-    location.assign(`/activate.html?user=${profile.id}`);
+  if(profile.message === 'User has not activated the account'){
+    window.location.assign(`/activate.html?user=${profile.id}`);
   }
+
   else if (profile.message) {
     localStorage.removeItem('pinkettu');
     localStorage.removeItem('pinkettu_user_status');
-    location.assign('/login.html');
+    localStorage.removeItem('pinkettu_user_id');
+    window.location.assign('/login.html');
   }
+
   else {
     const form = document.querySelector('form');
     const img = document.querySelector('.pic-wrapper img');
@@ -104,6 +107,7 @@ async function fetchUserProfile() {
     form[0].value = profile.username;
     form[1].value = profile.location;
     localStorage.setItem('pinkettu_user_status', profile.worker);
+    localStorage.setItem('pinkettu_user_id', profile.id);
 
     if (profile.worker) createAddMoreInput();
 
@@ -113,10 +117,17 @@ async function fetchUserProfile() {
   }
 }
 
-if (localStorage.pinkettu) {
+if (localStorage.pinkettu && query) {
+  console.log(1);
+  window.location.assign(`/explore.html${query}`);
+}
+
+else if (localStorage.pinkettu) {
+  console.log(2);
   fetchUserProfile();
 }
 
 else {
-  location.assign('/login.html');
+  localStorage.removeItem('pinkettu');
+  window.location.assign('/login.html');
 }

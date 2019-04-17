@@ -1,12 +1,13 @@
 function handleSubmitResponse(request) {
   const { message } = JSON.parse(request.responseText);
   if (message === 'Invalid User') {
-    location.assign('/login.html');
+    localStorage.removeItem('pinkettu');
+    window.location.assign('/login.html');
     return;
   }
 
   localStorage.removeItem('isSubmitting');
-  location.assign('/profile.html');
+  window.location.assign('/profile.html');
 }
 
 function submitForm(e, worker) {
@@ -16,7 +17,7 @@ function submitForm(e, worker) {
   const button = e.target.children.finalSubmit;
   toggleButtonSpinner(button, true);
 
-  const appIsLive = window.location.hostname !== '127.0.0.1';
+  const appIsLive = window.window.location.hostname !== '127.0.0.1';
   const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
   const URL = `${API}/profile`;
 
@@ -25,7 +26,7 @@ function submitForm(e, worker) {
 
   body = {
     username: name.value,
-    location: location.value,
+    location: window.location.value,
     image: [],
     more: []
   }

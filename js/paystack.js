@@ -524,7 +524,7 @@
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(t)
   }
   function getHref() {
-    var t = window.location.href;
+    var t = window.window.location.href;
     return t && 500 < t.length && (t = t.split("?")[0]),
       t
   }

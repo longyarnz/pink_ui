@@ -7,7 +7,8 @@ div.show-worker-images > div > div.gallery {
   min-height: auto;
 }
 
-div.show-worker-images h3, div.onboarding > h3 {
+div.show-worker-images h3,
+div.onboarding > h3 {
   font-weight: 900;
   font-family: Qwigley;
   font-size: 350%;
@@ -33,7 +34,7 @@ div.see-more a {
   font-weight: 700;
   font-size: 90%;
   min-width: 150px;
-  transition: all .15s ease;
+  transition: all 0.15s ease;
   box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.4);
 }
 
@@ -56,7 +57,7 @@ div.cover {
   margin: 0px;
   display: flex;
   flex-direction: column;
-  justify-content: center;  
+  justify-content: center;
 }
 
 div.cover div.bigtext {
@@ -78,7 +79,8 @@ div.cover > div.bigtext > h2 {
   margin-bottom: 0px;
 }
 
-div.cover > div.bigtext > h2 i, h3 > i {
+div.cover > div.bigtext > h2 i,
+h3 > i {
   font-size: 45%;
 }
 
@@ -92,18 +94,19 @@ div.cover div.smalltext p {
   text-align: center;
 }
 
-div.onboarding{
+div.onboarding {
   width: 100%;
   min-height: 400px;
-  background-color: #f9f9f9;
+  background-color: #fcfcfc;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-bottom: 80px;
 }
 
 div.onboarding > h3 {
   text-align: center;
-  color: #000;
+  color: #ff6699;
 }
 
 div.onboarding > div {
@@ -112,27 +115,34 @@ div.onboarding > div {
   align-items: flex-start;
 }
 
-div.onboarding div.step{
+div.onboarding div.step {
   flex: 1;
   min-height: 100px;
   text-align: center;
   font-family: Montserrat;
+  margin: 0px 10px;
+  padding: 10px;
+  border-radius: 50px;
+  color: #fff;
+  background-color: #ff6699;
+  min-height: 130px;
 }
 
-div.step h4{
+div.step h4 {
   font-family: Montserrat;
   font-size: 100%;
   font-weight: 900;
-  /* margin-top: 0px; */
+  text-emphasis-style: dot;
+  text-emphasis-position: under;
 }
 
-div.step span{
+div.step span {
   /* background: red; */
   line-height: 1.5;
   font-weight: 300;
 }
 
-div.onboarding div.step span{
+div.onboarding div.step span {
   font-weight: 300;
 }
 
@@ -142,7 +152,8 @@ div.onboarding div.step span{
     height: auto;
   }
 
-  div.show-worker-images h3, div.onboarding > h3 {
+  div.show-worker-images h3,
+  div.onboarding > h3 {
     font-weight: 200;
     font-size: 220%;
   }
@@ -164,11 +175,11 @@ div.onboarding div.step span{
     font-size: 140%;
   }
 
-  div.onboarding{
+  div.onboarding {
     min-height: 550px;
   }
 
-  div.onboarding > div{
+  div.onboarding > div {
     flex-direction: column;
     align-items: center;
   }

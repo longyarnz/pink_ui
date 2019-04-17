@@ -1,3 +1,7 @@
+const appIsLive = window.location.hostname !== '127.0.0.1';
+const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
+const publicKey = 'pk_test_99aefb07d699525e9eed76be0cbe03fda6ad0ff6';
+
 const toggleNavMenu = () => {
   const menu = document.querySelector('section.nav-menu');
   menu.classList.toggle('show');
@@ -6,18 +10,18 @@ const toggleNavMenu = () => {
 
 const logOut = (e) => {
   e.preventDefault();
-  const appIsLive = location.hostname !== '127.0.0.1';
-  const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
   const URL = `${API}/auth/logout`;
   const xhttp = new XMLHttpRequest();
-  
+
   xhttp.onreadystatechange = function () {
     if (this.readyState === 4) {
       localStorage.removeItem('pinkettu');
-      location.assign('/');
+      localStorage.removeItem('pinkettu_user_status');
+      localStorage.removeItem('pinkettu_user_id');
+      window.location.assign('/');
     }
   };
-  
+
   xhttp.open('GET', URL, true);
   xhttp.setRequestHeader("Authorization", localStorage.pinkettu);
   xhttp.send();
@@ -70,7 +74,7 @@ const lists = [
 const title = document.title;
 
 const createListItem = (href, icon, text, style) => {
-  if(localStorage.pinkettu && ['SIGN UP', 'LOG IN'].includes(text) || 
+  if (localStorage.pinkettu && ['SIGN UP', 'LOG IN'].includes(text) ||
     !localStorage.pinkettu && ['PROFILE', 'LOG OUT', 'TRANSACTIONS'].includes(text)) return null;
 
   const li = document.createElement('li');

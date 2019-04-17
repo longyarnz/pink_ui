@@ -1,12 +1,119 @@
-if (location.search !== '') {
+const query = decodeURIComponent(window.location.search);
+
+if (window.location.search !== '') {
   document.addEventListener('DOMContentLoaded', loadUserProfile);
 }
 
 else {
-  location.assign('/pinks');
+  window.location.assign('/pinks.html');
 }
 
-function createPinkProfile(profile) {
+async function hookupViaPaystack(button, worker) {
+  if (localStorage.isSubmitting === 'true') return;
+
+  toggleButtonSpinner(button, true);
+  let URL = `${API}/hookup`;
+  const client = localStorage.getItem('pinkettu_user_id');
+
+  try {
+    await createHookUp();
+  }
+
+  catch (err) {
+    const text = button.textContent;
+    button.textContent = 'Network Error';
+    setTimeout(() => {
+      toggleButtonSpinner(button, false);
+      button.textContent = text;
+    }, 5000);
+  }
+
+  async function createHookUp() {
+    let hookup = await fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': localStorage.pinkettu,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ worker })
+    });
+
+    hookup = await hookup.json();
+
+    if (hookup.message === 'Invalid User') {
+      window.location.assign(`/login.html${query}`);
+      localStorage.removeItem('pinkettu');
+    }
+
+    else if (hookup.message) {
+      throw '';
+    }
+
+    else {
+      await initiateTransaction(hookup);
+    }
+  }
+
+  async function verifyPayment(response) {
+    response.worker = worker;
+    const URL = `${API}/transaction/verify/hookup`;
+    let verify = await fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': localStorage.pinkettu,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(response)
+    });
+    verify = await verify.json();
+
+    if (verify.message) throw '';
+
+    else {
+      window.location.assign('/transactions.html');
+      verify && toggleButtonSpinner(button, false);
+    }
+  };
+
+  async function initiateTransaction(hookup) {
+    const { id } = hookup;
+    const URL = `${API}/transaction`;
+    let transaction = await fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': localStorage.pinkettu,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        amount: 10000, client, hookup: id, purpose: 'Hook Up'
+      })
+    });
+    transaction = await transaction.json();
+    if (transaction.message) {
+      throw '';
+    }
+
+    else {
+      try {
+        const paystack = window.PaystackPop.setup({
+          key: publicKey,
+          email: transaction.user.email,
+          amount: 1000000,
+          ref: id,
+          callback: response => verifyPayment(response),
+          onClose: () => console.log('Payment Closed'),
+          currency: 'NGN'
+        });
+        paystack.openIframe();
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+  }
+}
+
+function createPinkProfile(profile, workerId) {
   const h3 = document.createElement('h3');
   const firstSpan = document.createElement('span');
   firstSpan.textContent = profile.username;
@@ -24,9 +131,22 @@ function createPinkProfile(profile) {
 
   const fifthSpan = rankProfile(profile.rank);
 
-  const seeMore = document.createElement('div');
-  seeMore.classList.add('see-more');
-  seeMore.textContent = 'HOOK UP FOR ₦10, 000';
+  let seeMore = '';
+
+  if (localStorage.getItem('pinkettu_user_status') !== 'true') {
+    seeMore = document.createElement('div');
+    seeMore.classList.add('see-more');
+    seeMore.textContent = 'HOOK UP FOR ₦10, 000';
+    seeMore.onclick = () => {
+      if (localStorage.getItem('pinkettu'))
+        hookupViaPaystack(seeMore, workerId);
+
+      else {
+        window.location.assign(`/login.html${query}`);
+        localStorage.removeItem('pinkettu');
+      }
+    }
+  }
 
   const gallery = document.createElement('div');
   gallery.classList.add('gallery');
@@ -51,7 +171,6 @@ function createPinkProfile(profile) {
 
 function loadUserProfile() {
   let _profile = null;
-  const query = decodeURIComponent(location.search);
   const id = query.slice(6);
 
   if (localStorage.pinkettu_pinks) {
@@ -59,13 +178,13 @@ function loadUserProfile() {
     _profile = profiles.find(i => i._id.toString() === id);
   }
 
-  if(_profile === null) {
+  if (_profile === null) {
     fetchAPink(id, ([profile]) => {
       if (profile.username || profile.rank || profile.images) {
         _profile = profile;
       }
     });
   }
-  
-  createPinkProfile(_profile);
+
+  createPinkProfile(_profile, id);
 }

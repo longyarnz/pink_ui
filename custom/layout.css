@@ -10,6 +10,26 @@
   }
 }
 
+@keyframes fade {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes swipe {
+  0% {
+    left: -120%;
+  }
+
+  60% {
+    left: 120%;
+  }
+}
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -35,6 +55,10 @@
 .fa-spin {
   -webkit-animation: spin .45s infinite linear;
   animation: spin .45s infinite linear;
+}
+
+.hide {
+  display: none !important;
 }
 
 *{
@@ -67,6 +91,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
 body > header {
@@ -225,17 +250,34 @@ section.nav-menu {
   .container {
     width: 750px;
   }
+
+  nav:not(.nav-menu) ul li a {
+    padding: 8px 10px;
+  }
+
+  nav:not(.nav-menu) ul li a {
+    margin-left: 0px;
+    font-size: 60%;
+  }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1199px) {
   .container {
     width: 970px;
+  }
+  
+  nav:not(.nav-menu) ul li a {
+    font-size: 80%;
   }
 }
 
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
+  }
+
+  nav:not(.nav-menu) ul li a {
+    font-size: 80%;
   }
 }
 
@@ -354,4 +396,53 @@ section.nav-menu {
   section.nav-menu ul li a i {
     font-size: 140%;
   }
+}
+
+.placeholder {
+  width: 100%;
+  background: #e9e9e9;
+  margin-bottom: 20px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+figure.placeholder-container{
+  box-shadow: none !important;
+  justify-self: space-around;
+  flex: 1;
+  background-color: #fff;
+}
+
+div.placeholder {
+  margin-top: 50px;
+  height: 150px;
+}
+
+div.placeholder:first-child {
+  margin-top: 0px;
+}
+
+span.placeholder {
+  display: block;
+  height: 20px;
+}
+
+.placeholder::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  width: 150%;
+  height: 150%;
+  background: linear-gradient(90deg, transparent, #e9e9e9 10%, #f4f4f4, #e9e9e9 90%, transparent);
+  left: 100%;
+  animation: swipe 1.5s ease infinite forwards;
+}
+
+span.placeholder:nth-of-type(even)::after {
+  animation-delay: .4s;
+}
+
+span.placeholder:nth-of-type(odd)::after {
+  animation-delay: .2s;
 }
