@@ -17,22 +17,21 @@ function submitForm(e, worker) {
   const button = e.target.children.finalSubmit;
   toggleButtonSpinner(button, true);
 
-  const appIsLive = window.window.location.hostname !== '127.0.0.1';
-  const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
   const URL = `${API}/profile`;
 
   let caption, feedback, body, files = []; 
-  const [name, location, image, more] = e.target;
+  const [name, phone, location, image, more] = e.target;
 
   body = {
     username: name.value,
-    location: window.location.value,
+    phone: phone.value,
+    location: location.value,
     image: [],
     more: []
   }
 
   function storeImage(image, cache) {
-    const rand = Math.floor(Math.random() * 100000);
+    const rand = Math.floor(Math.random() * 1000);
     const sanitizedName = name.value.replace(/\s/i, '.');
     const ext = image.name.split('.').reverse()[0];
     caption = `${rand}.${sanitizedName}.${ext}`;
