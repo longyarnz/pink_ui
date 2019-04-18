@@ -136,7 +136,6 @@ if (localStorage.pinkettu && query) {
 }
 
 else if (localStorage.pinkettu) {
-  console.log(2);
   fetchUserProfile();
 }
 

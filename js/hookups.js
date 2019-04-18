@@ -16,7 +16,7 @@ function createHookupTable(hookup) {
   hookup.completed && button.classList.add('completed');
   button.style.flex = userIsAWorker ? 1 : null;
   button.textContent = hookup.completed ? 'completed' : 'pending';
-  button.onclick = () => completeHookup(hookup._id, button);
+  button.onclick = !userIsAWorker ? () => completeHookup(hookup._id, button) : null;
 
   div.append(firstSpan, secondSpan, button);
   return div;
@@ -34,6 +34,11 @@ async function completeHookup(id, button) {
     });
     hookup = await hookup.json();
     hookup && toggleButtonSpinner(button, false);
+
+    if(hookup.message === 'Invalid User') {
+      window.location.assign('/login.html');
+      return;
+    }
 
     if (hookup.message) {
       button.textContent = 'pending';

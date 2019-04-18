@@ -43,6 +43,7 @@ async function hookupViaPaystack(button, worker) {
     if (hookup.message === 'Invalid User') {
       window.location.assign(`/login.html${query}`);
       localStorage.removeItem('pinkettu');
+      localStorage.removeItem('isSubmitting');
     }
 
     else if (hookup.message) {
@@ -53,8 +54,8 @@ async function hookupViaPaystack(button, worker) {
       await initiateTransaction(hookup);
     }
   }
-
-  async function verifyPayment(response) {
+  
+  async function verifyPayment(response, button) {
     response.id = worker;
     const URL = `${API}/transaction/verify/hookup`;
     try {
@@ -66,10 +67,9 @@ async function hookupViaPaystack(button, worker) {
         },
         body: JSON.stringify(response)
       });
-      verify = await verify.json();
-
-      if (verify.message) throw '';
-
+      
+      if (verify.status >= 400) throw '';
+      
       else {
         window.location.assign('/hookups.html');
       }
@@ -79,45 +79,47 @@ async function hookupViaPaystack(button, worker) {
       toggleButtonSpinner(button, false);
     }
   }
-
+  
   async function initiateTransaction(hookup) {
     const { id } = hookup;
     const URL = `${API}/transaction`;
-    let transaction = await fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Authorization': localStorage.pinkettu,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        amount: 10000, client, hookup: id, purpose: 'Hook Up'
-      })
-    });
-    transaction = await transaction.json();
-    if (transaction.message) {
-      throw '';
-    }
+    const button = document.querySelector('section.container > div > header > div.see-more');
+    try {
+      let transaction = await fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Authorization': localStorage.pinkettu,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: 10000, client, hookup: id, purpose: 'Hook Up'
+        })
+      });
 
-    else {
-      try {
+      if (transaction.status >= 400) {
+        throw '';
+      }
+
+      else {
+        transaction = await transaction.json();
         const paystack = window.PaystackPop.setup({
           key: publicKey,
           email: transaction.user.email,
           amount: 1000000,
           ref: id,
-          callback: response => verifyPayment(response),
+          callback: response => verifyPayment(response, button),
           onClose: () => {
             console.log('Payment Closed');
-            const button = document.querySelector('section.container > div > header > div.see-more');
             toggleButtonSpinner(button, false);
           },
           currency: 'NGN'
         });
         paystack.openIframe();
       }
-      catch (err) {
-        console.log(err);
-      }
+    }
+    catch (err) {
+      console.log(err);
+      toggleButtonSpinner(button, false);
     }
   }
 }
