@@ -34,8 +34,8 @@ function submitForm(e) {
   console.log(phone.value);
 
   try {
-    // const feedback = sendImageToDatabase(image, caption);
-    // feedback.then(() => {
+    const feedback = sendImageToDatabase(image, caption);
+    feedback.then(() => {
       const xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4) {
@@ -80,7 +80,7 @@ function submitForm(e) {
           image: caption
         })
       );
-    // });
+    });
   }
   catch (err) {
     toggleButtonSpinner(button, false);
