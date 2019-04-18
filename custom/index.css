@@ -102,7 +102,7 @@ div.onboarding {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
 }
 
 div.onboarding > h3 {
@@ -129,6 +129,13 @@ div.onboarding div.step {
   min-height: 130px;
 }
 
+@media screen and (max-width: 768px) {
+  div.onboarding div.step {
+    margin: 10px auto;
+    min-width: 245px;
+  }
+}
+
 div.step h4 {
   font-family: Montserrat;
   font-size: 100%;
@@ -138,7 +145,6 @@ div.step h4 {
 }
 
 div.step span {
-  /* background: red; */
   line-height: 1.5;
   font-weight: 300;
 }

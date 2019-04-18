@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', a => {
       document.querySelectorAll('figure.placeholder-container').forEach(e => e.remove());
       document.querySelector('div.see-more').classList.remove('hide');
       profiles.forEach(
-        i => createPinkTiles(i._id, i.username, i.location, i.images.shift(), i.rank)
+        (i, o) => o < 4 && createPinkTiles(i._id, i.username, i.location, i.images.shift(), i.rank)
       );
     }
   });

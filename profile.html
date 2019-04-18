@@ -15,7 +15,7 @@
     <div class="container">
       <div id="logo-cont">
         <a href="/">
-          <img src="images\pinkettu.png" />
+          <img src="images/pinkettu.png" />
         </a>
       </div>
       <ul></ul>
@@ -29,10 +29,15 @@
         <img src="" />
       </div>
       <div class="info-wrapper">
-        <h3>PROFILE</h3>
+        <h3>
+            <i>local_florist</i> Profile <i>local_florist</i>
+        </h3>
         <form method="POST" name="form" class="form" enctype="multipart/form-data">
           <label for="user">Username</label>
-          <input id="user" name="username" type="text" placeholder="Username" value="Lekan" required />
+          <input id="user" name="username" type="text" placeholder="Username" value="" required />
+
+          <label for="phone">Phone Number</label>
+          <input id="phone" name="phone" type="number" placeholder="Phone Number" pattern="^0(8|(7|9)(?!1))(0(?!0)|1)[0-9]{8}$" value="" required />
 
           <label for="locate">Location</label>
           <select name="locate" id="locate" required>

@@ -1,5 +1,7 @@
 const appIsLive = window.location.hostname !== '127.0.0.1';
-const API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
+const appIsRemote = window.location.hostname.slice(0, 3) === '192';
+let API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
+API = appIsRemote ? `http://${window.location.hostname}:3001` : API;
 const publicKey = 'pk_test_99aefb07d699525e9eed76be0cbe03fda6ad0ff6';
 
 const toggleNavMenu = () => {
@@ -18,12 +20,13 @@ const logOut = (e) => {
       localStorage.removeItem('pinkettu');
       localStorage.removeItem('pinkettu_user_status');
       localStorage.removeItem('pinkettu_user_id');
+      localStorage.removeItem('isSubmitting');
       window.location.assign('/');
     }
   };
 
   xhttp.open('GET', URL, true);
-  xhttp.setRequestHeader("Authorization", localStorage.pinkettu);
+  xhttp.setRequestHeader('Authorization', localStorage.pinkettu);
   xhttp.send();
 }
 

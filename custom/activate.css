@@ -22,6 +22,10 @@
 }
 
 #signup-main > div > main > button {
+  margin: auto;
+  border: none;
+  min-height: 50px;
+  cursor: pointer;
   display: flex;
   justify-content: space-around;
   align-items: center;

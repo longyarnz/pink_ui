@@ -112,7 +112,8 @@ async function fetchUserProfile() {
       const img = document.querySelector('.pic-wrapper img');
       img.src = `https://images.pinkettu.com.ng/${profile.images[0]}`;
       form[0].value = profile.username;
-      form[1].value = profile.location;
+      form[1].value = profile.phone;
+      form[2].value = profile.location;
       localStorage.setItem('pinkettu_user_status', profile.worker);
       localStorage.setItem('pinkettu_user_id', profile.id);
 

@@ -23,7 +23,7 @@ a p {
 
 div.profile-wrapper {
   width: 100%;
-  height: calc(100vh - 186px);
+  min-height: calc(100vh - 186px);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -65,10 +65,15 @@ div.info-wrapper form {
 }
 
 div.info-wrapper h3 {
-  font-weight: 900;
+  font-weight: bold;
   font-family: Qwigley;
-  font-size: 200%;
+  font-size: 300%;
   color: #ff6699;
+  margin: 10px 0px 30px;
+}
+
+div.info-wrapper h3 i {
+  margin: 0px 10px;
 }
 
 div.info-wrapper form input,
@@ -255,6 +260,7 @@ div.show-worker-images div.gallery div button i{
   div.info-wrapper form button {
     display: block;
     width: auto;
+    margin: auto;
   }
 
   div.show-worker-images h3 {

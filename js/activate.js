@@ -8,22 +8,19 @@ function handlePaymentResponse(response) {
   const xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function () {
-    toggleButtonSpinner(button, false);
-    if (this.readyState === 4 && this.status === 200) {
-      const text = JSON.parse(this.responseText);
-      const p = document.querySelector('#signup-main > div > p');
+    const p = document.querySelector('#signup-main > div > p');
+    if (this.readyState === 4 && this.status < 400) {
       p.style.fontWeight = '900';
-
-      if (text === 'Transaction is Verified') {
-        p.textContent = 'Account Activation Completed';
-        p.style.color = '#5cb85c';
-        localStorage.removeItem('pinkettu');
-        window.location.assign('/login.html');
-      }
+      p.textContent = 'Account Activation Completed';
+      p.style.color = '#5cb85c';
+      localStorage.removeItem('pinkettu');
+      window.location.assign('/login.html');
     }
-    else if (this.readyState === 4 && this.status === 400) {
-      p.textContent = 'Account Activation Failed';
+    else if (this.readyState === 4 && this.status >= 400) {
+      const text = JSON.parse(this.responseText);
+      p.textContent = text;
       p.style.color = '#d9534f';
+      toggleButtonSpinner(button, false);
     }
   };
 
@@ -32,16 +29,11 @@ function handlePaymentResponse(response) {
   xhttp.send(JSON.stringify(response));
 }
 
-function handleActivationResponse(request) {
-  const { id, user, message, status } = JSON.parse(request.responseText);
+function handleActivationResponse(request, button) {
+  const { id, user, status } = JSON.parse(request.responseText);
   localStorage.removeItem('isSubmitting');
 
-  if (message) {
-    localStorage.removeItem('pinkettu');
-    window.location.assign('/login.html');
-  }
-
-  else if (status) {
+  if (status) {
     const p = document.querySelector('#signup-main > div > p');
     p.textContent = status;
     p.style.color = '#5cb85c';
@@ -50,14 +42,14 @@ function handleActivationResponse(request) {
   }
 
   else if (id && user) {
-    console.log(user);
+    // handlePaymentResponse({ reference: id, id: user._id });
     const paystack = window.PaystackPop.setup({
       key: publicKey,
       email: user.email,
       amount: 100000,
       ref: id,
       callback: handlePaymentResponse,
-      onClose: () => console.log('Payment Closed'),
+      onClose: () => toggleButtonSpinner(button, false),
       currency: 'NGN'
     });
     paystack.openIframe();
@@ -74,7 +66,23 @@ function activateViaPaystack() {
 
   xhttp.onreadystatechange = function () {
     if (this.readyState === 4) {
-      handleActivationResponse(this);
+      if (this.status >= 400) {
+        const text = JSON.parse(this.responseText);
+        const p = document.querySelector('#signup-main > div > p');
+        const { color, fontWeight } = p.style;
+        p.textContent = text;
+        p.style.color = '#d9534f';
+        p.style.fontWeight = '900';
+        setTimeout(() => {
+          p.textContent = 'Activate Your Account';
+          p.style.color = color;
+          p.style.fontWeight = fontWeight;
+        }, 5000);
+        toggleButtonSpinner(button, false);
+      }
+      else {
+        handleActivationResponse(this, button);
+      }
     }
   };
 

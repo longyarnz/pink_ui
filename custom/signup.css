@@ -11,6 +11,10 @@
   margin-bottom: 0px;
 }
 
+#signup-main > div > h2 > i {
+  margin: 0px 10px;
+}
+
 #signup-main > div p {
   font-family: Montserrat;
   font-weight: 300;

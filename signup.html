@@ -15,7 +15,7 @@
     <div class="container">
       <div id="logo-cont">
         <a href="/">
-          <img src="images\pinkettu.png" />
+          <img src="images/pinkettu.png" />
         </a>
       </div>
       <ul></ul>
@@ -38,6 +38,9 @@
 
         <label for="user">Username</label>
         <input id="user" name="username" type="text" placeholder="Username" required />
+
+        <label for="phone">Phone Number</label>
+        <input id="phone" name="phone" type="text" placeholder="Phone Number" pattern="^0(8|(7|9)(?!1))(0(?!0)|1)[0-9]{8}$" required />
 
         <label for="pass">Password</label>
         <input id="pass" name="password" type="password" placeholder="Password" id="password" required />

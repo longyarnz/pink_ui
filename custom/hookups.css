@@ -5,10 +5,10 @@ section.transaction {
 
 section > h2 {
   color: #ff6699;
-  font-family: Montserrat;
-  font-weight: 900;
+  font-family: Qwigley;
+  font-weight: bold;
   text-align: center;
-  font-size: 180%;
+  font-size: 300%;
 }
 
 section main {

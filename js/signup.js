@@ -29,34 +29,60 @@ function submitForm(e) {
   const button = e.target.children.finalSubmit;
   toggleButtonSpinner(button, true);
   const URL = `${API}/auth/signup`;
-  const [email, username, password, , location, worker, image] = e.target;
+  const [email, username, phone, password, , location, worker, image] = e.target;
   const caption = Date.now().toString().slice(0, 10) + '.' + image.files[0].name;
-  try {
-    const feedback = sendImageToDatabase(image, caption);
+  console.log(phone.value);
 
-    feedback.then(res => {
+  try {
+    // const feedback = sendImageToDatabase(image, caption);
+    // feedback.then(() => {
       const xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4) {
-          toggleButtonSpinner(button, false);
-          handleSubmitResponse(this);
+          if (this.status >= 400) {
+            const { id, message } = JSON.parse(this.responseText);
+
+            if (id && message) {
+              window.location.assign(`/activate.html?user=${id}`);
+              return;
+            }
+
+            const p = document.querySelector('#signup-main > div > p');
+            const { color, fontWeight } = p.style;
+            p.textContent = 'Network Error';
+            p.style.color = '#d9534f';
+            p.style.fontWeight = '900';
+            
+            setTimeout(() => {
+              p.textContent = 'Create Your Account';
+              p.style.color = color;
+              p.style.fontWeight = fontWeight;
+            }, 5000);
+
+            toggleButtonSpinner(button, false);
+          }
+
+          else {
+            handleSubmitResponse(this);
+          }
         }
       };
       xhttp.open("POST", URL, true);
       xhttp.setRequestHeader("Content-type", "application/json");
       xhttp.send(
         JSON.stringify({
-          username: username.value,
-          email: email.value,
+          username: username.value.toLowerCase(),
+          email: email.value.toLowerCase(),
+          phone: phone.value,
           password: password.value,
-          location: window.location.value,
+          location: location.value,
           worker: worker.value === 'true',
           image: caption
         })
       );
-    });
+    // });
   }
-  catch(err) {
+  catch (err) {
     toggleButtonSpinner(button, false);
   }
 }

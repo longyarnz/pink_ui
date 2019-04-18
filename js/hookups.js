@@ -23,7 +23,6 @@ function createHookupTable(hookup) {
 }
 
 async function completeHookup(id, button) {
-  console.log(id);
   button.textContent = 'completing';
   toggleButtonSpinner(button, true);
   try {

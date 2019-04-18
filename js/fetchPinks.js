@@ -1,5 +1,6 @@
 async function fetchPinks(profileHanlder) {
-  let profiles = await fetch(`${API}/profile/pinks`);
+  const URL = `${API}/profile/pinks`;
+  let profiles = await fetch(URL);
   profiles = await profiles.json();
   profileHanlder(profiles);
 }

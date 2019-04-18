@@ -5,7 +5,7 @@ async function sendImageToDatabase(file, filename) {
   return fetch('https://images.pinkettu.com.ng/upload.php', {
     method: 'POST',
     body: form
-  });
+  }).catch(err => alert(err));
 }
 
 function sendImagesToDatabase(file, filename) {
@@ -15,5 +15,5 @@ function sendImagesToDatabase(file, filename) {
   return fetch('https://images.pinkettu.com.ng/upload.php', {
     method: 'POST',
     body: form
-  }).catch(err => err);
+  }).catch(err => alert(err));
 }
