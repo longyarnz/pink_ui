@@ -17,6 +17,26 @@ section main {
   overflow: hidden;
 }
 
+section main.empty {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Montserrat;
+}
+
+section main.empty > h1 {
+  font-size: 800%;
+  margin-top: 10px;
+}
+
+section main.empty > h2 {
+  color: #aaa;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 section main .placeholder {
   width: 100%;
   height: 150px;

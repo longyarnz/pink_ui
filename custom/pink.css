@@ -58,11 +58,12 @@ figcaption {
 }
 
 figcaption h4 {
-  font-weight: 400;
-  font-family: Montserrat;
-  text-transform: uppercase;
+  font-weight: lighter;
+  font-family: Qwigley, Montserrat;
+  text-transform: capitalize;
   color: #ff6699;
-  font-size: 100%;
+  font-size: 160%;
+  letter-spacing: 5px;
   margin-top: 0px;
 }
 
@@ -177,5 +178,9 @@ footer {
 
   figcaption > footer span:last-of-type {
     font-size: 150%;
+  }
+
+  figcaption h4 {
+    font-size: 300%;
   }
 }

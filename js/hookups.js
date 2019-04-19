@@ -106,11 +106,22 @@ async function fetchUserHookups() {
     }
 
     else {
-      if (hookups.length === 0) return;
-
-      const tabs = hookups.reverse().map(hookup => createHookupTable(hookup));
       const main = document.createElement('main');
-      main.append(...tabs);
+
+      if (hookups.length === 0) {
+        main.innerHTML = `
+          <h2>
+            You do not have any hook ups yet.
+          </h2>
+
+          <h1>😊</h1>
+        `;
+        main.classList.add('empty');
+      }
+      else {
+        const tabs = hookups.reverse().map(hookup => createHookupTable(hookup));
+        main.append(...tabs);
+      }
       document.querySelector('main').replaceWith(main);
     }
   }

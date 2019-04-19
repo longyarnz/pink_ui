@@ -8,7 +8,14 @@ section > div.show-worker-images > h3 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
+}
+
+section > div.show-worker-images > h3 > span {
+  font-family: Qwigley, Montserrat;
+  font-size: 300%;
+  font-weight: lighter;
+  letter-spacing: 10px;
 }
 
 section > div.show-worker-images > header {
@@ -18,12 +25,6 @@ section > div.show-worker-images > header {
 header > div {
   display: flex;
   padding: 10px 0px;
-}
-
-@media screen and (max-width: 768px) {
-  header > div:first-of-type {
-    /* justify-content: space-between; */
-  }
 }
 
 header > div > span {
