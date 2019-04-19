@@ -75,7 +75,7 @@ function submitForm(e) {
           username: username.value.toLowerCase(),
           email: email.value.toLowerCase(),
           phone: phone.value,
-          password: password.value,
+          password: password.value.toLowerCase(),
           location: location.value,
           worker: worker.value === 'true',
           image: caption

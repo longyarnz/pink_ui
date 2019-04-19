@@ -5,6 +5,7 @@ div.show-worker-images {
 
 div.show-worker-images > div > div.gallery {
   min-height: auto;
+  justify-content: center;
 }
 
 div.show-worker-images h3,
@@ -123,21 +124,22 @@ div.onboarding div.step {
   font-family: Montserrat;
   margin: 0px 10px;
   padding: 10px;
-  border-radius: 50px;
+  border-radius: 30px;
   color: #fff;
   background-color: #ff6699;
-  min-height: 130px;
 }
 
 @media screen and (max-width: 768px) {
   div.onboarding div.step {
     margin: 10px auto;
-    min-width: 245px;
+    min-width: 280px;
+    height: auto;
   }
 }
 
 div.step h4 {
   font-family: Montserrat;
+  margin: 10px auto;
   font-size: 100%;
   font-weight: 900;
   text-emphasis-style: dot;

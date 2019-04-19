@@ -48,7 +48,7 @@ form.addEventListener('submit', e => {
   xhttp.send(
     JSON.stringify({
       email: email.value.toLowerCase(),
-      password: password.value
+      password: password.value.toLowerCase()
     })
   );
 });
