@@ -73,7 +73,7 @@ div.tab > span {
 div.tab > button {
   flex: 0.4;
   text-transform: uppercase;
-  font-size: 80%;
+  font-size: 70%;
   font-weight: 700;
   display: flex;
   width: auto;
@@ -82,6 +82,9 @@ div.tab > button {
   min-height: 30px;
   height: 30px;
   border-radius: 5px 10px;
+  font-family: Montserrat;
+  border: none;
+  cursor: pointer;
   color: #fff;
   background-color: #ccc;
 }

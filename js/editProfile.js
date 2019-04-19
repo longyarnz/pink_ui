@@ -1,12 +1,13 @@
-function handleSubmitResponse(request) {
+function handleSubmitResponse(request, button) {
   const { message } = JSON.parse(request.responseText);
   if (message === 'Invalid User') {
     localStorage.removeItem('pinkettu');
     window.location.assign('/login.html');
+    toggleButtonSpinner(button, false);
     return;
   }
-
-  localStorage.removeItem('isSubmitting');
+  
+  toggleButtonSpinner(button, false);
   window.location.assign('/profile.html');
 }
 
@@ -31,10 +32,9 @@ function submitForm(e, worker) {
   }
 
   function storeImage(image, cache) {
-    const rand = Math.floor(Math.random() * 1000);
-    const sanitizedName = name.value.replace(/\s/i, '.');
-    const ext = image.name.split('.').reverse()[0];
-    caption = `${rand}.${sanitizedName}.${ext}`;
+    const rand = Math.floor(Math.random() * 100);
+    const sanitizedName = image.name.replace(/\s/i, '.');
+    caption = `${rand}.${sanitizedName}`;
     cache.push(caption);
     feedback = sendImagesToDatabase(image, caption);
     files.push(feedback);
@@ -55,8 +55,7 @@ function submitForm(e, worker) {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState === 4) {
-        handleSubmitResponse(this);
-        toggleButtonSpinner(button, false);
+        handleSubmitResponse(this, button);
       }
     };
     xhttp.open('PUT', URL, true);

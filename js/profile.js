@@ -51,7 +51,11 @@ function createGalleryForWorker(profile) {
   div.classList.add('show-worker-images');
 
   const h3 = document.createElement('h3');
-  h3.textContent = `PICTURES OF ${profile.username.toUpperCase()}`;
+  h3.innerHTML = `
+    <i>local_florist</i>
+    Pictures of ${profile.username}
+    <i>local_florist</i>
+  `;
 
   const gallery = document.createElement('div');
   gallery.classList.add('gallery');

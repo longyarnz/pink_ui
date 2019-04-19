@@ -16,7 +16,7 @@ function createHookupTable(hookup) {
   hookup.completed && button.classList.add('completed');
   button.style.flex = userIsAWorker ? 1 : null;
   button.textContent = hookup.completed ? 'completed' : 'pending';
-  button.onclick = !userIsAWorker ? () => completeHookup(hookup._id, button) : null;
+  button.onclick = !userIsAWorker && !hookup.completed ? () => completeHookup(hookup._id, button) : null;
 
   div.append(firstSpan, secondSpan, button);
   return div;

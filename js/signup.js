@@ -30,8 +30,9 @@ function submitForm(e) {
   toggleButtonSpinner(button, true);
   const URL = `${API}/auth/signup`;
   const [email, username, phone, password, , location, worker, image] = e.target;
-  const caption = Date.now().toString().slice(0, 10) + '.' + image.files[0].name;
-  console.log(phone.value);
+  const rand = Math.floor(Math.random() * 100);
+  const sanitizedName = image.files[0].name.replace(/\s/i, '.');
+  caption = `${rand}.${sanitizedName}`;
 
   try {
     const feedback = sendImageToDatabase(image, caption);
@@ -52,7 +53,7 @@ function submitForm(e) {
             p.textContent = 'Network Error';
             p.style.color = '#d9534f';
             p.style.fontWeight = '900';
-            
+
             setTimeout(() => {
               p.textContent = 'Create Your Account';
               p.style.color = color;
