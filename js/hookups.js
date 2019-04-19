@@ -10,49 +10,83 @@ function createHookupTable(hookup) {
     : `Pink: ${hookup.worker.username}`;
 
   const secondSpan = document.createElement('span');
-  secondSpan.textContent = `Code: ${hookup.randomKey}`;
+  secondSpan.textContent = `Hook-Up Code: ${hookup.randomKey}`;
 
-  const button = document.createElement('button');
-  hookup.completed && button.classList.add('completed');
-  button.style.flex = userIsAWorker ? 1 : null;
-  button.textContent = hookup.completed ? 'completed' : 'pending';
-  button.onclick = !userIsAWorker && !hookup.completed ? () => completeHookup(hookup._id, button) : null;
+  const completedSpan = document.createElement('span');
+  completedSpan.classList.add('completed');
+  completedSpan.textContent = 'completed';
 
-  div.append(firstSpan, secondSpan, button);
+  const pendingSpan = document.createElement('span');
+  pendingSpan.classList.add('pending');
+  pendingSpan.textContent = 'pending';
+
+  const inputSpan = document.createElement('span');
+  inputSpan.innerHTML = `
+    <input id="secret-code" type="text" placeholder="Secret Code" maxlength="15" />
+    <button>VERIFY</button>
+  `;
+
+  inputSpan.children[1].onclick = function (e) {
+    e.preventDefault();
+    completeHookup(hookup._id, e.target);
+  }
+
+  let thirdSpan;
+
+  if (hookup.clientHasVerified && hookup.workerHasVerified) {
+    thirdSpan = completedSpan;
+  }
+  else if (userIsAWorker && !hookup.clientHasVerified && hookup.workerHasVerified) {
+    thirdSpan = pendingSpan;
+  }
+  else if (!userIsAWorker && hookup.clientHasVerified && !hookup.workerHasVerified) {
+    thirdSpan = pendingSpan;
+  }
+  else thirdSpan = inputSpan;
+
+  div.append(firstSpan, secondSpan, thirdSpan);
   return div;
 }
 
 async function completeHookup(id, button) {
-  button.textContent = 'completing';
-  toggleButtonSpinner(button, true);
+  const code = button.previousElementSibling.value;
+  if (button.textContent === 'CHECKING...' || code === '' || !code) return;
+  button.textContent = 'CHECKING...';
+  console.log(id);
   try {
-    let hookup = await fetch(`${API}/hookup/${id}`, {
+    let hookup = await fetch(`${API}/hookup/${id}/${code}`, {
       method: 'PUT',
       headers: {
         'Authorization': localStorage.pinkettu
       }
     });
     hookup = await hookup.json();
-    hookup && toggleButtonSpinner(button, false);
 
-    if(hookup.message === 'Invalid User') {
+    if (hookup.message === 'Invalid User') {
       window.location.assign('/login.html');
       return;
     }
 
-    if (hookup.message) {
-      button.textContent = 'pending';
-    }
+    else if (Array.isArray(hookup)) {
+      const span = button.parentElement;
 
-    if (hookup.completed === 'Hookup is completed') {
-      button.textContent = 'completed';
-      button.classList.add('completed');
+      if (hookup[0] && hookup[1]) {
+        span.innerHTML = 'completed';
+        span.classList.add('completed');
+      }
+      else if (!hookup[0]) {
+        button.textContent = 'VERIFY';
+      }
+      else if (hookup[0] && !hookup[1]) {
+        span.innerHTML = 'PENDING';
+        span.classList.add('pending');
+      }
     }
   }
-  
+
   catch (err) {
     console.log(err);
-    localStorage.removeItem('isSubmitting');
+    button.textContent = 'VERIFY';
   }
 }
 

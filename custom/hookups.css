@@ -70,36 +70,66 @@ div.tab > span {
   color: #555;
 }
 
-div.tab > button {
-  flex: 0.4;
+div.tab > span:last-of-type {
+  width: 200px;
   text-transform: uppercase;
   font-size: 70%;
   font-weight: 700;
   display: flex;
-  width: auto;
   align-items: center;
   justify-content: center;
   min-height: 30px;
   height: 30px;
-  border-radius: 5px 10px;
   font-family: Montserrat;
   border: none;
   cursor: pointer;
   color: #fff;
   background-color: #ccc;
+  overflow: hidden;
+  padding: 0px;
 }
 
-div.tab > button:hover {
+div.tab > span:last-of-type > input {
+  width: 100%;
+  min-height: 30px;
+  padding: 5px;
+  border: 1px solid #a9a9a9;
+  font-weight: 300;
+  border-right: none;
+  font-family: monospace;
+}
+
+div.tab > span:last-of-type > button {
+  font-family: Montserrat;
+  font-weight: 400;
+  min-height: 30px;
+  min-width: 100px;
+  border: 1px solid #a9a9a9;
+  cursor: pointer;
+  transition: all .25s ease;
+  color: #fff;
+}
+
+div.tab > span:last-of-type > button:hover {
   background-color: #aaa;
+  color: #fff;
 }
 
-div.tab > button:active {
-  background-color: #000;
-}
-
-div.tab > button.completed {
+div.tab > span:last-of-type > button:active {
   background-color: #5cb85c;
-  border-color: #5cb85c;
+  color: #fff;
+}
+
+div.tab > span.completed, div.tab > span.pending {
+  border-radius: 5px 10px;
+  background-color: transparent;
+  color: #5cb85c;
+  justify-content: flex-end;
+  font-size: 100%;
+}
+
+div.tab > span.pending {
+  color: #aaa;
 }
 
 div.tab > span:first-of-type {
@@ -168,7 +198,7 @@ div.tab > span select option {
 @media screen and (max-width: 768px) {
   section main div.tab {
     flex-direction: column;
-    padding: 0px 10px 10px;
+    padding: 0px 10px 20px;
     align-items: flex-start;
   }
 
@@ -181,8 +211,12 @@ div.tab > span select option {
   }
 
   div.tab > span:last-of-type {
-    flex-direction: column;
-    align-items: flex-start;
+    width: 100%;
+    height: auto;
+  }
+
+  div.tab > span.completed {
+    justify-content: flex-start;
   }
 }
 

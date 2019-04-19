@@ -57,6 +57,8 @@ async function hookupViaPaystack(button, worker) {
   
   async function verifyPayment(response, button) {
     response.id = worker;
+    [...button.children].forEach(child => child.classList.toggle('hide'));
+    button.children[0].textContent = 'Verifying...';
     const URL = `${API}/transaction/verify/hookup`;
     try {
       let verify = await fetch(URL, {
@@ -76,7 +78,8 @@ async function hookupViaPaystack(button, worker) {
     }
     catch (err) {
       console.log(err);
-      toggleButtonSpinner(button, false);
+      button[0].textContent = 'Network Error';
+      localStorage.removeItem('isSubmitting');
     }
   }
   
