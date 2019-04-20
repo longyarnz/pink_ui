@@ -21,12 +21,13 @@ function submitForm(e, worker) {
   const URL = `${API}/profile`;
 
   let caption, feedback, body, files = []; 
-  const [name, phone, location, image, more] = e.target;
+  const [name, phone, hour, night, week, location, image, more] = e.target;
 
   body = {
     username: name.value,
     phone: phone.value,
     location: location.value,
+    rates: [parseInt(hour.value), parseInt(night.value), parseInt(week.value)],
     image: [],
     more: []
   }

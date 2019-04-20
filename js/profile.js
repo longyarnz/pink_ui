@@ -1,9 +1,28 @@
 const query = decodeURIComponent(window.location.search);
 
-function createAddMoreInput() {
+function html(string) {
+  const element = document.createElement('template');
+  element.innerHTML = string;
+  return element.content.children;
+}
+
+function createAddMoreInput(rates = [0, 0, 0]) {
   const form = document.querySelector('form');
   const label = document.querySelector('label[for="profile"]').cloneNode();
   const fileInput = document.querySelector('input[type="file"]').cloneNode();
+
+  const chargeInput = 
+    `
+    <label for="hour">Charge Per Hour (₦)</label>
+    <input id="hour" name="hour" type="number" placeholder="Hourly Rate" value="${parseInt(rates[0])}" pattern="[0-9]*" required />
+    
+    <label for="night">Overnight Charge (₦)</label>
+    <input id="night" name="night" type="number" placeholder="Overnight Charge" value="${parseInt(rates[1])}" pattern="[0-9]*" required />
+    
+    <label for="week">Weekend Charge (₦)</label>
+    <input id="week" name="week" type="number" placeholder="Weekend Charge" value="${parseInt(rates[2])}" pattern="[0-9]*" required />
+    `
+  ;
 
   label.htmlFor = 'add-more';
   label.textContent = 'Add More Images To Attract Clients';
@@ -15,6 +34,7 @@ function createAddMoreInput() {
 
   form.insertBefore(label, form.children.finalSubmit);
   form.insertBefore(fileInput, form.children.finalSubmit);
+  form.children[4].insertAdjacentHTML('beforebegin', chargeInput);
 
 }
 
@@ -121,7 +141,7 @@ async function fetchUserProfile() {
       localStorage.setItem('pinkettu_user_status', profile.worker);
       localStorage.setItem('pinkettu_user_id', profile.id);
 
-      if (profile.worker) createAddMoreInput();
+      if (profile.worker) createAddMoreInput(profile.rates);
 
       if (profile.images.length > 1) createGalleryForWorker(profile);
 
@@ -135,7 +155,6 @@ async function fetchUserProfile() {
 }
 
 if (localStorage.pinkettu && query) {
-  console.log(1);
   window.location.assign(`/explore.html${query}`);
 }
 

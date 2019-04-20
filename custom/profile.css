@@ -30,7 +30,7 @@ div.profile-wrapper {
   min-height: calc(100vh - 186px);
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 }
 
 div.pic-wrapper,
@@ -40,6 +40,8 @@ div.info-wrapper {
   max-height: 100%;
   border-radius: 0px 0px 5px 5px;
   padding-top: 10px;
+  position: sticky;
+  top: 100px;
 }
 
 div.pic-wrapper img {
@@ -98,7 +100,7 @@ div.info-wrapper form label {
   width: 90%;
   text-align: left;
   margin: auto;
-  font-family: Montserrat;
+  font-family: Montserrat, arial;
   font-weight: 700;
   font-size: 80%;
   text-transform: uppercase;
@@ -205,12 +207,12 @@ div.show-worker-images div.gallery div button {
 }
 
 div.show-worker-images div.gallery div button:focus,
-div.show-worker-images div.gallery div button:hover, 
+div.show-worker-images div.gallery div button:hover,
 div.show-worker-images div.gallery div button:active {
   background: #c9302c;
 }
 
-div.show-worker-images div.gallery div button i{
+div.show-worker-images div.gallery div button i {
   font-size: 300%;
 }
 
@@ -239,14 +241,18 @@ div.show-worker-images div.gallery div button i{
     padding: 0px 0px 10px;
     width: 100%;
     height: auto;
+    position: relative;
+    top: 0;
   }
-
+  
   div.pic-wrapper img {
     width: 100%;
   }
-
+  
   div.info-wrapper {
     width: 100%;
+    position: relative;
+    top: 0;
   }
 
   div.info-wrapper h3 {

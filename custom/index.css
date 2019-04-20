@@ -8,6 +8,13 @@ div.show-worker-images > div > div.gallery {
   justify-content: center;
 }
 
+div.show-worker-images div.gallery figure {
+  width: calc(100% / 6 - 10px);
+  min-width: 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 div.show-worker-images h3,
 div.onboarding > h3 {
   font-weight: 900;
@@ -125,14 +132,14 @@ div.onboarding div.step {
   margin: 0px 10px;
   padding: 10px;
   border-radius: 30px;
-  color: #fff;
-  background-color: #ff6699;
+  color: #000;
+  background-color: #ccc;
 }
 
 @media screen and (max-width: 768px) {
   div.onboarding div.step {
     margin: 10px auto;
-    min-width: 280px;
+    min-width: 210px;
     height: auto;
   }
 }
@@ -140,10 +147,8 @@ div.onboarding div.step {
 div.step h4 {
   font-family: Montserrat;
   margin: 10px auto;
-  font-size: 100%;
-  font-weight: 900;
-  text-emphasis-style: dot;
-  text-emphasis-position: under;
+  font-size: 90%;
+  font-weight: 700;
 }
 
 div.step span {
@@ -153,12 +158,14 @@ div.step span {
 
 div.onboarding div.step span {
   font-weight: 300;
+  font-size: 80%;
 }
 
 @media screen and (max-width: 768px) {
-  div.gallery {
+  div.show-worker-images > div > div.gallery {
     margin-top: 20px;
     height: auto;
+    justify-content: space-between;
   }
 
   div.show-worker-images h3,
