@@ -1,6 +1,7 @@
 section > div.show-worker-images {
   margin: 0;
   padding-top: 20px;
+  overflow: visible;
 }
 
 section > div.show-worker-images > h3 {
@@ -9,6 +10,7 @@ section > div.show-worker-images > h3 {
   justify-content: flex-start;
   align-items: center;
   text-transform: capitalize;
+  margin: 0px;
 }
 
 section > div.show-worker-images > h3 > span {
@@ -18,13 +20,15 @@ section > div.show-worker-images > h3 > span {
   letter-spacing: 10px;
 }
 
-section > div.show-worker-images > header {
-  max-width: 50%;
-}
-
 header > div {
   display: flex;
   padding: 10px 0px;
+}
+
+header > div.rates-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
 
 header > div > span {
@@ -43,15 +47,27 @@ header > div > span:first-of-type {
   color: #000;
 }
 
-header > div.see-more {
+header div.see-more {
   font-family: Montserrat, Arial;
-  margin: auto;
+  margin: 0px 10px 0px 0px;
   display: flex;
   justify-items: center;
-  min-width: 200px;
-  text-transform: uppercase;
   cursor: pointer;
-  height: 60px;
+  height: 45px;
+  padding: 10px 0px;
+  min-width: 350px;
+}
+
+header div.see-more:nth-of-type(1) {
+  background-color: #cd7f32;
+}
+
+header div.see-more:nth-of-type(2) {
+  background-color: silver;
+}
+
+header div.see-more:nth-of-type(3) {
+  background-color: gold;
 }
 
 div.show-worker-images > div.gallery {
@@ -66,13 +82,22 @@ div.show-worker-images > div.gallery > img:first-of-type{
   margin-left: 0;
 }
 
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  header div.see-more {
+    margin: 20px 20px 0px 0px;
+    font-size: 70%;
+    min-width: 100px;
+    padding: 10px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   div.show-worker-images > div.gallery {
     margin-top: 5px;
   }
   
   div.show-worker-images > div.gallery > img {
-    width: 100%;
+    width: 50%;
     height: auto;
     margin: 10px 0px;
   }
@@ -83,5 +108,27 @@ div.show-worker-images > div.gallery > img:first-of-type{
 
   section > div.show-worker-images > h3 {
     justify-content: space-between
+  }
+
+  section > div.show-worker-images > h3 > span {
+    font-size: 100%;
+    font-weight: normal;
+  }
+
+  header > div > span {
+    font-size: 150%;
+  }
+
+  header > div.rates-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header div.see-more {
+    margin: 0px 0px 30px 0px;
+  }
+
+  header div.see-more:last-of-type {
+    margin-bottom: 0px;
   }
 }

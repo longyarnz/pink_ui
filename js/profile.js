@@ -1,11 +1,5 @@
 const query = decodeURIComponent(window.location.search);
 
-function html(string) {
-  const element = document.createElement('template');
-  element.innerHTML = string;
-  return element.content.children;
-}
-
 function createAddMoreInput(rates = [0, 0, 0]) {
   const form = document.querySelector('form');
   const label = document.querySelector('label[for="profile"]').cloneNode();
@@ -57,7 +51,7 @@ async function deleteUserImage(src) {
     }
   }
   catch (err) {
-    console.log(err);
+    alert(err);
     localStorage.removeItem('isSubmitting');
   }
 }
@@ -149,7 +143,7 @@ async function fetchUserProfile() {
     }
   }
   catch (err) {
-    console.log(err);
+    alert(err);
     localStorage.removeItem('isSubmitting');
   }
 }

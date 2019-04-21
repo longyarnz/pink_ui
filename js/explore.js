@@ -8,7 +8,7 @@ else {
   window.location.assign('/pinks.html');
 }
 
-async function hookupViaPaystack(button, worker) {
+async function hookupViaPaystack(button, worker, cost) {
   if (localStorage.isSubmitting === 'true') return;
 
   toggleButtonSpinner(button, true);
@@ -16,26 +16,27 @@ async function hookupViaPaystack(button, worker) {
   const client = localStorage.getItem('pinkettu_user_id');
 
   try {
-    await createHookUp();
+    await createHookUp(cost);
   }
 
   catch (err) {
-    const text = button.textContent;
-    button.textContent = 'Network Error';
+    alert(err);
+    const text = button.children[0].textContent;
+    button.children[0].textContent = 'Network Error';
     setTimeout(() => {
       toggleButtonSpinner(button, false);
-      button.textContent = text;
+      button.children[0].textContent = text;
     }, 5000);
   }
 
-  async function createHookUp() {
+  async function createHookUp(cost) {
     let hookup = await fetch(URL, {
       method: 'POST',
       headers: {
         'Authorization': localStorage.pinkettu,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ worker })
+      body: JSON.stringify({ worker, cost })
     });
 
     hookup = await hookup.json();
@@ -51,10 +52,10 @@ async function hookupViaPaystack(button, worker) {
     }
 
     else {
-      await initiateTransaction(hookup);
+      await initiateTransaction(hookup, cost);
     }
   }
-  
+
   async function verifyPayment(response, button) {
     response.id = worker;
     [...button.children].forEach(child => child.classList.toggle('hide'));
@@ -69,24 +70,25 @@ async function hookupViaPaystack(button, worker) {
         },
         body: JSON.stringify(response)
       });
-      
+
       if (verify.status >= 400) throw '';
-      
+
       else {
         window.location.assign('/hookups.html');
       }
     }
     catch (err) {
-      console.log(err);
+      alert(err);
       button[0].textContent = 'Network Error';
       localStorage.removeItem('isSubmitting');
     }
   }
-  
-  async function initiateTransaction(hookup) {
+
+  async function initiateTransaction(hookup, cost) {
     const { id } = hookup;
     const URL = `${API}/transaction`;
-    const button = document.querySelector('section.container > div > header > div.see-more');
+    const button = document.querySelector(`[data-rate='${cost}']`);
+    alert(cost);
     try {
       let transaction = await fetch(URL, {
         method: 'POST',
@@ -95,7 +97,7 @@ async function hookupViaPaystack(button, worker) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: 10000, client, hookup: id, purpose: 'Hook Up'
+          amount: cost, client, hookup: id, purpose: 'Hook Up'
         })
       });
 
@@ -108,7 +110,7 @@ async function hookupViaPaystack(button, worker) {
         const paystack = window.PaystackPop.setup({
           key: publicKey,
           email: transaction.user.email,
-          amount: 1000000,
+          amount: cost * 100,
           ref: id,
           callback: response => verifyPayment(response, button),
           onClose: () => {
@@ -121,10 +123,18 @@ async function hookupViaPaystack(button, worker) {
       }
     }
     catch (err) {
-      console.log(err);
+      alert(err);
       toggleButtonSpinner(button, false);
     }
   }
+}
+
+function parseMoney(number){
+  number = number.toString().split('').reverse();
+  for (let i = 0; i < number.length; i++)
+    if(i % 3 === 0 && i !== 0) number[i] += ', ';
+  number = number.reverse().join('');
+  return number;
 }
 
 function createPinkProfile(profile, workerId) {
@@ -143,33 +153,42 @@ function createPinkProfile(profile, workerId) {
   const fourthSpan = document.createElement('span');
   fourthSpan.textContent = profile.location || 'Lagos Mainland';
 
-  let seeMore = '';
+  let seeMore = document.createElement('div');
 
   if (localStorage.getItem('pinkettu_user_status') !== 'true') {
-    seeMore = document.createElement('div');
-    seeMore.innerHTML = `
-      <b>HOOK UP FOR ₦10, 000</b>
-      <i class="fa-spin hide">donut_large</i>
-    `;
-    seeMore.classList.add('see-more');
-
-    seeMore.onclick = () => {
-      if (localStorage.getItem('pinkettu')) {
-        hookupViaPaystack(seeMore, workerId);
+    seeMore.classList.add('rates-container');
+    const charge = ['An Hour', 'A Night', 'The Weekend'];
+    const rates = profile.rates || [0, 0, 0];
+    rates.forEach((rate, i) => {
+      const html = `
+        <div class="see-more" data-rate="${rate}">
+          <b>Hook Up For ${charge[i]} @ ₦${parseMoney(rate)}</b>
+          <i class="fa-spin hide">donut_large</i>
+        </div>
+      `;
+      seeMore.insertAdjacentHTML('beforeend', html);
+      seeMore.lastElementChild.onclick = e => {
+        if (localStorage.getItem('pinkettu')) {
+          const buttons = Array.from(seeMore.children).filter(i => parseInt(i.getAttribute('data-rate')) === rate);
+          hookupViaPaystack(buttons[0], workerId, rate);
+        }
+        else {
+          window.location.assign(`/login.html${query}`);
+          localStorage.removeItem('pinkettu');
+        }
       }
-
-      else {
-        window.location.assign(`/login.html${query}`);
-        localStorage.removeItem('pinkettu');
-      }
-    }
+    });
   }
+  else seeMore = '';
 
   const gallery = document.createElement('div');
   gallery.classList.add('gallery');
   gallery.append(...profile.images.map(src => {
-    const img = document.createElement('img');
-    img.src = `https://images.pinkettu.com.ng/${src}`;
+    const img = html(`
+      <div>
+        <img src="https://images.pinkettu.com.ng/${src}">
+      </div>
+    `);
     return img;
   }));
 
@@ -187,21 +206,10 @@ function createPinkProfile(profile, workerId) {
 }
 
 function loadUserProfile() {
-  let _profile = null;
   const id = query.slice(6);
-
-  if (localStorage.pinkettu_pinks) {
-    const profiles = JSON.parse(localStorage.pinkettu_pinks);
-    _profile = profiles.find(i => i._id.toString() === id);
-  }
-
-  if (_profile === null) {
-    fetchAPink(id, ([profile]) => {
-      if (profile.username || profile.rank || profile.images) {
-        _profile = profile;
-      }
-    });
-  }
-
-  createPinkProfile(_profile, id);
+  fetchAPink(id, profile => {
+    if (profile.username || profile.rank || profile.images) {
+      createPinkProfile(profile, id);
+    }
+  });
 }

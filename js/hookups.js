@@ -4,10 +4,12 @@ function createHookupTable(hookup) {
   const div = document.createElement('div');
   div.classList.add('tab');
 
-  const firstSpan = document.createElement('span');
-  firstSpan.textContent = userIsAWorker
-    ? `Client: ${hookup.client.username}`
-    : `Pink: ${hookup.worker.username}`;
+  const firstSpan = userIsAWorker
+    ? html(`
+      <span>Pink:${hookup.client.username}</span>
+    `) : html(`
+      <span>Pink:${hookup.worker.username}</span>
+    `);
 
   const secondSpan = document.createElement('span');
   secondSpan.textContent = `Hook-Up Code: ${hookup.randomKey}`;
@@ -85,7 +87,7 @@ async function completeHookup(id, button) {
   }
 
   catch (err) {
-    console.log(err);
+    alert(err);
     button.textContent = 'VERIFY';
   }
 }
@@ -127,7 +129,7 @@ async function fetchUserHookups() {
   }
 
   catch (err) {
-    console.log(err);
+    alert(err);
     localStorage.removeItem('isSubmitting');
   }
 }

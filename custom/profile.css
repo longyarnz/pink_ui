@@ -238,7 +238,7 @@ div.show-worker-images div.gallery div button i {
   }
 
   div.pic-wrapper {
-    padding: 0px 0px 10px;
+    padding: 20px 0px;
     width: 100%;
     height: auto;
     position: relative;
@@ -246,7 +246,7 @@ div.show-worker-images div.gallery div button i {
   }
   
   div.pic-wrapper img {
-    width: 100%;
+    /* width: 100%; */
   }
   
   div.info-wrapper {
@@ -284,8 +284,8 @@ div.show-worker-images div.gallery div button i {
   }
 
   div.show-worker-images div.gallery img {
-    width: 100% !important;
-    height: auto !important;
+    width: 100%;
+    height: auto;
     margin: 0px 0px 20px 0px;
   }
 

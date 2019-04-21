@@ -6,7 +6,7 @@ async function fetchPinks(profileHanlder) {
 }
 
 async function fetchIndexPinks(profileHanlder) {
-  const URL = `${API}/profile/pinks/6`;
+  const URL = `${API}/profile/pinks/limit/6`;
   let profiles = await fetch(URL);
   profiles = await profiles.json();
   profileHanlder(profiles);
