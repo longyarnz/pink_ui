@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', a => {
 
 function redirectToActivation(button) {
   toggleButtonSpinner(button, false);
-
+  alert(request.responseText);
   const { id, message } = JSON.parse(request.responseText);
 
   if(id && message){

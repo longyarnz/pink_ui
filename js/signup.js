@@ -41,6 +41,7 @@ function submitForm(e) {
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4) {
           if (this.status >= 400) {
+            alert(this.responseText);
             const { id, message } = JSON.parse(this.responseText);
 
             if (id && message) {
