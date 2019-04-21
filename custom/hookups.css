@@ -1,5 +1,5 @@
 section.transaction {
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 130px);
   padding-top: 20px;
 }
 

@@ -136,14 +136,6 @@ div.onboarding div.step {
   background-color: #ccc;
 }
 
-@media screen and (max-width: 768px) {
-  div.onboarding div.step {
-    margin: 10px auto;
-    min-width: 210px;
-    height: auto;
-  }
-}
-
 div.step h4 {
   font-family: Montserrat;
   margin: 10px auto;
@@ -161,7 +153,24 @@ div.onboarding div.step span {
   font-size: 80%;
 }
 
+div.contact {
+  min-height: 50vh;
+  background-color: #fcfcfc;
+  padding: 30px 0px;
+}
+
+div.contact > form {
+  margin: 0px auto;
+  background-color: transparent;
+}
+
 @media screen and (max-width: 768px) {
+  div.onboarding div.step {
+    margin: 10px auto;
+    min-width: 210px;
+    height: auto;
+  }
+
   div.show-worker-images > div > div.gallery {
     margin-top: 20px;
     height: auto;
@@ -199,5 +208,10 @@ div.onboarding div.step span {
   div.onboarding > div {
     flex-direction: column;
     align-items: center;
+  }
+
+  div.contact > form {
+    width: 100%;
+    padding: 0px 15px;
   }
 }

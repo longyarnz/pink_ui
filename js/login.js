@@ -2,14 +2,16 @@ const form = document.getElementsByTagName('form')[0];
 
 function handleResponse(request) {
   const { token, text } = JSON.parse(request.responseText);
-
+  
   if (!token) {
     const p = document.querySelector('p');
     p.textContent = text;
     p.style.color = '#d9534f';
+    const button = document.querySelector('button');
+    toggleButtonSpinner(button, false);
     return;
   };
-
+  
   localStorage.removeItem('isSubmitting');
   localStorage.setItem('pinkettu', token);
 

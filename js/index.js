@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', a => {
+  document.querySelector('form').onsubmit = contactAdmin;
   fetchIndexPinks(profiles => {
     if (Array.isArray(profiles) && profiles.length > 0) {
       document.querySelectorAll('figure.placeholder-container').forEach(e => e.remove());

@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
   <nav>
     <div class="container">
       <div id="logo-cont">
@@ -143,7 +142,7 @@
     <img src="images/p1.jpg" alt="">
   </header>
 
-  <div class="onboarding">
+  <div class="container onboarding">
     <h3>
       <i>local_florist</i>
       Register In 1 Minute
@@ -177,16 +176,46 @@
     </div>
   </div>
 
+  <div class="container-fluid contact">
+    <h3>
+      <i>local_florist</i>
+      Contact Admin
+      <i>local_florist</i>
+    </h3>
+
+    <form method="POST" class="form" name="form">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="Email" required />
+
+      <label for="type">Purpose</label>
+        <select name="purpose" id="purpose" required>
+          <option value="Enquiry">Enquiry</option>
+          <option value="Report">Report</option>
+          <option value="Complaint">Complaint</option>
+        </select>
+
+      <label for="text">Message</label>
+      <textarea name="text" id="text" rows="10" placeholder="How May I Help You?" required></textarea>
+
+      <button type="submit">
+        <span>Contact Admin</span>
+        <i class="fa-spin hide">donut_large</i>
+      </button>
+    </form>
+  </div>
+
   <footer class="container-fluid">
-    &copy; 2019 Pink et Tu, All rights reserved.
   </footer>
 
-  <script src="js/interceptAjax.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/fetchPinks.js"></script>
-  <script src="js/rankProfile.js"></script>
-  <script src="js/createPinkTiles.js"></script>
-  <script src="js/index.js"></script>
+  <script src="js/interceptAjax.min.js"></script>
+  <script src="js/nav.min.js"></script>
+  <script src="js/fetchPinks.min.js"></script>
+  <script src="js/rankProfile.min.js"></script>
+  <script src="js/createPinkTiles.min.js"></script>
+  <script src="js/contactAdmin.min.js"></script>
+  <script src="js/toggleButtonSpinner.min.js"></script>
+  <script src="js/index.min.js"></script>
+  <script src="js/addRulesOfEngagement.min.js"></script>
 </body>
 
 </html>

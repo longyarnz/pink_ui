@@ -142,4 +142,6 @@ function CreateNavigation() {
 
 document.addEventListener('DOMContentLoaded', () => {
   CreateNavigation();
+  const footer = document.querySelector('body > footer:last-of-type');
+  footer.innerHTML = `&copy; ${new Date().getFullYear()} Pink et Tu.`;
 });
