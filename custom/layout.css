@@ -421,8 +421,8 @@ section.nav-menu {
 
 figure.placeholder-container {
   box-shadow: none !important;
-  justify-self: space-around;
-  flex: 1;
+  /* justify-self: space-around; */
+  /* flex: 1; */
   background-color: #fff;
 }
 

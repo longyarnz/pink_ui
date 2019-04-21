@@ -38,6 +38,7 @@ div.show-worker-images div.gallery {
 div.gallery figure {
   position: relative;
   min-width: 140px;
+  max-height: 350px;
   margin: 0px 20px 40px 0px;
   border-radius: 5px;
   overflow: hidden;
@@ -143,7 +144,6 @@ footer {
   }
 
   div.show-worker-images div.gallery {
-    /* flex-direction: column; */
     justify-content: space-between;
     padding: 0px;
   }
@@ -159,7 +159,7 @@ footer {
   div.show-worker-images div.gallery figure {
     width: calc(50% - 10px);
     max-width: calc(50% - 10px);
-    height: 300px;
+    height: 350px;
     margin: 0px 0px 20px;
     box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.4);
   }

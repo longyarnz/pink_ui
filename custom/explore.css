@@ -96,10 +96,8 @@ div.show-worker-images > div.gallery > img:first-of-type{
     margin-top: 5px;
   }
   
-  div.show-worker-images > div.gallery > img {
-    width: 50%;
-    height: auto;
-    margin: 10px 0px;
+  div.show-worker-images > div.gallery > div {
+    margin: 0px 0px 20px 0px;
   }
   
   section > div.show-worker-images > header {
