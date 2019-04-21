@@ -44,6 +44,13 @@ div.info-wrapper {
   top: 100px;
 }
 
+div.pic-wrapper {
+  min-height: inherit;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
 div.pic-wrapper img {
   max-width: 100%;
   max-height: calc(100% - 40px);
@@ -186,6 +193,7 @@ div.show-worker-images div.gallery img {
 
 div.show-worker-images div.gallery div {
   position: relative;
+  max-width: 100%;
 }
 
 div.show-worker-images div.gallery div button {
@@ -243,12 +251,9 @@ div.show-worker-images div.gallery div button i {
     height: auto;
     position: relative;
     top: 0;
+    min-height: 50vh;
   }
-  
-  div.pic-wrapper img {
-    /* width: 100%; */
-  }
-  
+
   div.info-wrapper {
     width: 100%;
     position: relative;

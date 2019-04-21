@@ -12,8 +12,8 @@ async function fetchIndexPinks(profileHanlder) {
   profileHanlder(profiles);
 }
 
-async function fetchAPink(id, profileHanlder) {
-  let profile = await fetch(`${API}/profile/pinks/${id}`);
+async function fetchAPink(id, userType, profileHanlder) {
+  let profile = await fetch(`${API}/profile/${userType}s/${id}`);
   profile = await profile.json();
   profileHanlder(profile);
 }

@@ -129,10 +129,10 @@ async function hookupViaPaystack(button, worker, cost) {
   }
 }
 
-function parseMoney(number){
+function parseMoney(number) {
   number = number.toString().split('').reverse();
   for (let i = 0; i < number.length; i++)
-    if(i % 3 === 0 && i !== 0) number[i] += ', ';
+    if (i % 3 === 0 && i !== 0) number[i] += ', ';
   number = number.reverse().join('');
   return number;
 }
@@ -155,7 +155,8 @@ function createPinkProfile(profile, workerId) {
 
   let seeMore = document.createElement('div');
 
-  if (localStorage.getItem('pinkettu_user_status') !== 'true') {
+  const workerStatus = localStorage.getItem('pinkettu_user_status');
+  if (workerStatus !== 'true' && profile.worker) {
     seeMore.classList.add('rates-container');
     const charge = ['An Hour', 'A Night', 'The Weekend'];
     const rates = profile.rates || [0, 0, 0];
@@ -169,7 +170,8 @@ function createPinkProfile(profile, workerId) {
       seeMore.insertAdjacentHTML('beforeend', html);
       seeMore.lastElementChild.onclick = e => {
         if (localStorage.getItem('pinkettu')) {
-          const buttons = Array.from(seeMore.children).filter(i => parseInt(i.getAttribute('data-rate')) === rate);
+          const buttons = Array.from(seeMore.children)
+            .filter(i => parseInt(i.getAttribute('data-rate')) === rate);
           hookupViaPaystack(buttons[0], workerId, rate);
         }
         else {
@@ -206,10 +208,19 @@ function createPinkProfile(profile, workerId) {
 }
 
 function loadUserProfile() {
-  const id = query.slice(6);
-  fetchAPink(id, profile => {
-    if (profile.username || profile.rank || profile.images) {
+  const userType = query.match(/pink/) ? 'pink'
+  : query.match(/client/) ? 'client' : '';
+  const id = userType === 'pink' ? query.slice(6) : query.slice(8);
+
+  if (userType === '') {
+    window.history.back();
+    return;
+  }
+
+  fetchAPink(id, userType, profile => {
+    if (profile && (profile.username || profile.images)) {
       createPinkProfile(profile, id);
     }
+    else window.history.back();
   });
 }

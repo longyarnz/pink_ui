@@ -177,6 +177,7 @@ div.onboarding div.step span {
   div.show-worker-images div.gallery figure,
   div.show-worker-images div.gallery figure:last-of-type {
     margin-bottom: 30px;
+    width: 100%;
   }
 
   div.cover {

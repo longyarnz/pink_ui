@@ -74,7 +74,7 @@ div.show-worker-images > div.gallery {
   margin-top: 30px;
 }
 
-div.show-worker-images > div.gallery > img {
+div.show-worker-images > div.gallery > div {
   margin: 0px 20px 20px 0px;
 }
 

@@ -64,41 +64,39 @@ section main div.tab {
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  padding: 10px 10px;
+  padding: 10px;
   border-radius: 3px;
 }
 
 div.tab *{
-  min-height: 50px;
+  min-height: 30px;
 }
 
 div.tab:nth-of-type(odd) {
-  background-color: #f9f9f9;
+  background-color: #f0f0f0;
 }
 
 div.tab:nth-of-type(even) {
   background-color: #fdfdfd;
 }
 
-div.tab > span {
+div.tab > div {
   display: flex;
   align-items: center;
-  width: 100%;
   padding: 10px 0px;
   font-family: Montserrat;
   font-weight: 700;
   color: #555;
 }
 
-div.tab > span:last-of-type {
-  width: 200px;
+div.tab > div:last-of-type {
+  width: 280px;
   text-transform: uppercase;
   font-size: 70%;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 30px;
   height: 30px;
   font-family: Montserrat;
   border: none;
@@ -109,9 +107,8 @@ div.tab > span:last-of-type {
   padding: 0px;
 }
 
-div.tab > span:last-of-type > input {
+div.tab > div:last-of-type > input {
   width: 100%;
-  min-height: 30px;
   padding: 5px;
   border: 1px solid #a9a9a9;
   font-weight: 300;
@@ -119,28 +116,27 @@ div.tab > span:last-of-type > input {
   font-family: monospace;
 }
 
-div.tab > span:last-of-type > button {
+div.tab > div:last-of-type > button {
   font-family: Montserrat;
-  font-weight: 400;
-  min-height: 30px;
-  min-width: 100px;
+  font-weight: bold;
+  min-width: 130px;
   border: 1px solid #a9a9a9;
   cursor: pointer;
   transition: all .25s ease;
   color: #fff;
 }
 
-div.tab > span:last-of-type > button:hover {
+div.tab > div:last-of-type > button:hover {
   background-color: #aaa;
   color: #fff;
 }
 
-div.tab > span:last-of-type > button:active {
+div.tab > div:last-of-type > button:active {
   background-color: #5cb85c;
   color: #fff;
 }
 
-div.tab > span.completed, div.tab > span.pending {
+div.tab > div.completed, div.tab > div.pending {
   border-radius: 5px 10px;
   background-color: transparent;
   color: #5cb85c;
@@ -148,38 +144,61 @@ div.tab > span.completed, div.tab > span.pending {
   font-size: 100%;
 }
 
-div.tab > span.pending {
+div.tab > div.pending {
   color: #aaa;
 }
 
-div.tab > span:first-of-type {
-  color: #ff6699;
-  font-size: 85%;
-  flex: 1;
+div.tab > div:first-of-type {
+  font-size: 90%;
   text-transform: uppercase;
+  display: flex;
+  justify-content: flex-start;
 }
 
-div.tab > span:nth-of-type(2) {
+div.tab > div:first-of-type > span {
+  color: #aaa;
+}
+
+div.tab > div:first-of-type > a {
+  margin-left: 20px;
+  padding: 5px 10px;
+  background-color: #ff6699;
+  color: #fff;
+  min-height: 0px;
+  border-radius: 5px 10px;
+}
+
+div.tab > div:nth-of-type(2) {
   font-weight: 900;
   font-size: 150%;
   color: #000;
-  flex: 1;
+}
+
+div.tab > div:nth-of-type(2) > span:first-of-type {
+  color: #aaa;
+  font-size: 55%;
+}
+
+div.tab > div:nth-of-type(2) > span:last-of-type {
+  color: #000;
+  font-weight: 900;
+  margin-left: 10px;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  div.tab > span:nth-of-type(2) {
+  div.tab > div:nth-of-type(2) {
     font-size: 110%;
   }
 }
 
-div.tab > span.rank {
+div.tab > div.rank {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex: 1.7;
 }
 
-div.tab > span > span {
+div.tab > div > span {
   display: flex;
   width: auto;
   justify-content: flex-start;
@@ -197,46 +216,58 @@ div.tab > span > span {
   font-weight: 700;
 }
 
-div.tab > span > span i {
+div.tab > div > span i {
   margin: 0px 3.5px;
   color: gold;
   display: flex;
   align-items: center;
 }
 
-div.tab > span select {
+div.tab > div select {
   margin: 0px;
   padding: 0px 0px 10px 0px;
   width: auto;
   border-bottom: 3px solid #ff6699;
 }
 
-div.tab > span select option {
+div.tab > div select option {
   text-transform: capitalize;
 }
 
 @media screen and (max-width: 768px) {
   section main div.tab {
     flex-direction: column;
-    padding: 0px 10px 20px;
+    padding: 0px 10px 40px;
     align-items: flex-start;
   }
 
-  div.tab > span > span i {
+  div.tab > div {
+    width: 100%;
+  }
+
+  div.tab > div:first-of-type {
+    justify-content: space-between;
+  }
+
+  div.tab > div > span i {
     margin: 10px 10px 0px 0px;
   }
 
-  div.tab > span > span {
+  div.tab > div > span {
     padding: 0px;
   }
 
-  div.tab > span:last-of-type {
+  div.tab > div:last-of-type {
     width: 100%;
     height: auto;
   }
 
-  div.tab > span.completed {
+  div.tab > div.completed {
     justify-content: flex-start;
+  }
+
+  section main.empty > h2 { 
+    font-size: 100%;
   }
 }
 
