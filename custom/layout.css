@@ -45,6 +45,10 @@
   animation: spin 0.45s infinite linear;
 }
 
+:root {
+  --background: #000;
+}
+
 .hide {
   display: none !important;
 }
@@ -113,7 +117,7 @@ body > header:nth-of-type(6) {
 }
 
 nav {
-  background: #000;
+  background: var(--background);
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
@@ -133,7 +137,7 @@ nav > div {
 nav #logo-cont {
   margin: 0px;
   height: 100%;
-  background: #000;
+  background: transparent;
 }
 
 nav #logo-cont a:focus {
@@ -146,7 +150,7 @@ nav ul {
   align-items: center;
   padding: 10px;
   margin: 0px 0px 0px auto;
-  background: #000;
+  background: transparent;
   list-style: none;
 }
 
@@ -208,7 +212,7 @@ body > footer {
   justify-content: center;
   align-items: center;
   padding: 0px;
-  background-color: #000;
+  background-color: var(--background);
   color: #fff;
   box-shadow: 0px -4px 4px -2px rgba(0, 0, 0, 0.4);
 }
