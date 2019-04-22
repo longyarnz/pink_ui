@@ -63,14 +63,8 @@ main > button:active {
 }
 
 #signup-main > div > main > div a {
-  color: #000;
-  font-weight: 900;
-  -webkit-text-emphasis-style: dot;
-  text-emphasis-style: dot;
-  -webkit-text-emphasis-position: under;
-  text-emphasis-position: under left;
-  -webkit-text-emphasis-color: #ff6699;
-  text-emphasis-color: #ff6699;
+  color: #f69;
+  font-weight: 700;
   margin-left: 3px;
 }
 
