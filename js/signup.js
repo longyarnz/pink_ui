@@ -29,7 +29,7 @@ function submitForm(e) {
   const button = e.target.children.finalSubmit;
   toggleButtonSpinner(button, true);
   const URL = `${API}/auth/signup`;
-  const [email, username, phone, password, , location, worker, image] = e.target;
+  const [email, username, phone, password, x, location, worker, image] = e.target;
   const rand = Math.floor(Math.random() * 100);
   const sanitizedName = image.files[0].name.replace(/\s/i, '.');
   caption = `${rand}.${sanitizedName}`;
@@ -85,6 +85,7 @@ function submitForm(e) {
     });
   }
   catch (err) {
+    alert(JSON.stringify(err));
     toggleButtonSpinner(button, false);
   }
 }

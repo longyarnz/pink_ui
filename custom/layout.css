@@ -476,15 +476,16 @@ div.rules, div.contact {
 }
 
 div.rules > h3, div.contact > h3 {
-  font-size: 300%;
+  font-size: 220%;
   font-family: Qwigley;
-  font-weight: 900;
+  font-weight: 200;
   color: #ff6699;
   margin: 0px;
   padding: 15px 0px 5px;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 div.rules > h4 {
