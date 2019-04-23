@@ -4,10 +4,9 @@
   "alias": [ "test.pinkettu.com.ng" ],
   "builds": [
     { "src": "*.html", "use": "@now/html-minifier" },
-    { "src": "*/*.js", "use": "@now/static" },
-    { "src": "js/*.js", "use": "@now/static" },
-    { "src": "*/*.css", "use": "@now/html-minifier" },
-    { "src": "*/*.png", "use": "@now/optipng" },
+    { "src": "js/*.min.js", "use": "@now/static" },
+    { "src": "custom/*.min.css", "use": "@now/html-minifier" },
+    { "src": "images/*.png", "use": "@now/optipng" },
     { "src": "images/*.jpg", "use": "@now/static" },
     { "src": "fonts/*.woff", "use": "@now/static" },
     { "src": "fonts/*.woff2", "use": "@now/static" }

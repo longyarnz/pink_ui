@@ -12,7 +12,6 @@
 #signup-main > div > p {
   font-family: Montserrat;
   font-weight: 300;
-  /* text-transform: capitalize; */
   text-align: center;
 }
 
@@ -20,6 +19,7 @@
   text-transform: lowercase;
   color: #f69;
   font-weight: bold;
+  margin: 0px 5px;
 }
 
 #signup-main > div > main{
