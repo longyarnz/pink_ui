@@ -14,8 +14,7 @@
   <meta property="og:title" content="Pink et Tu">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pinkettu.com.ng">
-  <meta property="og:description"
-    content="Pink et Tu is a platform for hook ups featuring adult content. It enables workers to create profiles and
+  <meta property="og:description" content="Pink et Tu is a platform for hook ups featuring adult content. It enables workers to create profiles and
     interested clients are welcome to request for their services.">
   <meta property="og:site_name" content="Pink et Tu">
   <link rel="shortcut icon" href="images/icon.png">
@@ -48,6 +47,7 @@
           <i>local_florist</i> Profile <i>local_florist</i>
         </h3>
         <form method="POST" name="form" class="form" enctype="multipart/form-data">
+          <code></code>
           <label for="user">Username</label>
           <input id="user" name="username" type="text" placeholder="Username" value="" required />
 
@@ -55,11 +55,8 @@
           <input id="phone" name="phone" type="text" placeholder="Phone Number"
             pattern="^0(8|(7|9)(?!1))(0(?!0)|1)[0-9]{8}$" value="" required />
 
-          <label for="locate">Location</label>
-          <select name="locate" id="locate" required>
-            <option value="Lagos Mainland">Lagos Mainland</option>
-            <option value="Lagos Island">Lagos Island</option>
-          </select>
+          <label for="location">Location</label>
+          <input name="location" id="location" type="text" placeholder="Location" required />
 
           <label for="profile">Profile Picture</label>
           <input id="profile" name="image" type="file" placeholder="Change profile picture" accept="image/*">

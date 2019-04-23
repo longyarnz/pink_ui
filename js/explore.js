@@ -71,7 +71,10 @@ async function hookupViaPaystack(button, worker, cost) {
         body: JSON.stringify(response)
       });
 
-      if (verify.status >= 400) throw '';
+      if (verify.status >= 400) {
+        const up = await verify.json();
+        throw up;
+      }
 
       else {
         window.location.assign('/hookups.html');
@@ -79,7 +82,7 @@ async function hookupViaPaystack(button, worker, cost) {
     }
     catch (err) {
       alert(err);
-      button[0].textContent = 'Network Error';
+      button.children[0].textContent = 'Network Error';
       localStorage.removeItem('isSubmitting');
     }
   }
@@ -151,11 +154,16 @@ function createPinkProfile(profile, workerId) {
   i.textContent = 'near_me';
 
   const fourthSpan = document.createElement('span');
-  fourthSpan.textContent = profile.location || 'Lagos Mainland';
+  fourthSpan.textContent = profile.location || 'Lagos';
+
+  const code = document.createElement('code');
+  code.textContent = profile.emailIsVerified ? 'verified' : 'not verified';
+  code.style.color = profile.emailIsVerified ? '#5cb85c' : '#d9534f';
 
   let seeMore = document.createElement('div');
 
   const workerStatus = localStorage.getItem('pinkettu_user_status');
+  console.log(workerStatus);
   if (workerStatus !== 'true' && profile.worker) {
     seeMore.classList.add('rates-container');
     const charge = ['An Hour', 'A Night', 'The Weekend'];
@@ -196,7 +204,7 @@ function createPinkProfile(profile, workerId) {
 
   thirdSpan.appendChild(i);
   h3.append(firstSpan);
-  div.append(thirdSpan, fourthSpan);
+  div.append(thirdSpan, fourthSpan, code);
   header.append(div, seeMore);
 
   const parent = document.createElement('div');

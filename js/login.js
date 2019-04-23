@@ -1,5 +1,5 @@
 function handleResponse(request) {
-  const { token, text } = JSON.parse(request.responseText);
+  const { token, text, worker } = JSON.parse(request.responseText);
 
   if (!token) {
     const p = document.querySelector('p');
@@ -12,6 +12,7 @@ function handleResponse(request) {
 
   localStorage.removeItem('isSubmitting');
   localStorage.setItem('pinkettu', token);
+  localStorage.setItem('pinkettu_user_status', worker);
 
   if (window.location.search) {
     const query = decodeURIComponent(window.location.search);
@@ -25,9 +26,10 @@ function handleResponse(request) {
 function redirectToActivation(request, button) {
   toggleButtonSpinner(button, false);
   alert(request.responseText);
-  const { id, message } = JSON.parse(request.responseText);
+  const { id, message, email } = JSON.parse(request.responseText);
 
-  if (id && message) {
+  if (id && message && email) {
+    localStorage.setItem('activate_email', email);
     window.location.assign(`/activate.html?user=${id}`);
     return;
   }

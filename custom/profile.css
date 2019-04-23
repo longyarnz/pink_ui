@@ -82,7 +82,7 @@ div.info-wrapper h3 {
   font-family: Qwigley;
   font-size: 300%;
   color: #ff6699;
-  margin: 10px 0px 30px;
+  margin: 10px 0px;
 }
 
 div.info-wrapper h3 i {
@@ -194,6 +194,7 @@ div.show-worker-images div.gallery img {
 div.show-worker-images div.gallery div {
   position: relative;
   max-width: 100%;
+  margin: 0px 20px 20px 0px;
 }
 
 div.show-worker-images div.gallery div button {

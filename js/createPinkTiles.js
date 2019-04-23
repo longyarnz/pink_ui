@@ -10,7 +10,7 @@ function createPinkTiles(id, name, location, src) {
 
   const footer = document.createElement('footer');
   const span = document.createElement('span');
-  span.textContent = location || 'Lagos Island';
+  span.textContent = location;
 
   const img = document.createElement('img');
   img.src = `https://images.pinkettu.com.ng/${src}`;

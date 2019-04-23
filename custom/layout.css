@@ -426,8 +426,6 @@ section.nav-menu {
 
 figure.placeholder-container {
   box-shadow: none !important;
-  /* justify-self: space-around; */
-  /* flex: 1; */
   background-color: #fff;
 }
 
@@ -558,6 +556,17 @@ form > label {
   font-size: 80%;
   text-transform: uppercase;
   color: #999;
+}
+
+form > code {
+  background-color: rgba(92, 184, 92, .1);
+  margin: 0px 0px 10px 0px;
+  display: inline-block;
+  width: auto;
+  text-align: left;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 80%;
 }
 
 form > button {

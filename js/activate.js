@@ -74,7 +74,9 @@ function activateViaPaystack() {
         p.style.color = '#d9534f';
         p.style.fontWeight = '900';
         setTimeout(() => {
-          p.textContent = 'Activate Your Account';
+          const email = localStorage.getItem('activate_email');
+          p.textContent = '';
+          p.innerHTML = `Check your mailbox <code>${email}</code> and verify your email before you activate your account.`;
           p.style.color = color;
           p.style.fontWeight = fontWeight;
         }, 5000);
@@ -93,4 +95,5 @@ function activateViaPaystack() {
 document.addEventListener('DOMContentLoaded', a => {
   button = document.querySelector('button');
   button.addEventListener('click', activateViaPaystack);
+  document.querySelector('code').textContent = localStorage.getItem('activate_email');
 });

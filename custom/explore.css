@@ -31,6 +31,15 @@ header > div.rates-container {
   justify-content: flex-start;
 }
 
+header > div > code {
+  color: #5cb85c;
+  font-size: 80%;
+  font-weight: bold;
+  border-radius: 5px;
+  height: 10px;
+  text-transform: uppercase;
+}
+
 header > div > span {
   font-family: Qwigley;
   justify-content: flex-start;

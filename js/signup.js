@@ -30,21 +30,24 @@ function submitForm(e) {
   toggleButtonSpinner(button, true);
   const URL = `${API}/auth/signup`;
   const [email, username, phone, password, x, location, worker, image] = e.target;
-  const rand = Math.floor(Math.random() * 100);
-  const sanitizedName = image.files[0].name.replace(/\s/i, '.');
-  caption = `${rand}.${sanitizedName}`;
+  const file = image.files[0];
+  const ext = file.name.split('.').pop();
+  const alpha = 'JKHIHGFKUEIUFISHDFSHKDKPOWPCMZAXQYWIOZLBKDKSGKFBSDKFKJDFVKABNKJNNSOOJPAOISHDOSA'.toLowerCase();
+  const random = i => Math.ceil(Math.random() * i);
+  const caption = `${alpha.charAt(random(78))}${alpha.charAt(random(78))}${random(999999)}.${ext}`;
 
   try {
-    const feedback = sendImageToDatabase(image, caption);
+    const feedback = sendImageToDatabase(file, caption);
     feedback.then(() => {
       const xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4) {
           if (this.status >= 400) {
             alert(this.responseText);
-            const { id, message } = JSON.parse(this.responseText);
+            const { id, message, email } = JSON.parse(this.responseText);
 
-            if (id && message) {
+            if (id && message && email) {
+              localStorage.setItem('activate_email', email);
               window.location.assign(`/activate.html?user=${id}`);
               return;
             }

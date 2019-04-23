@@ -6,9 +6,11 @@ function handleSubmitResponse(request, button) {
     toggleButtonSpinner(button, false);
     return;
   }
-  
-  toggleButtonSpinner(button, false);
-  window.location.assign('/profile.html');
+
+  else {
+    toggleButtonSpinner(button, false);
+    window.location.assign('/profile.html');
+  }
 }
 
 function submitForm(e, worker) {
@@ -20,43 +22,58 @@ function submitForm(e, worker) {
 
   const URL = `${API}/profile`;
 
-  let caption, feedback, body, files = []; 
-  const [name, phone, hour, night, week, location, image, more] = e.target;
+  let caption, feedback, body, files = [];
+  const { username, phone, hour, night, week, location, image, more } = e.target.elements;
+
+  const rates = hour && night && week
+    ? [parseInt(hour.value), parseInt(night.value), parseInt(week.value)]
+    : [];
 
   body = {
-    username: name.value,
+    username: username.value,
     phone: phone.value,
     location: location.value,
-    rates: [parseInt(hour.value), parseInt(night.value), parseInt(week.value)],
+    rates,
     image: [],
     more: []
   }
 
   function storeImage(image, cache) {
-    const rand = Math.floor(Math.random() * 100);
-    const sanitizedName = image.name.replace(/\s/i, '.');
-    caption = `${rand}.${sanitizedName}`;
+    const ext = image.name.split('.').pop();
+    const alpha = 'JKHIHGFKUEIUFISHDFSHKDKPOWPCMZAXQYWIOZLBKDKSGKFBSDKFKJDFVKABNKJNNSOOJPAOISHDOSA'.toLowerCase();
+    const random = i => Math.ceil(Math.random() * i);
+    const caption = `${alpha.charAt(random(78))}${alpha.charAt(random(78))}${random(999999)}.${ext}`;
     cache.push(caption);
-    feedback = sendImagesToDatabase(image, caption);
+    feedback = sendImageToDatabase(image, caption);
     files.push(feedback);
   }
 
-  if(image.files.length > 0){
+  if (image.files.length > 0) {
     storeImage(image.files[0], body.image);
   }
-  
-  if(worker && more.files.length > 0){
+
+  if (worker && more.files.length > 0) {
     for (let i = 0; i < more.files.length; i++) {
       const file = more.files[i];
       storeImage(file, body.more);
     }
   }
-  
+
   Promise.all(files).then(() => {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState === 4) {
-        handleSubmitResponse(this, button);
+        if (this.status >= 400) {
+          const span = button.children[0];
+          span.textContent = 'Network Error';
+          button.style.backgroundColor = '#d9534f';
+          toggleButtonSpinner(button, false);
+          setTimeout(() => {
+            span.textContent = 'Edit Profile';
+            button.style.backgroundColor = '#f69';
+          }, 5000);
+        }
+        else handleSubmitResponse(this, button);
       }
     };
     xhttp.open('PUT', URL, true);

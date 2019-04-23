@@ -85,6 +85,11 @@ figcaption > footer {
   font-family: Qwigley;
 }
 
+figcaption > footer span {
+  font-family: Qwigley;
+  text-transform: capitalize;
+}
+
 figcaption > footer i.material-icons {
   margin-right: 4px;
   font-size: 80%;

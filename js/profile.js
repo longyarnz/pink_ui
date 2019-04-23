@@ -8,13 +8,13 @@ function createAddMoreInput(rates = [0, 0, 0]) {
   const chargeInput = 
     `
     <label for="hour">Charge Per Hour (₦)</label>
-    <input id="hour" name="hour" type="number" placeholder="Hourly Rate" value="${parseInt(rates[0])}" pattern="[0-9]*" required />
+    <input id="hour" name="hour" type="number" placeholder="Hourly Rate" value="${parseInt(rates[0]) || 1000}" pattern="[0-9]*" required />
     
     <label for="night">Overnight Charge (₦)</label>
-    <input id="night" name="night" type="number" placeholder="Overnight Charge" value="${parseInt(rates[1])}" pattern="[0-9]*" required />
+    <input id="night" name="night" type="number" placeholder="Overnight Charge" value="${parseInt(rates[1]) || 1000}" pattern="[0-9]*" required />
     
     <label for="week">Weekend Charge (₦)</label>
-    <input id="week" name="week" type="number" placeholder="Weekend Charge" value="${parseInt(rates[2])}" pattern="[0-9]*" required />
+    <input id="week" name="week" type="number" placeholder="Weekend Charge" value="${parseInt(rates[2]) || 1000}" pattern="[0-9]*" required />
     `
   ;
 
@@ -28,8 +28,7 @@ function createAddMoreInput(rates = [0, 0, 0]) {
 
   form.insertBefore(label, form.children.finalSubmit);
   form.insertBefore(fileInput, form.children.finalSubmit);
-  form.children[4].insertAdjacentHTML('beforebegin', chargeInput);
-
+  form.children[7].insertAdjacentHTML('beforebegin', chargeInput);
 }
 
 async function deleteUserImage(src) {
@@ -129,8 +128,13 @@ async function fetchUserProfile() {
       const form = document.querySelector('form');
       const img = document.querySelector('.pic-wrapper img');
       img.src = `https://images.pinkettu.com.ng/${profile.images[0]}`;
+      const code = form.children[0];
+      code.style.backgroundColor = !profile.emailIsVerified  ? 'rgba(255, 0, 0, .1)' : 'rgba(92, 184, 92, .1)';
+      code.textContent = !profile.emailIsVerified 
+        ? `Check your mailbox <${profile.email}> to verify your account` 
+        : `Account <${profile.email}> Verified`;
       form[0].value = profile.username;
-      form[1].value = profile.phone;
+      form[1].value = profile.phone || 0800000000;
       form[2].value = profile.location;
       localStorage.setItem('pinkettu_user_status', profile.worker);
       localStorage.setItem('pinkettu_user_id', profile.id);
