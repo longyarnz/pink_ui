@@ -163,7 +163,6 @@ function createPinkProfile(profile, workerId) {
   let seeMore = document.createElement('div');
 
   const workerStatus = localStorage.getItem('pinkettu_user_status');
-  console.log(workerStatus);
   if (workerStatus !== 'true' && profile.worker) {
     seeMore.classList.add('rates-container');
     const charge = ['An Hour', 'A Night', 'The Weekend'];

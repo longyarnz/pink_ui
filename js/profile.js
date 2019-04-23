@@ -8,13 +8,13 @@ function createAddMoreInput(rates = [0, 0, 0]) {
   const chargeInput = 
     `
     <label for="hour">Charge Per Hour (₦)</label>
-    <input id="hour" name="hour" type="number" placeholder="Hourly Rate" value="${parseInt(rates[0]) || 1000}" pattern="[0-9]*" required />
+    <input id="hour" name="hour" type="number" placeholder="Hourly Rate" value="${parseInt(rates[0]) || 0}" pattern="[0-9]*" required />
     
     <label for="night">Overnight Charge (₦)</label>
-    <input id="night" name="night" type="number" placeholder="Overnight Charge" value="${parseInt(rates[1]) || 1000}" pattern="[0-9]*" required />
+    <input id="night" name="night" type="number" placeholder="Overnight Charge" value="${parseInt(rates[1]) || 0}" pattern="[0-9]*" required />
     
     <label for="week">Weekend Charge (₦)</label>
-    <input id="week" name="week" type="number" placeholder="Weekend Charge" value="${parseInt(rates[2]) || 1000}" pattern="[0-9]*" required />
+    <input id="week" name="week" type="number" placeholder="Weekend Charge" value="${parseInt(rates[2]) || 0}" pattern="[0-9]*" required />
     `
   ;
 
