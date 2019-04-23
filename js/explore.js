@@ -20,7 +20,7 @@ async function hookupViaPaystack(button, worker, cost) {
   }
 
   catch (err) {
-    alert(err);
+    // alert(err);
     const text = button.children[0].textContent;
     button.children[0].textContent = 'Network Error';
     setTimeout(() => {
@@ -81,7 +81,7 @@ async function hookupViaPaystack(button, worker, cost) {
       }
     }
     catch (err) {
-      alert(err);
+      // alert(err);
       button.children[0].textContent = 'Network Error';
       localStorage.removeItem('isSubmitting');
     }
@@ -91,7 +91,7 @@ async function hookupViaPaystack(button, worker, cost) {
     const { id } = hookup;
     const URL = `${API}/transaction`;
     const button = document.querySelector(`[data-rate='${cost}']`);
-    alert(cost);
+    // alert(cost);
     try {
       let transaction = await fetch(URL, {
         method: 'POST',
@@ -126,7 +126,7 @@ async function hookupViaPaystack(button, worker, cost) {
       }
     }
     catch (err) {
-      alert(err);
+      // alert(err);
       toggleButtonSpinner(button, false);
     }
   }

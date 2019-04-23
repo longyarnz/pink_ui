@@ -5,7 +5,6 @@ async function contactAdmin(e) {
   const form = e.target;
   const button = form[3];
   toggleButtonSpinner(button, true);
-  console.log([form]);
   const [email, purpose, text] = form;
   const URL = `${API}/mail`;
   try {
@@ -22,7 +21,6 @@ async function contactAdmin(e) {
     });
 
     const { status } = mail;
-    console.log(status);
     mail = await mail.json();
 
     if (status >= 400) {
@@ -40,7 +38,7 @@ async function contactAdmin(e) {
     }
   }
   catch (err) {
-    alert(err);
+    // alert(err);
     toggleButtonSpinner(button, false);
     button.children[0].textContent = 'Network Error';
     button.style.backgroundColor = '#d9534f';

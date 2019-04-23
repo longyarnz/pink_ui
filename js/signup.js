@@ -43,7 +43,7 @@ function submitForm(e) {
       xhttp.onreadystatechange = function () {
         if (this.readyState === 4) {
           if (this.status >= 400) {
-            alert(this.responseText);
+            // alert(this.responseText);
             const { id, message, email } = JSON.parse(this.responseText);
 
             if (id && message && email) {
@@ -88,7 +88,7 @@ function submitForm(e) {
     });
   }
   catch (err) {
-    alert(JSON.stringify(err));
+    // alert(JSON.stringify(err));
     toggleButtonSpinner(button, false);
   }
 }

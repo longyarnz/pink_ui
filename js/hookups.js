@@ -103,7 +103,7 @@ async function completeHookup(id, button) {
   }
 
   catch (err) {
-    alert(err);
+    // alert(err);
     button.textContent = 'VERIFY';
   }
 }
@@ -145,7 +145,7 @@ async function fetchUserHookups() {
   }
 
   catch (err) {
-    alert(err);
+    // alert(err);
     localStorage.removeItem('isSubmitting');
   }
 }

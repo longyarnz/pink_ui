@@ -25,7 +25,7 @@ function handleResponse(request) {
 
 function redirectToActivation(request, button) {
   toggleButtonSpinner(button, false);
-  alert(request.responseText);
+  // alert(request.responseText);
   const { id, message, email } = JSON.parse(request.responseText);
 
   if (id && message && email) {

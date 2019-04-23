@@ -50,7 +50,7 @@ async function deleteUserImage(src) {
     }
   }
   catch (err) {
-    alert(err);
+    // alert(err);
     localStorage.removeItem('isSubmitting');
   }
 }
@@ -147,7 +147,7 @@ async function fetchUserProfile() {
     }
   }
   catch (err) {
-    alert(err);
+    // alert(err);
     localStorage.removeItem('isSubmitting');
   }
 }
