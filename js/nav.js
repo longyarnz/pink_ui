@@ -2,7 +2,7 @@ const appIsLive = window.location.hostname !== '127.0.0.1';
 const appIsRemote = window.location.hostname.slice(0, 3) === '192';
 let API = appIsLive ? 'https://api.pinkettu.com.ng' : 'http://127.0.0.1:3001';
 API = appIsRemote ? `http://${window.location.hostname}:3001` : API;
-const publicKey = 'pk_test_99aefb07d699525e9eed76be0cbe03fda6ad0ff6';
+const publicKey = 'pk_live_93ea00177d79497db05ce21ba5721d829621d378';
 
 const toggleNavMenu = () => {
   const menu = document.querySelector('section.nav-menu');
