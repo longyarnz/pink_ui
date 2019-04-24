@@ -31,7 +31,7 @@
     Pink et Tu is a platform for hook ups featuring adult content. It enables workers to create profiles and
     interested clients are welcome to request for their services.
   </h1>
-  
+
   <nav>
     <div class="container">
       <div id="logo-cont">
@@ -70,6 +70,13 @@
         <label for="confirm">Confirm Password</label>
         <input id="confirm" type="password" placeholder="Confirm Password" name="confirm_password" required />
 
+        <label for="orientation">I Am</label>
+        <select name="orientation" id="orientaion" required>
+          <option value="Straight">Straight</option>
+          <option value="Gay">Gay</option>
+          <option value="Bisexual">Bisexual</option>
+        </select>
+
         <label for="location">Location</label>
         <input name="location" id="location" type="text" placeholder="Location" required />
 
@@ -82,13 +89,19 @@
         <label for="profile">Profile Image</label>
         <input id="profile" name="image" type="file" accept="image/*" required />
 
-        <button type="submit" id="finalSubmit">
+        <div>
+          <input type="checkbox" name="rules" id="rules" onchange="allowSignUp(this)">
+          I agree with the <a href="index.html#rules" target="_blank">Disclaimer</a> and the <a href="index.html#rules"
+            target="_blank">Rules of Engagement.</a>
+        </div>
+
+        <button type="submit" id="finalSubmit" disabled>
           <span>SIGN UP</span>
           <i class="fa-spin hide">donut_large</i>
         </button>
 
         <div>
-          Already have an account! <a href="login.html">LOG IN</a>
+          Already have an account | <a href="login.html">LOG IN</a>
         </div>
       </form>
     </div>
@@ -97,6 +110,16 @@
   <footer class="container-fluid">
     &copy; 2019 Pink et Tu, All rights reserved.
   </footer>
+
+  <script>
+    function allowSignUp(e) {
+      const button = document.querySelector('button');
+      if (e.checked) {
+        button.disabled = false;
+      }
+      else button.disabled = true;
+    }
+  </script>
 
   <script src="js/nav.min.js"></script>
   <script src="js/toggleButtonSpinner.min.js"></script>

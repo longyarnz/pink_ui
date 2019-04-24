@@ -27,13 +27,17 @@
   text-align: center;
   font-family: Montserrat;
   font-weight: 300;
+  font-size: 80%;
   margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #signup-main > div > form > div a {
   color: #ff6699;
   font-weight: 700;
-  margin-left: 3px;
+  margin: 0px 3px;
 }
 
 div.login {

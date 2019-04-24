@@ -29,7 +29,7 @@ function submitForm(e) {
   const button = e.target.children.finalSubmit;
   toggleButtonSpinner(button, true);
   const URL = `${API}/auth/signup`;
-  const [email, username, phone, password, x, location, worker, image] = e.target;
+  const {email, username, phone, password, orientation, location, worker, image} = e.target.elements;
   const file = image.files[0];
   const ext = file.name.split('.').pop();
   const alpha = 'JKHIHGFKUEIUFISHDFSHKDKPOWPCMZAXQYWIOZLBKDKSGKFBSDKFKJDFVKABNKJNNSOOJPAOISHDOSA'.toLowerCase();
@@ -79,6 +79,7 @@ function submitForm(e) {
           username: username.value.toLowerCase(),
           email: email.value.toLowerCase(),
           phone: phone.value,
+          orientation: orientation.value,
           password: password.value.toLowerCase(),
           location: location.value,
           worker: worker.value === 'true',

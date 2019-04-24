@@ -28,7 +28,7 @@ function createAddMoreInput(rates = [0, 0, 0]) {
 
   form.insertBefore(label, form.children.finalSubmit);
   form.insertBefore(fileInput, form.children.finalSubmit);
-  form.children[7].insertAdjacentHTML('beforebegin', chargeInput);
+  form.children[9].insertAdjacentHTML('beforebegin', chargeInput);
 }
 
 async function deleteUserImage(src) {
@@ -135,7 +135,8 @@ async function fetchUserProfile() {
         : `Account <${profile.email}> Verified`;
       form[0].value = profile.username;
       form[1].value = profile.phone || 0800000000;
-      form[2].value = profile.location;
+      form[2].value = profile.orientation || 'Straight';
+      form[3].value = profile.location;
       localStorage.setItem('pinkettu_user_status', profile.worker);
       localStorage.setItem('pinkettu_user_id', profile.id);
 

@@ -23,7 +23,7 @@ function submitForm(e, worker) {
   const URL = `${API}/profile`;
 
   let caption, feedback, body, files = [];
-  const { username, phone, hour, night, week, location, image, more } = e.target.elements;
+  const { username, phone, hour, night, week, orientation, location, image, more } = e.target.elements;
 
   const rates = hour && night && week
     ? [parseInt(hour.value), parseInt(night.value), parseInt(week.value)]
@@ -33,6 +33,7 @@ function submitForm(e, worker) {
     username: username.value,
     phone: phone.value,
     location: location.value,
+    orientation: orientation.value,
     rates,
     image: [],
     more: []
