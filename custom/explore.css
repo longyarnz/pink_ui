@@ -138,4 +138,8 @@ div.show-worker-images > div.gallery > img:first-of-type{
   header div.see-more:last-of-type {
     margin-bottom: 0px;
   }
+
+  header > div > code {
+    font-size: 70%;
+  }
 }

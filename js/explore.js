@@ -157,8 +157,13 @@ function createPinkProfile(profile, workerId) {
   fourthSpan.textContent = profile.location || 'Lagos';
 
   const code = document.createElement('code');
-  code.textContent = profile.emailIsVerified ? 'verified' : 'not verified';
+  code.textContent = profile.emailIsVerified ? 'I AM verified' : 'I AM not verified';
   code.style.color = profile.emailIsVerified ? '#5cb85c' : '#d9534f';
+
+  const status = document.createElement('code');
+  status.textContent = `I am ${profile.orientation || 'Straight'}`;
+  status.style.color = '#5cb85c';
+  status.style.marginLeft = '20px';
 
   let seeMore = document.createElement('div');
 
@@ -203,7 +208,7 @@ function createPinkProfile(profile, workerId) {
 
   thirdSpan.appendChild(i);
   h3.append(firstSpan);
-  div.append(thirdSpan, fourthSpan, code);
+  div.append(thirdSpan, fourthSpan, code, status);
   header.append(div, seeMore);
 
   const parent = document.createElement('div');
