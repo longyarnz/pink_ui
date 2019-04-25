@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', a => {
   localStorage.removeItem('isSubmitting');
   const password = document.getElementById('pass');
   const confirmPassword = document.getElementById('confirm');
-  const form = document.getElementsByTagName('form')[0];
+  const form = document.querySelector('form');
 
   password.addEventListener('change', validatePassword);
   confirmPassword.addEventListener('keyup', validatePassword);

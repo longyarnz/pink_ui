@@ -19,73 +19,64 @@
   <meta property="og:site_name" content="Pink et Tu">
   <meta property="og:image" content="https://pinkettu.com.ng/images/p1.jpg">
   <link rel="shortcut icon" href="images/icon.png">
-  <link rel="stylesheet" href="custom/pink.min.css" />
   <link rel="stylesheet" href="custom/layout.min.css" />
+  <link rel="stylesheet" href="custom/signup.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,300,700,900|Qwigley" />
-  <title>Pinks | Pink et tu</title>
+  <title>New Password</title>
 </head>
 
-<body id="profile-body">
+<body id="signup-body">
   <h1 style="display: none !important; height: 0px !important; width: 0px !important;
     padding: 0px !important;overflow: hidden !important;">
     Pink et Tu is a platform for hook ups featuring adult content. It enables workers to create profiles and
     interested clients are welcome to request for their services.
   </h1>
-  
+
   <nav>
     <div class="container">
       <div id="logo-cont">
         <a href="/">
-          <img src="images\pinkettu.png" />
+          <img src="images/pinkettu.png" />
         </a>
       </div>
       <ul></ul>
-      <i>menu</i>
+      <i class="material-icons">menu</i>
     </div>
   </nav>
 
-  <section class="container">
-    <div class="show-worker-images">
-      <h3>
-        <i>local_florist</i>
-        Exclusive Pinks
-        <i>local_florist</i>
-      </h3>
-      <div class="gallery">
-        <figure class="placeholder-container">
-          <div class="placeholder"></div>
-          <span class="placeholder"></span>
-          <span class="placeholder"></span>
-        </figure>
-        <figure class="placeholder-container">
-          <div class="placeholder"></div>
-          <span class="placeholder"></span>
-          <span class="placeholder"></span>
-        </figure>
-        <figure class="placeholder-container">
-          <div class="placeholder"></div>
-          <span class="placeholder"></span>
-          <span class="placeholder"></span>
-        </figure>
-        <figure class="placeholder-container">
-          <div class="placeholder"></div>
-          <span class="placeholder"></span>
-          <span class="placeholder"></span>
-        </figure>
-        <div class="see-more">
+  <div id="signup-main" class="container login">
+    <div class="row">
+      <h2>
+        New <i>local_florist</i> Password
+      </h2>
+      <p>Create a new password for your account</p>
+      <br>
+      <form method="POST" name="form" class="form">
+        <label for="pass">Password</label>
+        <input id="pass" name="password" type="password" placeholder="Password" required />
+
+        <label for="confirm">Confirm Password</label>
+        <input id="confirm" name="confirm" type="password" placeholder="Confirm Password" required />
+
+        <button type="submit" id="finalSubmit">
+          <span>CREATE NEW PASSWORD</span>
+          <i class="fa-spin hide">donut_large</i>
+        </button>
+
+        <div>
+          Don't have an account | <a href="signup.html">SIGN UP</a>
         </div>
-      </div>
+      </form>
     </div>
-  </section>
+  </div>
 
   <footer class="container-fluid">
     &copy; 2019 Pink et Tu, All rights reserved.
   </footer>
 
   <script src="js/nav.min.js"></script>
-  <script src="js/fetchPinks.min.js"></script>
-  <script src="js/createPinkTiles.min.js"></script>
-  <script src="js/pinks.min.js"></script>
+  <script src="js/toggleButtonSpinner.min.js"></script>
+  <script src="js/new.min.js"></script>
 </body>
 
 </html>
